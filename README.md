@@ -1,7 +1,8 @@
 # isMobile
 
 
-A simple JS library that detects Apple phones/tablets, Android phones/tablets, and then any kind of seven inch device.
+A simple JS library that detects Apple phones/tablets, Android phones/tablets, and any seven inch device (Nexus 7, Kindle Fire, Nook Tablet, Galaxy Tab).
+
 
 
 ## Why?

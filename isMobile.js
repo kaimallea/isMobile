@@ -26,7 +26,7 @@
     IM.apple.tablet = apple_tablet.test(ua);
     IM.apple.device = IM.apple.phone || IM.apple.tablet;
 
-    IM.android = {};    
+    IM.android = {};
     IM.android.phone = android_phone.test(ua),
     IM.android.tablet = ( !IM.android.phone && android_tablet.test(ua) );
     IM.android.device = IM.android.phone || IM.android.tablet;
