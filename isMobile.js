@@ -18,7 +18,7 @@
         apple_tablet = /iPad/i,
         android_phone = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i,
         android_tablet = /Android/i,
-        seven_inch = /(?:Nexus 7|BNTV250A|Kindle Fire|Silk|GT-P1000)/i,
+        seven_inch = /(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)/i,
         ua = navigator.userAgent;
 
     IM.apple = {};
