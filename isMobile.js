@@ -16,9 +16,33 @@
 
     var apple_phone = /iPhone/i,
         apple_tablet = /iPad/i,
-        android_phone = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i,
+        android_phone = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i, // Match 'Android' AND 'Mobile'
         android_tablet = /Android/i,
-        seven_inch = /(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)/i,
+        seven_inch = new RegExp(
+            '(?:' +         // Non-capturing group
+
+            'Nexus 7' +     // Nexus 7
+            
+            '|' +           // OR
+            
+            'BNTV250' +     // B&N Nook Tablet 7 inch
+            
+            '|' +           // OR
+            
+            'Kindle Fire' + // Kindle Fire
+            
+            '|' +           // OR
+            
+            'Silk' +        // Kindle Fire, Silk Accelerated
+            
+            '|' +           // OR
+            
+            'GT-P1000' +    // Galaxy Tab 7 inch
+            
+            ')',            // End non-capturing group
+            
+            'i'),           // Case-insensitive matching
+
         ua = navigator.userAgent;
 
     IM.apple = {};
