@@ -7,11 +7,11 @@ A simple JS library that detects if the device visiting the page is an Apple pho
 
 I had a specific requirement for a project when I created this:
 
-**`- Redirect all iPhones, Android phones, and seven inch devices to the mobile site.`**
+**`- Redirect all iPhones, iPods, Android phones, and seven inch devices to the mobile site.`**
 
 I couldn't do detection on the back-end, because the entire site is cached and served by Akamai; so I had to do the detection client-side.
 
-I tried to keep the script small (**456 bytes, minified**) and simple, because it would need to execute in the `<head>`, which is generally a bad idea, since JS blocks downloading and rendering of anything else while it parses and executes. In the case of mobile redirection, I don't mind so much, because I want to start the redirect as soon as possible, before the device has a chance to start downloading and rendering stuff. For everything else, this script should just execute fast, so the browser can quickly get back to downloading and rendering.
+I tried to keep the script small (**499 bytes, minified**) and simple, because it would need to execute in the `<head>`, which is generally a bad idea, since JS blocks downloading and rendering of anything else while it parses and executes. In the case of mobile redirection, I don't mind so much, because I want to start the redirect as soon as possible, before the device has a chance to start downloading and rendering stuff. For everything else, this script should just execute fast, so the browser can quickly get back to downloading and rendering.
 
 
 ## Example Usage
@@ -26,7 +26,7 @@ I include the minified version of the script, inline, and at the top of the `<he
     <meta charset="utf-8">
     <script>
         // Minified version of isMobile included in the HTML since it's only ~480 bytes
-        (function(a){a||(a=window.isMobile={});var c=/Android/i,b=navigator.userAgent;a.apple={};a.apple.phone=/iPhone/i.test(b);a.apple.tablet=/iPad/i.test(b);a.apple.device=a.apple.phone||a.apple.tablet;a.android={};a.android.phone=/(?=.*\bAndroid\b)(?=.*\bMobile\b)/i.test(b);a.android.tablet=!a.android.phone&&c.test(b);a.android.device=a.android.phone||a.android.tablet;a.seven_inch=/(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)/i.test(b)})(window.isMobile);
+        (function(a){a||(a=window.isMobile={});var c=/Android/i,b=navigator.userAgent;a.apple={};a.apple.phone=/iPhone/i.test(b);a.apple.ipod=/iPod/i.test(b);a.apple.tablet=/iPad/i.test(b);a.apple.device=a.apple.phone||a.apple.ipod||a.apple.tablet;a.android={};a.android.phone=/(?=.*\bAndroid\b)(?=.*\bMobile\b)/i.test(b);a.android.tablet=!a.android.phone&&c.test(b);a.android.device=a.android.phone||a.android.tablet;a.seven_inch=/(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)/i.test(b)})(window.isMobile);
 
 
         // My own arbitrary use of isMobile, as an example
@@ -59,6 +59,9 @@ I include the minified version of the script, inline, and at the top of the `<he
 
 ### `isMobile.apple.phone`
 `true` if the device is an iPhone
+
+### `isMobile.apple.ipod`
+`true` if the device is an iPod
 
 ### `isMobile.apple.tablet`
 `true` if the device is an iPad

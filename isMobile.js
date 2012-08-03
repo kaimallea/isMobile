@@ -15,6 +15,7 @@
     }
 
     var apple_phone = /iPhone/i,
+        apple_ipod = /iPod/i,
         apple_tablet = /iPad/i,
         android_phone = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i, // Match 'Android' AND 'Mobile'
         android_tablet = /Android/i,
@@ -47,8 +48,9 @@
 
     IM.apple = {};
     IM.apple.phone = apple_phone.test(ua);
+    IM.apple.ipod = apple_ipod.test(ua);
     IM.apple.tablet = apple_tablet.test(ua);
-    IM.apple.device = IM.apple.phone || IM.apple.tablet;
+    IM.apple.device = IM.apple.phone || IM.apple.ipod || IM.apple.tablet;
 
     IM.android = {};
     IM.android.phone = android_phone.test(ua),
