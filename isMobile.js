@@ -9,8 +9,7 @@
  *
  * @license: http://creativecommons.org/publicdomain/zero/1.0/
  */
-(function (IM) {
-    !IM && (IM = window.isMobile = {});
+(function (window) {
 
     var apple_phone      = /iPhone/i,
         apple_ipod       = /iPod/i,
@@ -43,29 +42,37 @@
             
             ')',            // End non-capturing group
             
-            'i'),           // Case-insensitive matching
+            'i');           // Case-insensitive matching
 
-        ua = navigator.userAgent;
+    var match = function(regex, userAgent) {
+        return regex.test(userAgent);
+    };
 
-    IM.apple = {};
-    IM.apple.phone  = apple_phone.test(ua);
-    IM.apple.ipod   = apple_ipod.test(ua);
-    IM.apple.tablet = apple_tablet.test(ua);
-    IM.apple.device = IM.apple.phone || IM.apple.ipod || IM.apple.tablet;
+    var isMobileClass = function(userAgent) {
+        var ua = userAgent || navigator.userAgent;
 
-    IM.android = {};
-    IM.android.phone  = android_phone.test(ua),
-    IM.android.tablet = ( !IM.android.phone && android_tablet.test(ua) );
-    IM.android.device = IM.android.phone || IM.android.tablet;
+        this.apple = {
+            phone:  match(apple_phone, ua),
+            ipod:   match(apple_ipod, ua),
+            tablet: match(apple_tablet, ua),
+            device: match(apple_phone, ua) || match(apple_ipod, ua) || match(apple_tablet, ua)
+        };
+        this.android = {
+            phone:  match(android_phone, ua),
+            tablet: !match(android_phone, ua) && match(android_tablet, ua),
+            device: match(android_phone, ua) || match(android_tablet, ua)
+        };
+        this.other = {
+            blackberry: match(other_blackberry, ua),
+            opera:      match(other_opera, ua),
+            windows:    match(other_windows, ua),
+            device:     match(other_blackberry, ua) || match(other_opera, ua) || match(other_windows, ua)
+        };
+        this.seven_inch = match(seven_inch, ua);
+        this.any = this.apple.device || this.android.device || this.other.device || this.seven_inch;
+    };
 
-    IM.other = {};
-    IM.other.blackberry = other_blackberry.test(ua);
-    IM.other.opera      = other_opera.test(ua);
-    IM.other.windows    = other_windows.test(ua);
-    IM.other.device     = IM.other.blackberry || IM.other.opera || IM.other.windows;
+    var IM = window.isMobile = new isMobileClass();
+    IM.Class = isMobileClass;
 
-    IM.seven_inch = seven_inch.test(ua);
-
-    IM.any = IM.apple.device || IM.android.device || IM.other.device || IM.seven_inch;
-
-})(window.isMobile);
+})(window);
