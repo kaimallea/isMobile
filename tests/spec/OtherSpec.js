@@ -82,4 +82,29 @@ describe("Other Mobile Devices", function(){
 
   });
 
+  describe("Firefox OS", function() {
+
+    beforeEach(function() {
+      userAgent = "Mozilla/5.0 (Mobile; rv:14.0) Gecko/14.0 Firefox/14.0";
+      mobile = new isMobile.Class(userAgent);
+    });
+
+    it("should be a Firefox OS device", function() {
+      expect(mobile.other.firefox).toBe(true);
+    });
+
+    it("should not be an Android device", function() {
+      expect(mobile.android.device).not.toBe(true);
+    });
+
+    it("should not be an Apple device", function() {
+      expect(mobile.apple.device).not.toBe(true);
+    });
+
+    it("should be a mobile device", function() {
+      expect(mobile.any).toBe(true);
+    });
+
+  });
+
 });
