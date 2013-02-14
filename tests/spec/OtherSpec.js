@@ -57,4 +57,29 @@ describe("Other Mobile Devices", function(){
 
   });
 
+  describe("Opera Mini", function() {
+
+    beforeEach(function() {
+      userAgent = "Opera/9.80 (J2ME/MIDP; Opera Mini/9.80 (S60; SymbOS; Opera Mobi/23.348; U; en) Presto/2.5.25 Version/10.54";
+      mobile = new isMobile.Class(userAgent);
+    });
+
+    it("should be a Opera Mini device", function() {
+      expect(mobile.other.opera).toBe(true);
+    });
+
+    it("should not be an Android device", function() {
+      expect(mobile.android.device).not.toBe(true);
+    });
+
+    it("should not be an Apple device", function() {
+      expect(mobile.apple.device).not.toBe(true);
+    });
+
+    it("should be a mobile device", function() {
+      expect(mobile.any).toBe(true);
+    });
+
+  });
+
 });
