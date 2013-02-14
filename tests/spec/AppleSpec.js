@@ -23,7 +23,32 @@ describe("Apple", function(){
     });
 
     it("should not be an iPod", function() {
-      expect(mobile.apple.tablet).not.toBe(true);
+      expect(mobile.apple.ipod).not.toBe(true);
+    });
+
+    it("should be an Apple device", function() {
+      expect(mobile.apple.device).toBe(true);
+    });
+
+  });
+
+  describe("iPad UserAgent", function() {
+
+    beforeEach(function() {
+      userAgent = "Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.10";
+      mobile = new isMobile.Class(userAgent);
+    });
+
+    it("should not be an iPhone", function() {
+      expect(mobile.apple.phone).not.toBe(true);
+    });
+
+    it("should be an iPad", function() {
+      expect(mobile.apple.tablet).toBe(true);
+    });
+
+    it("should not be an iPod", function() {
+      expect(mobile.apple.ipod).not.toBe(true);
     });
 
     it("should be an Apple device", function() {
