@@ -57,4 +57,29 @@ describe("Apple", function(){
 
   });
 
+  describe("iPod UserAgent", function() {
+
+    beforeEach(function() {
+      userAgent = "Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A101a Safari/419.3";
+      mobile = new isMobile.Class(userAgent);
+    });
+
+    it("should not be an iPhone", function() {
+      expect(mobile.apple.phone).not.toBe(true);
+    });
+
+    it("should not be an iPad", function() {
+      expect(mobile.apple.tablet).not.toBe(true);
+    });
+
+    it("should be an iPod", function() {
+      expect(mobile.apple.ipod).toBe(true);
+    });
+
+    it("should be an Apple device", function() {
+      expect(mobile.apple.device).toBe(true);
+    });
+
+  });
+
 });
