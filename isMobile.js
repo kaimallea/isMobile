@@ -49,7 +49,7 @@
         return regex.test(userAgent);
     };
 
-    var isMobileClass = function(userAgent) {
+    var IsMobileClass = function(userAgent) {
         var ua = userAgent || navigator.userAgent;
 
         this.apple = {
@@ -74,7 +74,7 @@
         this.any = this.apple.device || this.android.device || this.other.device || this.seven_inch;
     };
 
-    var IM = window.isMobile = new isMobileClass();
-    IM.Class = isMobileClass;
+    var IM = window.isMobile = new IsMobileClass();
+    IM.Class = IsMobileClass;
 
 })(window);
