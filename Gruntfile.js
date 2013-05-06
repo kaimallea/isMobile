@@ -15,10 +15,26 @@ module.exports = function(grunt) {
           version: '1.3.1'
         }
       }
+    },
+
+    uglify: {
+      my_target: {
+        files: {
+          'isMobile.min.js': ['isMobile.js']
+        }
+      }
+    },
+
+    jshint: {
+      all: ['Gruntfile.js', 'isMobile.js', 'tests/spec/**/*.js']
     }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-jasmine');
-  grunt.registerTask('test', 'jasmine');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  grunt.registerTask('default', ['jshint', 'uglify', 'jasmine']);
 
 };
