@@ -2,18 +2,62 @@
 
 # isMobile
 
-A simple JS library that detects if the device visiting the page is an Apple phones/tablet, Android phone/tablet, or a seven inch device (Nexus 7, Kindle Fire, Nook Tablet, Galaxy Tab).
+A simple JS library that detects mobile devices.
 
 
-## Why?
+
+_Big thanks to [Igor Ribeio Lima](https://github.com/igorlima) for his contributions._
+
+## Why use isMobile?
 
 I had a specific requirement for a project when I created this:
 
 **`- Redirect all iPhones, iPods, Android phones, and seven inch devices to the mobile site.`**
 
-I couldn't do detection on the back-end, because the entire site is cached and served by Akamai; so I had to do the detection client-side.
+A completely separate site had been created for mobile devices, so feature detection/graceful degredation/progressive enhancement were out of the question. I had to redirect.
 
-I tried to keep the script small (**499 bytes, minified**) and simple, because it would need to execute in the `<head>`, which is generally a bad idea, since JS blocks downloading and rendering of anything else while it parses and executes. In the case of mobile redirection, I don't mind so much, because I want to start the redirect as soon as possible, before the device has a chance to start downloading and rendering stuff. For everything else, this script should just execute fast, so the browser can quickly get back to downloading and rendering.
+I couldn't do detection on the back-end, because the entire site was cached and served by Akamai; I had to do the detection client-side.
+
+So I resorted to UA sniffing.
+
+I tried to keep the script small (**currently ~740 bytes, minified**) and simple, because it would need to execute in the `<head>`, which is generally a bad idea, since JS blocks downloading and rendering of anything else while it parses and executes. In the case of mobile redirection, I don't mind so much, because I want to start the redirect as soon as possible, before the device has a chance to start downloading and rendering stuff. For non-mobile platforms, the script should execute fast, so the browser can quickly get back to downloading and rendering.
+
+## How it works
+
+isMobile runs quickly on page load to detect mobile devices; it then creates a JavaScript object with the results.
+
+## Devices detected by isMobile
+
+The following properies of the `isMobile` object will either be `true` or `false`
+
+### Apple devices
+
+* `isMobile.apple.phone`
+* `isMobile.apple.ipod`
+* `isMobile.apple.tablet`
+* `isMobile.apple.device` (any mobile Apple device)
+
+### Android devices
+
+* `isMobile.android.phone`
+* `isMobile.android.tablet`
+* `isMobile.android.device` (any mobile Android device)
+
+### Specific seven inch devices
+
+* `isMobile.seven_inch` 
+	* `true` if the device is one of the following 7" devices:
+		- Nexus 7
+		- Kindle Fire
+		- Nook Tablet 7 inch
+		- Galaxy Tab 7 inch
+
+### "Other" devices
+
+* `isMoble.other_blackberry`
+* `isMoble.other_opera` (Opera Mini)
+* `isMoble.other_windows`
+* `isMoble.other_firefox`
 
 
 ## Example Usage
@@ -27,8 +71,8 @@ I include the minified version of the script, inline, and at the top of the `<he
 <head>
     <meta charset="utf-8">
     <script>
-        // Minified version of isMobile included in the HTML since it's only ~480 bytes
-        (function(a){a||(a=window.isMobile={});var c=/Android/i,b=navigator.userAgent;a.apple={};a.apple.phone=/iPhone/i.test(b);a.apple.ipod=/iPod/i.test(b);a.apple.tablet=/iPad/i.test(b);a.apple.device=a.apple.phone||a.apple.ipod||a.apple.tablet;a.android={};a.android.phone=/(?=.*\bAndroid\b)(?=.*\bMobile\b)/i.test(b);a.android.tablet=!a.android.phone&&c.test(b);a.android.device=a.android.phone||a.android.tablet;a.seven_inch=/(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)/i.test(b)})(window.isMobile);
+        // Minified version of isMobile included in the HTML since it's <1kb
+        (function(i){var e=/iPhone/i,n=/iPod/i,o=/iPad/i,t=/(?=.*\bAndroid\b)(?=.*\bMobile\b)/i,r=/Android/i,d=/BlackBerry/i,s=/Opera Mini/i,a=/IEMobile/i,b=/(?=.*\bFirefox\b)(?=.*\bMobile\b)/i,h=RegExp("(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)","i"),c=function(i,e){return i.test(e)},l=function(i){var l=i||navigator.userAgent;this.apple={phone:c(e,l),ipod:c(n,l),tablet:c(o,l),device:c(e,l)||c(n,l)||c(o,l)},this.android={phone:c(t,l),tablet:!c(t,l)&&c(r,l),device:c(t,l)||c(r,l)},this.other={blackberry:c(d,l),opera:c(s,l),windows:c(a,l),firefox:c(b,l),device:c(d,l)||c(s,l)||c(a,l)||c(b,l)},this.seven_inch=c(h,l),this.any=this.apple.device||this.android.device||this.other.device||this.seven_inch},v=i.isMobile=new l;v.Class=l})(window);
 
 
         // My own arbitrary use of isMobile, as an example
@@ -54,36 +98,3 @@ I include the minified version of the script, inline, and at the top of the `<he
 </body>
 </html>
 ```
-
-### The script creates a global `isMobile` object with properties that are either `true` or `false`, depending on the device.
-
-## Properties
-
-### `isMobile.apple.phone`
-`true` if the device is an iPhone
-
-### `isMobile.apple.ipod`
-`true` if the device is an iPod
-
-### `isMobile.apple.tablet`
-`true` if the device is an iPad
-
-### `isMobile.apple.device`
-`true` if the device is an iPhone _or_ iPad
-
-### `isMobile.android.phone`
-`true` if the device is an Android phone
-
-### `isMobile.android.tablet`
-`true` if the device is an Android tablet
-
-### `isMobile.android.device`
-`true` if the device is an Android phone _or_ tablet
-
-### `isMobile.seven_inch`
-`true` if the device is one of the following 7" devices:
-
-- Nexus 7
-- Kindle Fire
-- Nook Tablet 7 inch
-- Galaxy Tab 7 inch
