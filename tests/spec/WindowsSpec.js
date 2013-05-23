@@ -32,4 +32,33 @@ describe("Windows", function(){
 
   });
 
+  describe("Windows Tablet UserAgent", function() {
+
+    beforeEach(function() {
+      userAgent = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0; Touch)";
+      mobile = new isMobile.Class(userAgent);
+    });
+
+    it("should be a Windows Tablet device", function() {
+      expect(mobile.other.windows_tablet).toBe(true);
+    });
+
+    it("should not be a Windows Phone device", function() {
+      expect(mobile.other.windows).not.toBe(true);
+    });
+
+    it("should not be an Android device", function() {
+      expect(mobile.android.device).not.toBe(true);
+    });
+
+    it("should not be an Apple device", function() {
+      expect(mobile.apple.device).not.toBe(true);
+    });
+
+    it("should be a mobile device", function() {
+      expect(mobile.any).toBe(true);
+    });
+
+  });
+
 });
