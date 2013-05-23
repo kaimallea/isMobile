@@ -16,10 +16,10 @@
         apple_tablet     = /iPad/i,
         android_phone    = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i, // Match 'Android' AND 'Mobile'
         android_tablet   = /Android/i,
+        windows_phone    = /IEMobile/i,
+        windows_tablet   = /(?=.*\bWindows\b)(?=.*\bTouch\b)/i, // Match 'Windows' AND 'Touch'
         other_blackberry = /BlackBerry/i,
         other_opera      = /Opera Mini/i,
-        other_windows    = /IEMobile/i,
-        other_windows_tablet = /(?=.*\bWindows\b)(?=.*\bTouch\b)/i, // Match 'Windows' AND 'Touch'
         other_firefox    = /(?=.*\bFirefox\b)(?=.*\bMobile\b)/i, // Match 'Firefox' AND 'Mobile'
         seven_inch = new RegExp(
             '(?:' +         // Non-capturing group
@@ -64,16 +64,19 @@
             tablet: !match(android_phone, ua) && match(android_tablet, ua),
             device: match(android_phone, ua) || match(android_tablet, ua)
         };
+        this.windows = {
+            phone:  match(windows_phone, ua),
+            tablet: match(windows_tablet, ua),
+            device: match(windows_phone, ua) || match(windows_tablet, ua)
+        };
         this.other = {
             blackberry: match(other_blackberry, ua),
             opera:      match(other_opera, ua),
-            windows:    match(other_windows, ua),
-            windows_tablet: match(other_windows_tablet, ua),
             firefox:    match(other_firefox, ua),
-            device:     match(other_blackberry, ua) || match(other_opera, ua) || match(other_windows, ua) || match(other_firefox, ua) || match(other_windows_tablet, ua)
+            device:     match(other_blackberry, ua) || match(other_opera, ua) || match(other_firefox, ua)
         };
         this.seven_inch = match(seven_inch, ua);
-        this.any = this.apple.device || this.android.device || this.other.device || this.seven_inch;
+        this.any = this.apple.device || this.android.device || this.windows.device || this.other.device || this.seven_inch;
     };
 
     var IM = window.isMobile = new IsMobileClass();

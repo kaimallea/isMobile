@@ -15,7 +15,7 @@ describe("Windows", function(){
     });
 
     it("should be a Windows Phone device", function() {
-      expect(mobile.other.windows).toBe(true);
+      expect(mobile.windows.phone).toBe(true);
     });
 
     it("should not be an Android device", function() {
@@ -40,7 +40,7 @@ describe("Windows", function(){
     });
 
     it("should be a Windows Tablet device", function() {
-      expect(mobile.other.windows_tablet).toBe(true);
+      expect(mobile.windows.tablet).toBe(true);
     });
 
     it("should not be a Windows Phone device", function() {
