@@ -43,6 +43,12 @@ The following properies of the `isMobile` object will either be `true` or `false
 * `isMobile.android.tablet`
 * `isMobile.android.device` (any mobile Android device)
 
+### Windows devices
+
+* `isMobile.windows.phone`
+* `isMobile.windows.tablet`
+* `isMobile.windows.device` (any mobile Windows device)
+
 ### Specific seven inch devices
 
 * `isMobile.seven_inch` 
@@ -56,7 +62,6 @@ The following properies of the `isMobile` object will either be `true` or `false
 
 * `isMoble.other_blackberry`
 * `isMoble.other_opera` (Opera Mini)
-* `isMoble.other_windows`
 * `isMoble.other_firefox`
 
 
