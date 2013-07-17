@@ -1,0 +1,15 @@
+{
+  "name": "isMobile",
+  "version": "0.3.0",
+  "main": [
+    "isMobile.js",
+    "isMobile.min.js"
+  ],
+  "ignore": [
+    "**/.*",
+    "bower.json",
+    "CONTRIBUTORS.md",
+    "Gruntfile.js",
+    "tests"
+  ]
+}
