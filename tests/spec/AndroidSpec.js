@@ -22,6 +22,10 @@ describe("Android", function(){
       expect(mobile.android.tablet).not.toBe(true);
     });
 
+    it("should be matched as Any Phone", function() {
+      expect(mobile.phone).toBe(true);
+    });
+
     it("should be an Android device", function() {
       expect(mobile.android.device).toBe(true);
     });
@@ -41,6 +45,10 @@ describe("Android", function(){
 
     it("should be an Android Tablet", function() {
       expect(mobile.android.tablet).toBe(true);
+    });
+
+    it("should be matched as Any Tablet", function() {
+      expect(mobile.tablet).toBe(true);
     });
 
     it("should be an Android device", function() {

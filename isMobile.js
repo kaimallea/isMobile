@@ -25,25 +25,25 @@
             '(?:' +         // Non-capturing group
 
             'Nexus 7' +     // Nexus 7
-            
+
             '|' +           // OR
-            
+
             'BNTV250' +     // B&N Nook Tablet 7 inch
-            
+
             '|' +           // OR
-            
+
             'Kindle Fire' + // Kindle Fire
-            
+
             '|' +           // OR
-            
+
             'Silk' +        // Kindle Fire, Silk Accelerated
-            
+
             '|' +           // OR
-            
+
             'GT-P1000' +    // Galaxy Tab 7 inch
-            
+
             ')',            // End non-capturing group
-            
+
             'i');           // Case-insensitive matching
 
     var match = function(regex, userAgent) {
@@ -77,6 +77,10 @@
         };
         this.seven_inch = match(seven_inch, ua);
         this.any = this.apple.device || this.android.device || this.windows.device || this.other.device || this.seven_inch;
+        // excludes 'other' devices and ipods, targeting touchscreen phones
+        this.phone = this.apple.phone || this.android.phone || this.windows.phone;
+        // excludes 7 inch devices, classifying as phone or tablet is left to the user
+        this.tablet = this.apple.tablet || this.android.tablet || this.windows.tablet;
     };
 
     var IM = window.isMobile = new IsMobileClass();
