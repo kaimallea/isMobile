@@ -26,6 +26,10 @@ describe("Windows", function(){
       expect(mobile.apple.device).not.toBe(true);
     });
 
+    it("should be matched as Any Phone", function() {
+      expect(mobile.phone).toBe(true);
+    });
+
     it("should be a mobile device", function() {
       expect(mobile.any).toBe(true);
     });
@@ -53,6 +57,10 @@ describe("Windows", function(){
 
     it("should not be an Apple device", function() {
       expect(mobile.apple.device).not.toBe(true);
+    });
+
+    it("should be matched as Any Tablet", function() {
+      expect(mobile.tablet).toBe(true);
     });
 
     it("should be a mobile device", function() {

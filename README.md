@@ -51,7 +51,7 @@ The following properies of the `isMobile` object will either be `true` or `false
 
 ### Specific seven inch devices
 
-* `isMobile.seven_inch` 
+* `isMobile.seven_inch`
 	* `true` if the device is one of the following 7" devices:
 		- Nexus 7
 		- Kindle Fire
@@ -60,9 +60,15 @@ The following properies of the `isMobile` object will either be `true` or `false
 
 ### "Other" devices
 
-* `isMoble.other_blackberry`
-* `isMoble.other_opera` (Opera Mini)
-* `isMoble.other_firefox`
+* `isMobile.other_blackberry`
+* `isMobile.other_opera` (Opera Mini)
+* `isMobile.other_firefox`
+
+### Aggregate Groupings
+
+* `isMobile.any` - any device matched
+* `isMobile.phone` - any device in the 'phone' groups above
+* `isMobile.tablet` - any device in the 'tablet' groups above
 
 
 ## Example Usage
@@ -87,7 +93,7 @@ I include the minified version of the script, inline, and at the top of the `<he
 
             // I only want to redirect iPhones, Android phones and a handful of 7" devices
             if (isMobile.apple.phone || isMobile.android.phone || isMobile.seven_inch) {
-                
+
                 // Only redirect if the user didn't previously choose
                 // to explicitly view the full site. This is validated
                 // by checking if a "noredirect" cookie exists
@@ -95,7 +101,7 @@ I include the minified version of the script, inline, and at the top of the `<he
                     document.location = MOBILE_SITE;
                 }
             }
-        })();       
+        })();
     </script>
 </head>
 <body>
