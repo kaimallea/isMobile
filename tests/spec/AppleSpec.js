@@ -26,6 +26,10 @@ describe("Apple", function(){
       expect(mobile.apple.ipod).not.toBe(true);
     });
 
+    it("should be matched as Any Phone", function() {
+      expect(mobile.phone).toBe(true);
+    });
+
     it("should be an Apple device", function() {
       expect(mobile.apple.device).toBe(true);
     });
@@ -49,6 +53,10 @@ describe("Apple", function(){
 
     it("should not be an iPod", function() {
       expect(mobile.apple.ipod).not.toBe(true);
+    });
+
+    it("should be matched as Any Tablet", function() {
+      expect(mobile.tablet).toBe(true);
     });
 
     it("should be an Apple device", function() {
