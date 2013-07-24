@@ -83,7 +83,15 @@
         this.tablet = this.apple.tablet || this.android.tablet || this.windows.tablet;
     };
 
-    var IM = window.isMobile = new IsMobileClass();
+    var IM = new IsMobileClass();
     IM.Class = IsMobileClass;
 
-})(window);
+    if (typeof module != 'undefined' && module.exports) {
+        module.exports = IM;
+    } else if (typeof define === 'function' && define.amd) {
+        define(IM);
+    } else {
+        window.isMobile = IM;
+    }
+
+})(this.window || global);
