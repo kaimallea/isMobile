@@ -90,8 +90,8 @@
         module.exports = IM;
     } else if (typeof define === 'function' && define.amd) {
         define(IM);
-    } else {
-        global.isMobile = IM;
     }
+
+    global.isMobile = IM;
 
 })(this);
