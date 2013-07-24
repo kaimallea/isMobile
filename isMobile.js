@@ -9,7 +9,7 @@
  *
  * @license: http://creativecommons.org/publicdomain/zero/1.0/
  */
-(function (window) {
+(function (global) {
 
     var apple_phone      = /iPhone/i,
         apple_ipod       = /iPod/i,
@@ -91,7 +91,7 @@
     } else if (typeof define === 'function' && define.amd) {
         define(IM);
     } else {
-        window.isMobile = IM;
+        global.isMobile = IM;
     }
 
-})(this.window || global);
+})(this);
