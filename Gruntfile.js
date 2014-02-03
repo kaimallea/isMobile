@@ -1,24 +1,24 @@
 module.exports = function(grunt) {
+  'use strict';
+  
   grunt.initConfig({
     jasmine: {
+      options: {
+        specs:   'tests/spec/*.js'
+      },
       isMobile: {
-        src: ['isMobile.js'],
-        options: {
-          specs:   'tests/spec/*.js',
-          version: '1.3.1'
-        }
+        src: ['isMobile.js']
       },
       isMobileMin: {
-        src: ['isMobile.min.js'],
-        options: {
-          specs:   'tests/spec/*.js',
-          version: '1.3.1'
-        }
+        src: ['isMobile.min.js']
       }
     },
 
     uglify: {
-      my_target: {
+      options: {
+        report: 'min'
+      },
+      main: {
         files: {
           'isMobile.min.js': ['isMobile.js']
         }
