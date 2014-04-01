@@ -69,4 +69,37 @@ describe("Windows", function(){
 
   });
 
+  describe("Windows Touch Laptop UserAgent", function() {
+
+    beforeEach(function() {
+      userAgent = "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; MAGWJS; rv:11.0) like Gecko";
+      mobile = new isMobile.Class(userAgent);
+    });
+
+    it("should not be a Windows Tablet device", function() {
+      expect(mobile.windows.tablet).not.toBe(true);
+    });
+
+    it("should not be a Windows Phone device", function() {
+      expect(mobile.other.windows).not.toBe(true);
+    });
+
+    it("should not be an Android device", function() {
+      expect(mobile.android.device).not.toBe(true);
+    });
+
+    it("should not be an Apple device", function() {
+      expect(mobile.apple.device).not.toBe(true);
+    });
+
+    it("should not be matched as Any Tablet", function() {
+      expect(mobile.tablet).not.toBe(true);
+    });
+
+    it("should not be a mobile device", function() {
+      expect(mobile.any).not.toBe(true);
+    });
+
+  });
+
 });

@@ -1,5 +1,5 @@
 /**
- * isMobile.js v0.3.1
+ * isMobile.js v0.3.2
  *
  * A simple library to detect Apple phones and tablets,
  * Android phones and tablets, other mobile devices (like blackberry, mini-opera and windows phone),
@@ -17,7 +17,7 @@
         android_phone    = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i, // Match 'Android' AND 'Mobile'
         android_tablet   = /Android/i,
         windows_phone    = /IEMobile/i,
-        windows_tablet   = /(?=.*\bWindows\b)(?=.*\bTouch\b)/i, // Match 'Windows' AND 'Touch'
+        windows_tablet   = /(?=.*\bWindows\b)(?=.*\bARM\b)/i, // Match 'Windows' AND 'ARM'
         other_blackberry = /BlackBerry/i,
         other_opera      = /Opera Mini/i,
         other_firefox    = /(?=.*\bFirefox\b)(?=.*\bMobile\b)/i, // Match 'Firefox' AND 'Mobile'
