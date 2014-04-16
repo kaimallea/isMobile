@@ -1,13 +1,9 @@
 {
   "name": "isMobile",
   "version": "0.3.2",
-  "main": [
-    "isMobile.js",
-    "isMobile.min.js"
-  ],
+  "main": "isMobile.js",
   "ignore": [
     "**/.*",
-    "bower.json",
     "CONTRIBUTORS.md",
     "Gruntfile.js",
     "tests"
