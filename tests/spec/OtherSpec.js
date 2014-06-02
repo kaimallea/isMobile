@@ -39,7 +39,7 @@ describe("Other Mobile Devices", function(){
       mobile = new isMobile.Class(userAgent);
     });
 
-    it("should be a Opera Mini device", function() {
+    it("should be an Opera Mini device", function() {
       expect(mobile.other.opera).toBe(true);
     });
 
