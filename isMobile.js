@@ -81,17 +81,29 @@
         this.phone = this.apple.phone || this.android.phone || this.windows.phone;
         // excludes 7 inch devices, classifying as phone or tablet is left to the user
         this.tablet = this.apple.tablet || this.android.tablet || this.windows.tablet;
+
+        if (typeof window === 'undefined') {
+            return this;
+        }
     };
 
-    var IM = new IsMobileClass();
-    IM.Class = IsMobileClass;
+    var instantiate = function() {
+        var IM = new IsMobileClass();
+        IM.Class = IsMobileClass;
+        return IM;
+    };
 
-    if (typeof module != 'undefined' && module.exports) {
-        module.exports = IM;
+    if (typeof module != 'undefined' && module.exports && typeof window === 'undefined') {
+        //node
+        module.exports = IsMobileClass;
+    } else if (typeof module != 'undefined' && module.exports && typeof window !== 'undefined') {
+        //browserify
+        module.exports = instantiate();
     } else if (typeof define === 'function' && define.amd) {
-        define(IM);
+        //AMD
+        define(instantiate());
     } else {
-        global.isMobile = IM;
+        global.isMobile = instantiate();
     }
 
 })(this);

@@ -1,4 +1,20 @@
 {
+  "name": "ismobilejs",
+  "version": "0.3.3",
+  "description": "A simple JS library that detects mobile devices.",
+  "keywords": [
+    "ismobile",
+    "device detection",
+    "mobile devices",
+    "useragent"
+  ],
+  "homepage": "https://github.com/kaimallea/isMobile",
+  "license": "CC0",
+  "author": {
+    "name": "Kai Mallea",
+    "email": "kmallea@gmail.com"
+  },
+  "main": "./isMobile",
   "devDependencies": {
     "grunt": "0.4.x",
     "grunt-contrib-jshint": "0.8.x",
