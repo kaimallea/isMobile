@@ -2,3 +2,5 @@
 * Clay Hinson ([https://github.com/clayhinson](https://github.com/clayhinson))
 * Vitaly Orlov ([https://github.com/orloffv](https://github.com/orloffv))
 * Shinnosuke Watanabe ([https://github.com/shinnn](https://github.com/shinnn))
+* Vladimir Matsola ([https://github.com/vomchik](https://github.com/vomchik))
+* Bryce Neal ([https://github.com/prettymuchbryce](https://github.com/prettymuchbryce))
