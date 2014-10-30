@@ -61,6 +61,7 @@ The following properies of the `isMobile` object will either be `true` or `false
 
 ### "Other" devices
 
+* `isMobile.other_blackberry_10`
 * `isMobile.other_blackberry`
 * `isMobile.other_opera` (Opera Mini)
 * `isMobile.other_firefox`
@@ -113,7 +114,7 @@ I include the minified version of the script, inline, and at the top of the `<he
 
 ### node.js usage
 
-#####Installation 
+#####Installation
 `npm install ismobilejs`
 
 #####Usage
