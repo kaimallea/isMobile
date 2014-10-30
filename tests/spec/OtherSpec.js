@@ -7,6 +7,35 @@ describe("Other Mobile Devices", function(){
     userAgent = null;
   });
 
+  describe("BlackBerry 10", function() {
+
+    beforeEach(function() {
+      userAgent = "Mozilla/5.0 (BB10; Touch) AppleWebKit/537.35+ (KHTML, like Gecko) Version/10.2.0.1791 Mobile Safari/537.35+";
+      mobile = new isMobile.Class(userAgent);
+    });
+
+    it("should be a BlackBerry 10 device", function() {
+      expect(mobile.other.blackberry10).toBe(true);
+    });
+
+    it("should not be a BlackBerry device", function() {
+      expect(mobile.other.blackberry).not.toBe(true);
+    });
+
+    it("should not be an Android device", function() {
+      expect(mobile.android.device).not.toBe(true);
+    });
+
+    it("should not be an Apple device", function() {
+      expect(mobile.apple.device).not.toBe(true);
+    });
+
+    it("should be a mobile device", function() {
+      expect(mobile.any).toBe(true);
+    });
+
+  });
+
   describe("BlackBerry", function() {
 
     beforeEach(function() {
@@ -16,6 +45,10 @@ describe("Other Mobile Devices", function(){
 
     it("should be a BlackBerry device", function() {
       expect(mobile.other.blackberry).toBe(true);
+    });
+
+    it("should not be a BlackBerry 10 device", function() {
+      expect(mobile.other.blackberry10).not.toBe(true);
     });
 
     it("should not be an Android device", function() {
