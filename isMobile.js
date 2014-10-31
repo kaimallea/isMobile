@@ -11,16 +11,17 @@
  */
 (function (global) {
 
-    var apple_phone      = /iPhone/i,
-        apple_ipod       = /iPod/i,
-        apple_tablet     = /iPad/i,
-        android_phone    = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i, // Match 'Android' AND 'Mobile'
-        android_tablet   = /Android/i,
-        windows_phone    = /IEMobile/i,
-        windows_tablet   = /(?=.*\bWindows\b)(?=.*\bARM\b)/i, // Match 'Windows' AND 'ARM'
-        other_blackberry = /BlackBerry/i,
-        other_opera      = /Opera Mini/i,
-        other_firefox    = /(?=.*\bFirefox\b)(?=.*\bMobile\b)/i, // Match 'Firefox' AND 'Mobile'
+    var apple_phone         = /iPhone/i,
+        apple_ipod          = /iPod/i,
+        apple_tablet        = /iPad/i,
+        android_phone       = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i, // Match 'Android' AND 'Mobile'
+        android_tablet      = /Android/i,
+        windows_phone       = /IEMobile/i,
+        windows_tablet      = /(?=.*\bWindows\b)(?=.*\bARM\b)/i, // Match 'Windows' AND 'ARM'
+        other_blackberry    = /BlackBerry/i,
+        other_blackberry_10 = /BB10/i,
+        other_opera         = /Opera Mini/i,
+        other_firefox       = /(?=.*\bFirefox\b)(?=.*\bMobile\b)/i, // Match 'Firefox' AND 'Mobile'
         seven_inch = new RegExp(
             '(?:' +         // Non-capturing group
 
@@ -70,10 +71,11 @@
             device: match(windows_phone, ua) || match(windows_tablet, ua)
         };
         this.other = {
-            blackberry: match(other_blackberry, ua),
-            opera:      match(other_opera, ua),
-            firefox:    match(other_firefox, ua),
-            device:     match(other_blackberry, ua) || match(other_opera, ua) || match(other_firefox, ua)
+            blackberry:   match(other_blackberry, ua),
+            blackberry10: match(other_blackberry_10, ua),
+            opera:        match(other_opera, ua),
+            firefox:      match(other_firefox, ua),
+            device:       match(other_blackberry, ua) || match(other_blackberry_10, ua) || match(other_opera, ua) || match(other_firefox, ua)
         };
         this.seven_inch = match(seven_inch, ua);
         this.any = this.apple.device || this.android.device || this.windows.device || this.other.device || this.seven_inch;
