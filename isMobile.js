@@ -1,5 +1,5 @@
 /**
- * isMobile.js v0.3.4
+ * isMobile.js v0.3.5
  *
  * A simple library to detect Apple phones and tablets,
  * Android phones and tablets, other mobile devices (like blackberry, mini-opera and windows phone),
@@ -103,7 +103,7 @@
         module.exports = instantiate();
     } else if (typeof define === 'function' && define.amd) {
         //AMD
-        define(instantiate());
+        define(global.isMobile = instantiate());
     } else {
         global.isMobile = instantiate();
     }
