@@ -53,11 +53,17 @@
 
     var IsMobileClass = function(userAgent) {
         var ua = userAgent || navigator.userAgent;
+        // Facebook mobile app's integrated browser adds a bunch of strings that
+        // match everything. Strip it out if it exists.
+        var tmp = ua.split('[FBAN');
+        if (typeof tmp[1] !== 'undefined') {
+            ua = tmp[0];
+        }
 
         this.apple = {
             phone:  match(apple_phone, ua),
             ipod:   match(apple_ipod, ua),
-            tablet: match(apple_tablet, ua),
+            tablet: !match(apple_phone, ua) && match(apple_tablet, ua),
             device: match(apple_phone, ua) || match(apple_ipod, ua) || match(apple_tablet, ua)
         };
         this.android = {

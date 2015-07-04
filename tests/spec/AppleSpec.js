@@ -90,4 +90,54 @@ describe("Apple", function(){
 
   });
 
+  describe("Facebook iPhone App UserAgent", function() {
+
+    beforeEach(function() {
+      userAgent = "Mozilla/5.0 (iPhone; CPU OS 8_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12B410 [FBAN/FBIOS;FBAV/20.1.0.15.10;FBBV/5758778;FBDV/iPad5,4;FBMD/iPad;FBSN/iPhone OS;FBSV/8.1;FBSS/2; FBCR/;FBID/tablet;FBLC/fi_FI;FBOP/1]";
+      mobile = new isMobile.Class(userAgent);
+    });
+
+    it("should be an iPhone", function() {
+      expect(mobile.apple.phone).toBe(true);
+    });
+
+    it("should not be an iPad", function() {
+      expect(mobile.apple.tablet).not.toBe(true);
+    });
+
+    it("should not be an iPod", function() {
+      expect(mobile.apple.ipod).not.toBe(true);
+    });
+
+    it("should be an Apple device", function() {
+      expect(mobile.apple.device).toBe(true);
+    });
+
+  });
+
+  describe("Facebook iPad App UserAgent", function() {
+
+    beforeEach(function() {
+      userAgent = "Mozilla/5.0 (iPad; CPU OS 8_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12B410 [FBAN/FBIOS;FBAV/20.1.0.15.10;FBBV/5758778;FBDV/iPad5,4;FBMD/iPad;FBSN/iPhone OS;FBSV/8.1;FBSS/2; FBCR/;FBID/tablet;FBLC/fi_FI;FBOP/1]";
+      mobile = new isMobile.Class(userAgent);
+    });
+
+    it("should not be an iPhone", function() {
+      expect(mobile.apple.phone).not.toBe(true);
+    });
+
+    it("should be an iPad", function() {
+      expect(mobile.apple.tablet).toBe(true);
+    });
+
+    it("should not be an iPod", function() {
+      expect(mobile.apple.ipod).not.toBe(true);
+    });
+
+    it("should be an Apple device", function() {
+      expect(mobile.apple.device).toBe(true);
+    });
+
+  });
+
 });
