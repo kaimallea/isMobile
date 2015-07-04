@@ -9,10 +9,14 @@
     "useragent"
   ],
   "homepage": "https://github.com/kaimallea/isMobile",
-  "license": "CC0",
+  "license": "CC0-1.0",
   "author": {
     "name": "Kai Mallea",
     "email": "kmallea@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaimallea/isMobile.git"
   },
   "main": "./isMobile",
   "devDependencies": {
