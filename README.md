@@ -5,31 +5,31 @@
 
 A simple JS library that detects mobile devices.
 
-
-
-_Big thanks to [Igor Ribeio Lima](https://github.com/igorlima) for his contributions._
-
 ## Why use isMobile?
 
-I had a specific requirement for a project when I created this:
+You probably shouldn't use this library unless you absolutely have to. In most cases, good [responsive design](https://en.wikipedia.org/wiki/Responsive_web_design) solves the problem of controlling how to
+render things across different screen sizes. But there are always edge cases. If you have an eddge case,
+then this library might be for you.
+
+I had very specific requirements for a project when I created this:
 
 **`- Redirect all iPhones, iPods, Android phones, and seven inch devices to the mobile site.`**
 
-A completely separate site had been created for mobile devices, so feature detection/graceful degredation/progressive enhancement were out of the question. I had to redirect.
+Yep, at the time, a completely separate site had already been created for mobile devices. So I couldn't depend on media queries, feature detection, graceful degradation, progressive enhancement, or any of the cool techniques for selectively displaying things. I had to find a way to redirect visitors on certain devices to the mobile site.
 
-I couldn't do detection on the back-end, because the entire site was cached and served by Akamai; I had to do the detection client-side.
+I couldn't do detection on the back-end, because the entire site was generated as HTML, and then cached and served by a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network), so I had to do the detection client-side.
 
-So I resorted to UA sniffing.
+So I resorted to User-Agent (UA) sniffing.
 
-I tried to keep the script small (**currently ~1.4k bytes, minified**) and simple, because it would need to execute in the `<head>`, which is generally a bad idea, since JS blocks downloading and rendering of anything else while it parses and executes. In the case of mobile redirection, I don't mind so much, because I want to start the redirect as soon as possible, before the device has a chance to start downloading and rendering stuff. For non-mobile platforms, the script should execute fast, so the browser can quickly get back to downloading and rendering.
+I tried to keep the script small (**currently ~1.4k bytes, minified**) and simple, because it would need to execute in the `<head>`, which is generally a bad idea, since JS blocks the downloading and rendering of all assets while it parses and executes. In the case of mobile redirection, I don't mind so much, because I want to start the redirect as soon as possible, before the device has a chance to start downloading and rendering other stuff. For non-mobile platforms, the script should execute fast, so the browser can quickly get back to downloading and rendering.
 
 ## How it works
 
-isMobile runs quickly on page load to detect mobile devices; it then creates a JavaScript object with the results.
+isMobile runs quickly during initial page load to detect mobile devices; it then creates a JavaScript object with the results.
 
 ## Devices detected by isMobile
 
-The following properies of the `isMobile` object will either be `true` or `false`
+The following properties of the global `isMobile` object will either be `true` or `false`
 
 ### Apple devices
 
@@ -43,6 +43,12 @@ The following properies of the `isMobile` object will either be `true` or `false
 * `isMobile.android.phone`
 * `isMobile.android.tablet`
 * `isMobile.android.device` (any mobile Android device)
+
+### Amazon Silk devices (also passes Android checks)
+
+* `isMobile.amazon.phone`
+* `isMobile.amazon.tablet`
+* `isMobile.amazon.device` (any mobile Amazon Silk device)
 
 ### Windows devices
 
