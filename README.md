@@ -67,10 +67,12 @@ The following properties of the global `isMobile` object will either be `true` o
 
 ### "Other" devices
 
-* `isMobile.other_blackberry_10`
-* `isMobile.other_blackberry`
-* `isMobile.other_opera` (Opera Mini)
-* `isMobile.other_firefox`
+* `isMobile.other.blackberry_10`
+* `isMobile.other.blackberry`
+* `isMobile.other.opera` (Opera Mini)
+* `isMobile.other.firefox`
+* `isMobile.other.chrome`
+* `isMobile.other.device` (any "Other" device)
 
 ### Aggregate Groupings
 
