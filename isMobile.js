@@ -2,16 +2,40 @@
  * isMobile.js v0.3.9
  *
  * A simple library to detect Apple phones and tablets,
- * Android phones and tablets, other mobile devices (like blackberry, mini-opera and windows phone),
+ * Android phones and tablets, other mobile devices (like Blackberry, Mini-Opera and Windows Phone),
  * and any kind of seven inch device, via user agent sniffing.
  *
  * @author: Kai Mallea (kmallea@gmail.com)
  *
  * @license: http://creativecommons.org/publicdomain/zero/1.0/
  */
-(function (global) {
+(function isMobileModule(root, factory) {
+    // UMD (Universal Module Definition)
+    // URL: https://github.com/umdjs/umd
 
-    var apple_phone         = /iPhone/i,
+    var instantiate = function instantiate(global) {
+        var instance = new factory(global);
+        instance.Class = factory;
+        return instance;
+    };
+
+    if (typeof module !== 'undefined' && module.exports && typeof window === 'undefined') {
+        // Node
+        module.exports = factory;
+    } else if (typeof module !== 'undefined' && module.exports && typeof window !== 'undefined') {
+        // Browserify
+        module.exports = instantiate(root);
+    } else if (typeof define === 'function' && define.amd) {
+        // AMD
+        define('isMobile', [], root.isMobile = instantiate(root));
+    } else {
+        // root e.g. window
+        root[name] = instantiate(root);
+    }
+})(global || window, function isMobileInterface(global) {
+    // Define the module interface
+
+     var apple_phone         = /iPhone/i,
         apple_ipod          = /iPod/i,
         apple_tablet        = /iPad/i,
         android_phone       = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i, // Match 'Android' AND 'Mobile'
@@ -25,7 +49,7 @@
         other_opera         = /Opera Mini/i,
         other_chrome        = /(CriOS|Chrome)(?=.*\bMobile\b)/i,
         other_firefox       = /(?=.*\bFirefox\b)(?=.*\bMobile\b)/i, // Match 'Firefox' AND 'Mobile'
-        seven_inch = new RegExp(
+        seven_inch = new global.RegExp(
             '(?:' +         // Non-capturing group
 
             'Nexus 7' +     // Nexus 7
@@ -50,11 +74,11 @@
 
             'i');           // Case-insensitive matching
 
-    var match = function(regex, userAgent) {
+    var match = function match(regex, userAgent) {
         return regex.test(userAgent);
     };
 
-    var IsMobileClass = function(userAgent) {
+    return function IsMobileClass(userAgent) {
         var ua = userAgent || navigator.userAgent;
 
         // Facebook mobile app's integrated browser adds a bunch of strings that
@@ -70,21 +94,25 @@
             tablet: !match(apple_phone, ua) && match(apple_tablet, ua),
             device: match(apple_phone, ua) || match(apple_ipod, ua) || match(apple_tablet, ua)
         };
+
         this.amazon = {
             phone:  match(amazon_phone, ua),
             tablet: !match(amazon_phone, ua) && match(amazon_tablet, ua),
             device: match(amazon_phone, ua) || match(amazon_tablet, ua)
         };
+
         this.android = {
             phone:  match(amazon_phone, ua) || match(android_phone, ua),
             tablet: !match(amazon_phone, ua) && !match(android_phone, ua) && (match(amazon_tablet, ua) || match(android_tablet, ua)),
             device: match(amazon_phone, ua) || match(amazon_tablet, ua) || match(android_phone, ua) || match(android_tablet, ua)
         };
+
         this.windows = {
             phone:  match(windows_phone, ua),
             tablet: match(windows_tablet, ua),
             device: match(windows_phone, ua) || match(windows_tablet, ua)
         };
+
         this.other = {
             blackberry:   match(other_blackberry, ua),
             blackberry10: match(other_blackberry_10, ua),
@@ -93,37 +121,18 @@
             chrome:       match(other_chrome, ua),
             device:       match(other_blackberry, ua) || match(other_blackberry_10, ua) || match(other_opera, ua) || match(other_firefox, ua) || match(other_chrome, ua)
         };
+
         this.seven_inch = match(seven_inch, ua);
         this.any = this.apple.device || this.android.device || this.windows.device || this.other.device || this.seven_inch;
 
-        // excludes 'other' devices and ipods, targeting touchscreen phones
+        // Excludes 'other' devices and IPods, targeting touchscreen phones
         this.phone = this.apple.phone || this.android.phone || this.windows.phone;
 
-        // excludes 7 inch devices, classifying as phone or tablet is left to the user
+        // Excludes 7 inch devices, classifying as phone or tablet is left to the user
         this.tablet = this.apple.tablet || this.android.tablet || this.windows.tablet;
 
-        if (typeof window === 'undefined') {
+        if (window === undefined) {
             return this;
         }
     };
-
-    var instantiate = function() {
-        var IM = new IsMobileClass();
-        IM.Class = IsMobileClass;
-        return IM;
-    };
-
-    if (typeof module !== 'undefined' && module.exports && typeof window === 'undefined') {
-        //node
-        module.exports = IsMobileClass;
-    } else if (typeof module !== 'undefined' && module.exports && typeof window !== 'undefined') {
-        //browserify
-        module.exports = instantiate();
-    } else if (typeof define === 'function' && define.amd) {
-        //AMD
-        define('isMobile', [], global.isMobile = instantiate());
-    } else {
-        global.isMobile = instantiate();
-    }
-
-})(this);
+});
