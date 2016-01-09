@@ -17,11 +17,11 @@
     var MODULE_NAME = 'isMobile';
 
     // Initiate the factory for the purposes of creating a class module
-    var instance = factory(root);
+    var isMobileFactory = factory(root);
 
     var instantiate = function instantiate() {
-        var instance = new instance();
-        instance.Class = instance;
+        var instance = new isMobileFactory();
+        instance.Class = isMobileFactory;
         return instance;
     };
 
