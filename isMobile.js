@@ -36,7 +36,7 @@
         // root e.g. window
         root[moduleName] = instantiate();
     }
-})(global || window, function isMobileInterface(global) {
+})(this, function isMobileInterface(global) {
     // Define the module interface
 
      var reApplePhone        = /iPhone/i,
