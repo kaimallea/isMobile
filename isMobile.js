@@ -13,6 +13,8 @@
     // UMD (Universal Module Definition)
     // URL: https://github.com/umdjs/umd
 
+    var moduleName = 'isMobile';
+
     var instantiate = function instantiate(global) {
         var instance = new factory(global);
         instance.Class = factory;
@@ -27,10 +29,10 @@
         module.exports = instantiate(root);
     } else if (typeof define === 'function' && define.amd) {
         // AMD
-        define('isMobile', [], root.isMobile = instantiate(root));
+        define(moduleName, [], root[moduleName] = instantiate(root));
     } else {
         // root e.g. window
-        root[name] = instantiate(root);
+        root[moduleName] = instantiate(root);
     }
 })(global || window, function isMobileInterface(global) {
     // Define the module interface
