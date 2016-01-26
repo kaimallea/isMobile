@@ -34,6 +34,15 @@ describe("Apple", function(){
       expect(mobile.apple.device).toBe(true);
     });
 
+    it("should be phone getDevice function", function() {
+      expect(mobile.getDevice()).toBe('phone');
+      expect(mobile.getDevice()).not.toBe('tablet');
+      expect(mobile.getDevice()).not.toBe('dektop');
+    });
+
+    it("should not be desktop", function() {
+      expect(mobile.desktop).toBe(false);
+    });
   });
 
   describe("iPad UserAgent", function() {
@@ -63,6 +72,15 @@ describe("Apple", function(){
       expect(mobile.apple.device).toBe(true);
     });
 
+    it("should be tablet getDevice function", function() {
+      expect(mobile.getDevice()).toBe('tablet');
+      expect(mobile.getDevice()).not.toBe('phone');
+      expect(mobile.getDevice()).not.toBe('dektop');
+    });
+
+    it("should not be desktop", function() {
+      expect(mobile.desktop).toBe(false);
+    });
   });
 
   describe("iPod UserAgent", function() {
