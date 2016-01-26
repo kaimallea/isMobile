@@ -18,6 +18,15 @@ describe("Desktop", function(){
       expect(mobile.any).not.toBe(true);
     });
 
+    it("should be desktop getDevice function", function() {
+      expect(mobile.getDevice()).toBe('desktop');
+      expect(mobile.getDevice()).not.toBe('tablet');
+      expect(mobile.getDevice()).not.toBe('phone');
+    });
+
+    it("should be desktop", function() {
+      expect(mobile.desktop).toBe(true);
+    });
   });
 
   describe("Safari", function() {
@@ -31,6 +40,14 @@ describe("Desktop", function(){
       expect(mobile.any).not.toBe(true);
     });
 
-  });
+    it("should be desktop getDevice function", function() {
+      expect(mobile.getDevice()).toBe('desktop');
+      expect(mobile.getDevice()).not.toBe('tablet');
+      expect(mobile.getDevice()).not.toBe('phone');
+    });
 
+    it("should be desktop", function() {
+      expect(mobile.desktop).toBe(true);
+    });
+  });
 });

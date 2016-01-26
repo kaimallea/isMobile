@@ -56,7 +56,6 @@
 
     var IsMobileClass = function(userAgent) {
         var ua = userAgent || navigator.userAgent;
-
         // Facebook mobile app's integrated browser adds a bunch of strings that
         // match everything. Strip it out if it exists.
         var tmp = ua.split('[FBAN');
@@ -95,12 +94,19 @@
         };
         this.seven_inch = match(seven_inch, ua);
         this.any = this.apple.device || this.android.device || this.windows.device || this.other.device || this.seven_inch;
-
         // excludes 'other' devices and ipods, targeting touchscreen phones
         this.phone = this.apple.phone || this.android.phone || this.windows.phone;
-
         // excludes 7 inch devices, classifying as phone or tablet is left to the user
         this.tablet = this.apple.tablet || this.android.tablet || this.windows.tablet;
+
+        this.desktop = !this.tablet && !this.phone;
+
+        this.getDevice = function() {
+            desktop = (this.desktop) ? 'desktop' : undefined;
+            tablet = (this.tablet) ? 'tablet' : undefined;
+            phone = (this.phone) ? 'phone' : undefined;
+            return desktop || tablet || phone;
+        };
 
         if (typeof window === 'undefined') {
             return this;
