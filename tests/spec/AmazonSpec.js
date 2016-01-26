@@ -1,4 +1,4 @@
-xdescribe("Amazon", function(){
+describe("Amazon", function(){
   var mobile;
   var userAgent;
 

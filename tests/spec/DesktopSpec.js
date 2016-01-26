@@ -19,15 +19,12 @@ describe("Desktop", function(){
     });
 
     it("should be desktop getDevice function", function() {
-      console.log("msg");
-      console.log(mobile.getDevice());
       expect(mobile.getDevice()).toBe('desktop');
       expect(mobile.getDevice()).not.toBe('tablet');
       expect(mobile.getDevice()).not.toBe('phone');
     });
 
     it("should be desktop", function() {
-      console.log(mobile.desktop, mobile.phone, mobile.tablet);
       expect(mobile.desktop).toBe(true);
     });
   });

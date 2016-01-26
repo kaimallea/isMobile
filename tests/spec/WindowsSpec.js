@@ -1,4 +1,4 @@
-xdescribe("Windows", function(){
+describe("Windows", function(){
   var mobile;
   var userAgent;
 
