@@ -1,4 +1,4 @@
-describe("Android", function(){
+xdescribe("Android", function(){
   var mobile;
   var userAgent;
 

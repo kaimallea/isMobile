@@ -119,10 +119,10 @@
         return IM;
     };
 
-    if (typeof module != 'undefined' && module.exports && typeof window === 'undefined') {
+    if (typeof module !== 'undefined' && module.exports && typeof window === 'undefined') {
         //node
         module.exports = IsMobileClass;
-    } else if (typeof module != 'undefined' && module.exports && typeof window !== 'undefined') {
+    } else if (typeof module !== 'undefined' && module.exports && typeof window !== 'undefined') {
         //browserify
         module.exports = instantiate();
     } else if (typeof define === 'function' && define.amd) {

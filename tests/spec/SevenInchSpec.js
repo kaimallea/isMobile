@@ -1,4 +1,4 @@
-describe("Seven Inch", function(){
+xdescribe("Seven Inch", function(){
   var mobile;
   var userAgent;
 

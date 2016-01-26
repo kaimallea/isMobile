@@ -1,4 +1,4 @@
-describe("Other Mobile Devices", function(){
+xdescribe("Other Mobile Devices", function(){
   var mobile;
   var userAgent;
 
