@@ -14,17 +14,17 @@
     // URL: https://github.com/umdjs/umd
 
     // Initiate the factory for the purposes of creating a class module
-    var isMobileFactory = factory(root);
+    var IsMobileFactory = factory(root);
 
     var instantiate = function instantiate() {
-        var instance = new isMobileFactory();
-        instance.Class = isMobileFactory;
+        var instance = new IsMobileFactory();
+        instance.Class = IsMobileFactory;
         return instance;
     };
 
     if (typeof module !== 'undefined' && module.exports && typeof window === 'undefined') {
         // Node
-        module.exports = instance;
+        module.exports = IsMobileFactory;
     } else if (typeof module !== 'undefined' && module.exports && typeof window !== 'undefined') {
         // Browserify
         module.exports = instantiate();
@@ -96,25 +96,25 @@
             phone: match(reApplePhone, ua),
             ipod: match(reAppleIpod, ua),
             tablet: !match(reApplePhone, ua) && match(reAppleTablet, ua),
-            device: match(reApplePhone, ua) || match(reAppleIpod, ua) || match(reAppleTablet, ua)
+            device: match(reApplePhone, ua) || match(reAppleIpod, ua) || match(reAppleTablet, ua),
         };
 
         this.amazon = {
             phone: match(reAmazonPhone, ua),
             tablet: !match(reAmazonPhone, ua) && match(reAmazonTablet, ua),
-            device: match(reAmazonPhone, ua) || match(reAmazonTablet, ua)
+            device: match(reAmazonPhone, ua) || match(reAmazonTablet, ua),
         };
 
         this.android = {
             phone: match(reAmazonPhone, ua) || match(reAndroidPhone, ua),
             tablet: !match(reAmazonPhone, ua) && !match(reAndroidPhone, ua) && (match(reAmazonTablet, ua) || match(reAndroidTablet, ua)),
-            device: match(reAmazonPhone, ua) || match(reAmazonTablet, ua) || match(reAndroidPhone, ua) || match(reAndroidTablet, ua)
+            device: match(reAmazonPhone, ua) || match(reAmazonTablet, ua) || match(reAndroidPhone, ua) || match(reAndroidTablet, ua),
         };
 
         this.windows = {
             phone: match(reWindowsPhone, ua),
             tablet: match(reWindowsTablet, ua),
-            device: match(reWindowsPhone, ua) || match(reWindowsTablet, ua)
+            device: match(reWindowsPhone, ua) || match(reWindowsTablet, ua),
         };
 
         this.other = {
@@ -123,7 +123,7 @@
             opera: match(reOtherOpera, ua),
             firefox: match(reOtherFirefox, ua),
             chrome: match(reOtherChrome, ua),
-            device: match(reOtherBlackberry, ua) || match(reOtherBlackberry_10, ua) || match(reOtherOpera, ua) || match(reOtherFirefox, ua) || match(reOtherChrome, ua)
+            device: match(reOtherBlackberry, ua) || match(reOtherBlackberry_10, ua) || match(reOtherOpera, ua) || match(reOtherFirefox, ua) || match(reOtherChrome, ua),
         };
 
         this.seven_inch = match(reSevenInch, ua);
