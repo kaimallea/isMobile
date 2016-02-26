@@ -64,8 +64,8 @@
             ua = tmp[0];
         }
 
-        // Twitter mobile app's integrated browser on iPad adds a 'Twitter for
-        // iPhone' string. Same probable happens on other tablet platforms.
+        // Twitter mobile app's integrated browser on iPad adds a "Twitter for
+        // iPhone" string. Same probable happens on other tablet platforms.
         // This will confuse detection so strip it out if it exists.
         tmp = ua.split('Twitter');
         if (typeof tmp[1] !== 'undefined') {
