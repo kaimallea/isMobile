@@ -140,4 +140,54 @@ describe("Apple", function(){
 
   });
 
+  describe("Twitter iPhone App UserAgent", function() {
+
+    beforeEach(function() {
+      userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 9_2_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13D15 Twitter for iPhone";
+      mobile = new isMobile.Class(userAgent);
+    });
+
+    it("should be an iPhone", function() {
+      expect(mobile.apple.phone).toBe(true);
+    });
+
+    it("should not be an iPad", function() {
+      expect(mobile.apple.tablet).not.toBe(true);
+    });
+
+    it("should not be an iPod", function() {
+      expect(mobile.apple.ipod).not.toBe(true);
+    });
+
+    it("should be an Apple device", function() {
+      expect(mobile.apple.device).toBe(true);
+    });
+
+  });
+
+  describe("Twitter iPad App UserAgent", function() {
+
+    beforeEach(function() {
+      userAgent = "Mozilla/5.0 (iPad; CPU OS 9_2_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13D15 Twitter for iPhone";
+      mobile = new isMobile.Class(userAgent);
+    });
+
+    it("should not be an iPhone", function() {
+      expect(mobile.apple.phone).not.toBe(true);
+    });
+
+    it("should be an iPad", function() {
+      expect(mobile.apple.tablet).toBe(true);
+    });
+
+    it("should not be an iPod", function() {
+      expect(mobile.apple.ipod).not.toBe(true);
+    });
+
+    it("should be an Apple device", function() {
+      expect(mobile.apple.device).toBe(true);
+    });
+
+  });
+
 });
