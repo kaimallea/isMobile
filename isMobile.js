@@ -129,7 +129,7 @@
         module.exports = instantiate();
     } else if (typeof define === 'function' && define.amd) {
         //AMD
-        define('isMobile', [], global.isMobile = instantiate());
+        define([], global.isMobile = instantiate());
     } else {
         global.isMobile = instantiate();
     }
