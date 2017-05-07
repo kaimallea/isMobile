@@ -123,11 +123,13 @@ I include the minified version of the script, inline, and at the top of the `<he
 
 ### node.js usage
 
-#####Installation
+#### Installation
+
 `npm install ismobilejs`
 
-#####Usage
-```
+#### Usage
+
+```js
 var isMobile = require('ismobilejs');
 console.log(isMobile(req.headers['user-agent']).any);
 ```
