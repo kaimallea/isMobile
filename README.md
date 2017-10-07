@@ -123,10 +123,17 @@ I include the minified version of the script, inline, and at the top of the `<he
 
 ### node.js usage
 
-#####Installation
+##### Installation
+
+You can install isMobile trough npm
+
 `npm install ismobilejs`
 
-#####Usage
+or include it via [jsDelivr CDN](https://www.jsdelivr.com/package/npm/ismobilejs):
+
+`<script src="https://cdn.jsdelivr.net/npm/ismobilejs@0/isMobile.min.js"></script>`
+
+##### Usage
 ```
 var isMobile = require('ismobilejs');
 console.log(isMobile(req.headers['user-agent']).any);
