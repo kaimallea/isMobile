@@ -14,7 +14,7 @@
     var apple_phone         = /iPhone/i,
         apple_ipod          = /iPod/i,
         apple_tablet        = /iPad/i,
-        android_phone       = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i, // Match 'Android' AND 'Mobile'
+        android_phone       = /(?=.*\bAndroid\b)(?=.*\bMobile\b)|(?=.*\bokhttp)/i, // Match 'Android' AND 'Mobile'
         android_tablet      = /Android/i,
         amazon_phone        = /(?=.*\bAndroid\b)(?=.*\bSD4930UR\b)/i,
         amazon_tablet       = /(?=.*\bAndroid\b)(?=.*\b(?:KFOT|KFTT|KFJWI|KFJWA|KFSOWI|KFTHWI|KFTHWA|KFAPWI|KFAPWA|KFARWI|KFASWI|KFSAWI|KFSAWA)\b)/i,
