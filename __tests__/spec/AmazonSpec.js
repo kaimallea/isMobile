@@ -11,7 +11,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFOT Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -48,7 +48,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFTT Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -85,7 +85,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFJWI Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -122,7 +122,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFJWA Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -159,7 +159,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFSOWI Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -196,7 +196,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFTHWI Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -233,7 +233,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFTHWA Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -270,7 +270,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFAPWI Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -307,7 +307,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFAPWA Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -344,7 +344,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFARWI Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -381,7 +381,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFASWI Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -418,7 +418,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFSAWI Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -455,7 +455,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; KFSAWA Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Amazon Phone", function() {
@@ -492,7 +492,7 @@ describe("Amazon", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; U; Android android-version; locale; SD4930UR Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Safari/webkit-version";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should be an Amazon Phone", function() {

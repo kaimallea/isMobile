@@ -11,7 +11,7 @@ describe("Android", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; <Android Version>; <Build Tag etc.>) AppleWebKit/<WebKit Rev> (KHTML, like Gecko) Chrome/<Chrome Rev> Mobile Safari/<WebKit Rev>";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should be an Android Phone", function() {
@@ -36,7 +36,7 @@ describe("Android", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; <Android Version>; <Build Tag etc.>) AppleWebKit/<WebKit Rev>(KHTML, like Gecko) Chrome/<Chrome Rev> Safari/<WebKit Rev>";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should not be an Android Phone", function() {

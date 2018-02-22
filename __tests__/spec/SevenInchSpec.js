@@ -11,7 +11,7 @@ describe("Seven Inch", function(){
 
     beforeEach(function() {
       userAgent = "Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Safari/535.19";
-      mobile = new isMobile.Class(userAgent);
+      mobile = new IsMobile(userAgent);
     });
 
     it("should be a Seven Inch device", function() {

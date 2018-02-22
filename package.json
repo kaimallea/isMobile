@@ -18,11 +18,27 @@
     "type": "git",
     "url": "https://github.com/kaimallea/isMobile.git"
   },
-  "main": "./isMobile",
+  "scripts": {
+    "test": "jest --coverage",
+    "dev": "jest --watch",
+    "prepublish": "rm -rf dist && npm run build && npm run minify",
+    "build": "browserify isMobile.js -s isMobile -o dist/isMobile.js",
+    "minify": "uglifyjs dist/isMobile.js -m -c -o dist/isMobile.min.js"
+  },
+  "main": "dist/isMobile.min.js",
   "devDependencies": {
-    "grunt": "0.4.x",
-    "grunt-contrib-jshint": "0.11.x",
-    "grunt-contrib-uglify": "0.9.x",
-    "grunt-contrib-jasmine": "0.8.x"
+    "browserify": "^16.1.0",
+    "jest": "^22.4.0",
+    "uglify-es": "^3.3.9",
+    "uglifyjs": "^2.4.11"
+  },
+  "jest": {
+    "setupFiles": [
+      "./__tests__/setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "setup.js"
+    ]
   }
 }
