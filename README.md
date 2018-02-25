@@ -110,6 +110,7 @@ I include the minified version of the script, inline, and at the top of the `<he
                 // by checking if a "noredirect" cookie exists
                 if ( document.cookie.indexOf(NO_REDIRECT) === -1 ) {
                     document.location = MOBILE_SITE;
+                    document.cookie = NO_REDIRECT;
                 }
             }
         })();
