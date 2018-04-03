@@ -131,3 +131,7 @@ I include the minified version of the script, inline, and at the top of the `<he
 var isMobile = require('ismobilejs');
 console.log(isMobile(req.headers['user-agent']).any);
 ```
+##### Webpack
+```
+import isMobile from 'ismobilejs';
+```
