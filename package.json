@@ -1,6 +1,6 @@
 {
   "name": "ismobilejs",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "A simple JS library that detects mobile devices.",
   "keywords": [
     "ismobile",
@@ -18,11 +18,18 @@
     "type": "git",
     "url": "https://github.com/kaimallea/isMobile.git"
   },
-  "main": "./isMobile",
+  "main": "./src/isMobile",
+  "scripts": {
+    "test": "jest",
+    "clean": "rm -f dist/isMobile.min.js",
+    "build": "npm run clean && uglifyjs src/isMobile.js -o dist/isMobile.min.js -c -m"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "devDependencies": {
-    "grunt": "0.4.x",
-    "grunt-contrib-jshint": "0.11.x",
-    "grunt-contrib-uglify": "0.9.x",
-    "grunt-contrib-jasmine": "0.8.x"
+    "jest": "^23.6.0",
+    "prettier": "^1.15.2",
+    "uglify-js": "^3.4.9"
   }
 }
