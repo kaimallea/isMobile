@@ -37,6 +37,34 @@ describe('Windows', () => {
     });
   });
 
+  describe('Windows 8.1 Phone UserAgent', () => {
+    beforeEach(() => {
+      userAgent =
+        '//Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0; NOKIA; Lumia 930) like iPhone OS 7_0_3 Mac OS X AppleWebKit/537 (KHTML, like Gecko) Mobile Safari/537';
+      mobile = isMobile(userAgent);
+    });
+
+    test('should be a Windows Phone device', () => {
+      expect(mobile.windows.phone).toBe(true);
+    });
+
+    test('should not be an Android device', () => {
+      expect(mobile.android.device).not.toBe(true);
+    });
+
+    test('should not be an Apple device', () => {
+      expect(mobile.apple.device).not.toBe(true);
+    });
+
+    test('should be matched as Any Phone', () => {
+      expect(mobile.phone).toBe(true);
+    });
+
+    test('should be a mobile device', () => {
+      expect(mobile.any).toBe(true);
+    });
+  });
+
   describe('Windows Edge Phone UserAgent', () => {
     beforeEach(() => {
       userAgent =

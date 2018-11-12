@@ -40,13 +40,17 @@
 
     var result = {
       apple: {
-        phone: match(apple_phone, ua),
+        phone: match(apple_phone, ua) && !match(windows_phone, ua),
         ipod: match(apple_ipod, ua),
-        tablet: !match(apple_phone, ua) && match(apple_tablet, ua),
+        tablet:
+          !match(apple_phone, ua) &&
+          match(apple_tablet, ua) &&
+          !match(windows_phone, ua),
         device:
-          match(apple_phone, ua) ||
-          match(apple_ipod, ua) ||
-          match(apple_tablet, ua)
+          (match(apple_phone, ua) ||
+            match(apple_ipod, ua) ||
+            match(apple_tablet, ua)) &&
+          !match(windows_phone, ua)
       },
       amazon: {
         phone: match(amazon_phone, ua),
