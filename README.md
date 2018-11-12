@@ -46,7 +46,7 @@ In a browser, the following properties of the global `isMobile` object will eith
 
 - `isMobile.android.phone`
 - `isMobile.android.tablet`
-- `isMobile.android.device` (any mobile Android device)
+- `isMobile.android.device` (any mobile Android device; OkHttp user agents will match this)
 
 ### Amazon Silk devices (also passes Android checks)
 

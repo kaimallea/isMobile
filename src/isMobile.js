@@ -67,11 +67,12 @@
           !match(android_phone, ua) &&
           (match(amazon_tablet, ua) || match(android_tablet, ua)),
         device:
-          !match(windows_phone, ua) &&
-          (match(amazon_phone, ua) ||
-            match(amazon_tablet, ua) ||
-            match(android_phone, ua) ||
-            match(android_tablet, ua))
+          (!match(windows_phone, ua) &&
+            (match(amazon_phone, ua) ||
+              match(amazon_tablet, ua) ||
+              match(android_phone, ua) ||
+              match(android_tablet, ua))) ||
+          match(/\bokhttp\b/i, ua)
       },
       windows: {
         phone: match(windows_phone, ua),
