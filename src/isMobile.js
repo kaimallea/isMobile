@@ -2,24 +2,26 @@
   var apple_phone = /iPhone/i,
     apple_ipod = /iPod/i,
     apple_tablet = /iPad/i,
-    android_phone = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i, // Match 'Android' AND 'Mobile'
+    android_phone = /\bAndroid(?:.+)Mobile\b/i, // Match 'Android' AND 'Mobile'
     android_tablet = /Android/i,
-    amazon_phone = /(?=.*\bAndroid\b)(?=.*\bSD4930UR\b)/i,
-    amazon_tablet = /(?=.*\bAndroid\b)(?=.*\b(?:KFOT|KFTT|KFJWI|KFJWA|KFSOWI|KFTHWI|KFTHWA|KFAPWI|KFAPWA|KFARWI|KFASWI|KFSAWI|KFSAWA)\b)/i,
+    amazon_phone = /\bAndroid(?:.+)SD4930UR\b/i,
+    amazon_tablet = /\bAndroid(?:.+)(?:KF[A-Z]{2,4})\b/i,
     windows_phone = /Windows Phone/i,
-    windows_tablet = /(?=.*\bWindows\b)(?=.*\bARM\b)/i, // Match 'Windows' AND 'ARM'
+    windows_tablet = /\bWindows(?:.+)ARM\b/i, // Match 'Windows' AND 'ARM'
     other_blackberry = /BlackBerry/i,
     other_blackberry_10 = /BB10/i,
     other_opera = /Opera Mini/i,
-    other_chrome = /(CriOS|Chrome)(?=.*\bMobile\b)/i,
-    other_firefox = /(?=.*\bFirefox\b)(?=.*\bMobile\b)/i; // Match 'Firefox' AND 'Mobile'
+    other_chrome = /\b(CriOS|Chrome)(?:.+)Mobile/i,
+    other_firefox = /\Mobile(?:.+)Firefox\b/i; // Match 'Mobile' AND 'Firefox'
 
   function match(regex, userAgent) {
     return regex.test(userAgent);
   }
 
   function isMobile(userAgent) {
-    var ua = userAgent || (typeof navigator !== 'undefined' ? navigator.userAgent : '');
+    var ua =
+      userAgent ||
+      (typeof navigator !== 'undefined' ? navigator.userAgent : '');
 
     // Facebook mobile app's integrated browser adds a bunch of strings that
     // match everything. Strip it out if it exists.
