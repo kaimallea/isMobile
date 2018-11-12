@@ -56,4 +56,27 @@ describe('Android', () => {
       expect(mobile.android.device).toBe(true);
     });
   });
+
+  describe('OkHttp UserAgent', () => {
+    beforeEach(() => {
+      userAgent = 'okhttp/3.9.1';
+      mobile = isMobile(userAgent);
+    });
+
+    test('should not be an Android Phone', () => {
+      expect(mobile.android.phone).toBe(false);
+    });
+
+    test('should not be an Android Tablet', () => {
+      expect(mobile.android.tablet).toBe(false);
+    });
+
+    test('should be matched as Any Tablet', () => {
+      expect(mobile.tablet).toBe(false);
+    });
+
+    test('should be an Android device', () => {
+      expect(mobile.android.device).toBe(true);
+    });
+  });
 });
