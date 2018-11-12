@@ -79,6 +79,7 @@ In a browser, the following properties of the global `isMobile` object will eith
 
 I include the minified version of the script, inline, and at the top of the `<head>`. Cellular connections tend to suck, so it would be wasteful overhead to open another connection, just to download ~1.5kb of JS:
 
+<!-- prettier-ignore -->
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -86,7 +87,7 @@ I include the minified version of the script, inline, and at the top of the `<he
     <meta charset="utf-8" />
     <script>
       // Minified version of isMobile included in the HTML since it's small
-      !function(e){var n=/iPhone/i,t=/iPod/i,b=/iPad/i,r=/(?=.*\bAndroid\b)(?=.*\bMobile\b)/i,a=/Android/i,p=/(?=.*\bAndroid\b)(?=.*\bSD4930UR\b)/i,l=/(?=.*\bAndroid\b)(?=.*\b(?:KFOT|KFTT|KFJWI|KFJWA|KFSOWI|KFTHWI|KFTHWA|KFAPWI|KFAPWA|KFARWI|KFASWI|KFSAWI|KFSAWA)\b)/i,f=/Windows Phone/i,c=/(?=.*\bWindows\b)(?=.*\bARM\b)/i,s=/BlackBerry/i,u=/BB10/i,A=/Opera Mini/i,h=/(CriOS|Chrome)(?=.*\bMobile\b)/i,v=/(?=.*\bFirefox\b)(?=.*\bMobile\b)/i;function w(e,i){return e.test(i)}function i(e){var i=e||navigator.userAgent,o=i.split("[FBAN");void 0!==o[1]&&(i=o[0]),void 0!==(o=i.split("Twitter"))[1]&&(i=o[0]);var d={apple:{phone:w(n,i),ipod:w(t,i),tablet:!w(n,i)&&w(b,i),device:w(n,i)||w(t,i)||w(b,i)},amazon:{phone:w(p,i),tablet:!w(p,i)&&w(l,i),device:w(p,i)||w(l,i)},android:{phone:w(p,i)||w(r,i),tablet:!w(p,i)&&!w(r,i)&&(w(l,i)||w(a,i)),device:w(p,i)||w(l,i)||w(r,i)||w(a,i)},windows:{phone:w(f,i),tablet:w(c,i),device:w(f,i)||w(c,i)},other:{blackberry:w(s,i),blackberry10:w(u,i),opera:w(A,i),firefox:w(v,i),chrome:w(h,i),device:w(s,i)||w(u,i)||w(A,i)||w(v,i)||w(h,i)}};return d.any=d.apple.device||d.android.device||d.windows.device||d.other.device,d.phone=d.apple.phone||d.android.phone||d.windows.phone,d.tablet=d.apple.tablet||d.android.tablet||d.windows.tablet,d}"undefined"!=typeof module&&module.exports&&"undefined"==typeof window?module.exports=i:"undefined"!=typeof module&&module.exports&&"undefined"!=typeof window?module.exports=i():"function"==typeof define&&define.amd?define([],e.isMobile=i()):e.isMobile=i()}(this);
+      !function(e){var n=/iPhone/i,t=/iPod/i,r=/iPad/i,a=/\bAndroid(?:.+)Mobile\b/i,p=/Android/i,l=/\bAndroid(?:.+)SD4930UR\b/i,b=/\bAndroid(?:.+)(?:KF[A-Z]{2,4})\b/i,f=/Windows Phone/i,u=/\bWindows(?:.+)ARM\b/i,c=/BlackBerry/i,s=/BB10/i,v=/Opera Mini/i,h=/\b(CriOS|Chrome)(?:.+)Mobile/i,w=/\Mobile(?:.+)Firefox\b/i;function m(e,i){return e.test(i)}function i(e){var i=e||("undefined"!=typeof navigator?navigator.userAgent:""),o=i.split("[FBAN");void 0!==o[1]&&(i=o[0]),void 0!==(o=i.split("Twitter"))[1]&&(i=o[0]);var d={apple:{phone:m(n,i),ipod:m(t,i),tablet:!m(n,i)&&m(r,i),device:m(n,i)||m(t,i)||m(r,i)},amazon:{phone:m(l,i),tablet:!m(l,i)&&m(b,i),device:m(l,i)||m(b,i)},android:{phone:m(l,i)||m(a,i),tablet:!m(l,i)&&!m(a,i)&&(m(b,i)||m(p,i)),device:m(l,i)||m(b,i)||m(a,i)||m(p,i)},windows:{phone:m(f,i),tablet:m(u,i),device:m(f,i)||m(u,i)},other:{blackberry:m(c,i),blackberry10:m(s,i),opera:m(v,i),firefox:m(w,i),chrome:m(h,i),device:m(c,i)||m(s,i)||m(v,i)||m(w,i)||m(h,i)}};return d.any=d.apple.device||d.android.device||d.windows.device||d.other.device,d.phone=d.apple.phone||d.android.phone||d.windows.phone,d.tablet=d.apple.tablet||d.android.tablet||d.windows.tablet,d}"undefined"!=typeof module&&module.exports&&"undefined"==typeof window?module.exports=i:"undefined"!=typeof module&&module.exports&&"undefined"!=typeof window?module.exports=i():"function"==typeof define&&define.amd?define([],e.isMobile=i()):e.isMobile=i()}(this);
 
       // My own arbitrary use of isMobile, as an example
       (function() {
@@ -111,7 +112,25 @@ I include the minified version of the script, inline, and at the top of the `<he
 </html>
 ```
 
-## Node.js usage
+## Building manually
+
+After checking out the repo, install dependencies:
+
+```shell
+npm install
+```
+
+Then build a minified, distributable JS file:
+
+```shell
+npm run build
+```
+
+It will be output to `./dist/isMobile.min.js`.
+
+You can then use it with a `<script>` tag, bundle it with something else or follow the suggestion in the example above and include it inline to save opening another connection.
+
+## Node.js Usage
 
 ### Installation
 
