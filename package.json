@@ -18,7 +18,8 @@
     "type": "git",
     "url": "https://github.com/kaimallea/isMobile.git"
   },
-  "main": "./src/isMobile",
+  "main": "./src/isMobile.js",
+  "browser": "./dist/isMobile.min.js",
   "scripts": {
     "test": "jest",
     "clean": "rm -f dist/isMobile.min.js",
