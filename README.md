@@ -130,6 +130,12 @@ It will be output to `./dist/isMobile.min.js`.
 
 You can then use it with a `<script>` tag, bundle it with something else or follow the suggestion in the example above and include it inline to save opening another connection.
 
+### jsDelivr CDN [![](https://data.jsdelivr.com/v1/package/npm/ismobilejs/badge)](https://www.jsdelivr.com/package/npm/ismobilejs)
+
+Or include it via [jsDelivr CDN](https://www.jsdelivr.com/package/npm/ismobilejs):
+
+`<script src="https://cdn.jsdelivr.net/npm/ismobilejs@0.5.1/dist/isMobile.min.js"></script>`
+
 ## Node.js Usage
 
 ### Installation
