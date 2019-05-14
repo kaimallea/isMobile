@@ -12,7 +12,7 @@
     other_blackberry_10 = /BB10/i,
     other_opera = /Opera Mini/i,
     other_chrome = /\b(CriOS|Chrome)(?:.+)Mobile/i,
-    other_firefox = /\Mobile(?:.+)Firefox\b/i; // Match 'Mobile' AND 'Firefox'
+    other_firefox = /Mobile(?:.+)Firefox\b/i; // Match 'Mobile' AND 'Firefox'
 
   function match(regex, userAgent) {
     return regex.test(userAgent);
