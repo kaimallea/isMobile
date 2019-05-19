@@ -1,6 +1,6 @@
 {
   "name": "ismobilejs",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A simple JS library that detects mobile devices.",
   "keywords": [
     "ismobile",
@@ -9,7 +9,7 @@
     "useragent"
   ],
   "homepage": "https://github.com/kaimallea/isMobile",
-  "license": "CC0-1.0",
+  "license": "MIT",
   "author": {
     "name": "Kai Mallea",
     "email": "kmallea@gmail.com"
@@ -22,15 +22,18 @@
   "browser": "./dist/isMobile.min.js",
   "scripts": {
     "test": "jest",
-    "clean": "rm -f dist/isMobile.min.js",
+    "clean": "rm -f ./dist/isMobile.min.js",
     "build": "npm run clean && uglifyjs src/isMobile.js -o dist/isMobile.min.js -c -m"
   },
   "jest": {
     "testEnvironment": "node"
   },
   "devDependencies": {
-    "jest": "^23.6.0",
-    "prettier": "^1.15.2",
-    "uglify-js": "^3.4.9"
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.8.0",
+    "prettier": "^1.17.1",
+    "uglify-js": "^3.5.13"
   }
 }
