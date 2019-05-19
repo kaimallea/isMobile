@@ -121,6 +121,7 @@
   ) {
     // Browserify
     module.exports = isMobile();
+    module.exports.isMobile = isMobile;
   } else if (typeof define === 'function' && define.amd) {
     // AMD
     define([], (global.isMobile = isMobile()));
