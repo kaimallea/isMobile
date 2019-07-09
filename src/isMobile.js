@@ -5,7 +5,7 @@
     android_phone = /\bAndroid(?:.+)Mobile\b/i, // Match 'Android' AND 'Mobile'
     android_tablet = /Android/i,
     amazon_phone = /\bAndroid(?:.+)SD4930UR\b/i,
-    amazon_tablet = /\bAndroid(?:.+)(?:KF[A-Z]{2,4})\b/i,
+    amazon_tablet = /\b(Kindle|Android(?:.+)(?:KF[A-Z]{2,4}))\b/i,
     windows_phone = /Windows Phone/i,
     windows_tablet = /\bWindows(?:.+)ARM\b/i, // Match 'Windows' AND 'ARM'
     other_blackberry = /BlackBerry/i,
