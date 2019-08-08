@@ -1,17 +1,17 @@
-const apple_phone = /iPhone/i;
-const apple_ipod = /iPod/i;
-const apple_tablet = /iPad/i;
-const android_phone = /\bAndroid(?:.+)Mobile\b/i; // Match 'Android' AND 'Mobile'
-const android_tablet = /Android/i;
-const amazon_phone = /\bAndroid(?:.+)SD4930UR\b/i;
-const amazon_tablet = /\bAndroid(?:.+)(?:KF[A-Z]{2,4})\b/i;
-const windows_phone = /Windows Phone/i;
-const windows_tablet = /\bWindows(?:.+)ARM\b/i; // Match 'Windows' AND 'ARM'
-const other_blackberry = /BlackBerry/i;
-const other_blackberry_10 = /BB10/i;
-const other_opera = /Opera Mini/i;
-const other_chrome = /\b(CriOS|Chrome)(?:.+)Mobile/i;
-const other_firefox = /Mobile(?:.+)Firefox\b/i; // Match 'Mobile' AND 'Firefox'
+const appleIphone = /iPhone/i;
+const appleIpod = /iPod/i;
+const appleTablet = /iPad/i;
+const androidPhone = /\bAndroid(?:.+)Mobile\b/i; // Match 'Android' AND 'Mobile'
+const androidTablet = /Android/i;
+const amazonPhone = /\bAndroid(?:.+)SD4930UR\b/i;
+const amazonTablet = /\bAndroid(?:.+)(?:KF[A-Z]{2,4})\b/i;
+const windowsPhone = /Windows Phone/i;
+const windowsTablet = /\bWindows(?:.+)ARM\b/i; // Match 'Windows' AND 'ARM'
+const otherBlackBerry = /BlackBerry/i;
+const otherBlackBerry10 = /BB10/i;
+const otherOpera = /Opera Mini/i;
+const otherChrome = /\b(CriOS|Chrome)(?:.+)Mobile/i;
+const otherFirefox = /Mobile(?:.+)Firefox\b/i; // Match 'Mobile' AND 'Firefox'
 
 function match(regex, userAgent) {
   return regex.test(userAgent);
@@ -38,69 +38,70 @@ function isMobile(userAgent) {
 
   const result = {
     apple: {
-      phone: match(apple_phone, ua) && !match(windows_phone, ua),
-      ipod: match(apple_ipod, ua),
+      phone: match(appleIphone, ua) && !match(windowsPhone, ua),
+      ipod: match(appleIpod, ua),
       tablet:
-        !match(apple_phone, ua) &&
-        match(apple_tablet, ua) &&
-        !match(windows_phone, ua),
+        !match(appleIphone, ua) &&
+        match(appleTablet, ua) &&
+        !match(windowsPhone, ua),
       device:
-        (match(apple_phone, ua) ||
-          match(apple_ipod, ua) ||
-          match(apple_tablet, ua)) &&
-        !match(windows_phone, ua),
+        (match(appleIphone, ua) ||
+          match(appleIpod, ua) ||
+          match(appleTablet, ua)) &&
+        !match(windowsPhone, ua),
     },
     amazon: {
-      phone: match(amazon_phone, ua),
-      tablet: !match(amazon_phone, ua) && match(amazon_tablet, ua),
-      device: match(amazon_phone, ua) || match(amazon_tablet, ua),
+      phone: match(amazonPhone, ua),
+      tablet: !match(amazonPhone, ua) && match(amazonTablet, ua),
+      device: match(amazonPhone, ua) || match(amazonTablet, ua),
     },
     android: {
       phone:
-        (!match(windows_phone, ua) && match(amazon_phone, ua)) ||
-        (!match(windows_phone, ua) && match(android_phone, ua)),
+        (!match(windowsPhone, ua) && match(amazonPhone, ua)) ||
+        (!match(windowsPhone, ua) && match(androidPhone, ua)),
       tablet:
-        !match(windows_phone, ua) &&
-        !match(amazon_phone, ua) &&
-        !match(android_phone, ua) &&
-        (match(amazon_tablet, ua) || match(android_tablet, ua)),
+        !match(windowsPhone, ua) &&
+        !match(amazonPhone, ua) &&
+        !match(androidPhone, ua) &&
+        (match(amazonTablet, ua) || match(androidTablet, ua)),
       device:
-        (!match(windows_phone, ua) &&
-          (match(amazon_phone, ua) ||
-            match(amazon_tablet, ua) ||
-            match(android_phone, ua) ||
-            match(android_tablet, ua))) ||
+        (!match(windowsPhone, ua) &&
+          (match(amazonPhone, ua) ||
+            match(amazonTablet, ua) ||
+            match(androidPhone, ua) ||
+            match(androidTablet, ua))) ||
         match(/\bokhttp\b/i, ua),
     },
     windows: {
-      phone: match(windows_phone, ua),
-      tablet: match(windows_tablet, ua),
-      device: match(windows_phone, ua) || match(windows_tablet, ua),
+      phone: match(windowsPhone, ua),
+      tablet: match(windowsTablet, ua),
+      device: match(windowsPhone, ua) || match(windowsTablet, ua),
     },
     other: {
-      blackberry: match(other_blackberry, ua),
-      blackberry10: match(other_blackberry_10, ua),
-      opera: match(other_opera, ua),
-      firefox: match(other_firefox, ua),
-      chrome: match(other_chrome, ua),
+      blackberry: match(otherBlackBerry, ua),
+      blackberry10: match(otherBlackBerry10, ua),
+      opera: match(otherOpera, ua),
+      firefox: match(otherFirefox, ua),
+      chrome: match(otherChrome, ua),
       device:
-        match(other_blackberry, ua) ||
-        match(other_blackberry_10, ua) ||
-        match(other_opera, ua) ||
-        match(other_firefox, ua) ||
-        match(other_chrome, ua),
+        match(otherBlackBerry, ua) ||
+        match(otherBlackBerry10, ua) ||
+        match(otherOpera, ua) ||
+        match(otherFirefox, ua) ||
+        match(otherChrome, ua),
     },
   };
-  (result.any =
+
+  result.any =
     result.apple.device ||
     result.android.device ||
     result.windows.device ||
-    result.other.device),
-    // excludes 'other' devices and ipods, targeting touchscreen phones
-    (result.phone =
-      result.apple.phone || result.android.phone || result.windows.phone),
-    (result.tablet =
-      result.apple.tablet || result.android.tablet || result.windows.tablet);
+    result.other.device;
+  // excludes 'other' devices and ipods, targeting touchscreen phones
+  result.phone =
+    result.apple.phone || result.android.phone || result.windows.phone;
+  result.tablet =
+    result.apple.tablet || result.android.tablet || result.windows.tablet;
 
   return result;
 }
