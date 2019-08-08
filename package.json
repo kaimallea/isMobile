@@ -20,9 +20,11 @@
   },
   "main": "cjs/index.js",
   "module": "esm/index.js",
+  "browser": "dist/isMobile.min.js",
   "types": "types",
   "scripts": {
     "build": "web-scripts build",
+    "build:browser": "parcel build --target browser --experimental-scope-hoisting --out-file isMobile.min.js src/index.browser.ts",
     "test": "web-scripts test",
     "lint": "web-scripts lint",
     "commit": "web-scripts commit",
@@ -36,6 +38,7 @@
   },
   "devDependencies": {
     "@spotify/web-scripts": "^1.2.0",
-    "husky": "^3.0.3"
+    "husky": "^3.0.3",
+    "parcel-bundler": "^1.12.3"
   }
 }

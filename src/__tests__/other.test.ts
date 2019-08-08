@@ -1,13 +1,8 @@
-const isMobile = require('../index');
+import isMobile, { isMobileResult } from '../';
 
 describe('Other Mobile Devices', () => {
-  let mobile;
-  let userAgent;
-
-  beforeEach(() => {
-    mobile = null;
-    userAgent = null;
-  });
+  let mobile: isMobileResult;
+  let userAgent: string;
 
   describe('BlackBerry 10', () => {
     beforeEach(() => {

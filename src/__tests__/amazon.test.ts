@@ -1,13 +1,8 @@
-const isMobile = require('../index');
+import isMobile, { isMobileResult } from '../';
 
 describe('Amazon', () => {
-  let mobile;
-  let userAgent;
-
-  beforeEach(() => {
-    mobile = null;
-    userAgent = null;
-  });
+  let mobile: isMobileResult;
+  let userAgent: string;
 
   describe('Amazon Kindle Fire User Agent', () => {
     beforeEach(() => {

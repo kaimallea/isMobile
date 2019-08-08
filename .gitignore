@@ -1,4 +1,27 @@
-node_modules
-package-lock.json
+# Generated output (we keep dist dir for jsDelivr)
 cjs
 esm
+
+# TypeScript incremental compilation cache
+*.tsbuildinfo
+
+# Parcel cache
+.cache
+
+# Node modules
+node_modules
+
+# NPM lock file (we use Yarn's)
+package-lock.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage
+coverage/
+
+# Mac OS
+.DS_Store
+

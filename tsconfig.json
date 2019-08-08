@@ -1,4 +1,5 @@
 {
   "extends": "@spotify/web-scripts/config/tsconfig.json",
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/__tests__", "src/index.browser.ts"]
 }
