@@ -1,4 +1,4 @@
-const isMobile = require('../src/isMobile');
+const isMobile = require('../index');
 
 describe('Apple', () => {
   let mobile;
