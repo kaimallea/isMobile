@@ -1,6 +1,7 @@
-# Generated output (we keep dist dir for jsDelivr)
+# Generated output
 cjs
 esm
+dist
 
 # TypeScript incremental compilation cache
 *.tsbuildinfo
