@@ -23,7 +23,9 @@
   "browser": "dist/isMobile.min.js",
   "types": "types",
   "scripts": {
-    "build": "web-scripts build",
+    "prebuild": "rm -rf cjs esm dist",
+    "build": "yarn build:library && yarn build:browser",
+    "build:library": "web-scripts build",
     "build:browser": "parcel build --target browser --experimental-scope-hoisting --out-file isMobile.min.js src/index.browser.ts",
     "test": "web-scripts test",
     "lint": "web-scripts lint",
