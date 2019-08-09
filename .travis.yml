@@ -1,6 +1,10 @@
 language: node_js
 node_js:
-  - "10.13"
-before_script:
-  - npm install
-script: npm test
+  - "12"
+cache: yarn
+install:
+  - yarn
+script:
+  - yarn lint
+  - yarn test
+  - yarn build

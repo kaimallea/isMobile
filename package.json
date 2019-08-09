@@ -18,22 +18,29 @@
     "type": "git",
     "url": "https://github.com/kaimallea/isMobile.git"
   },
-  "main": "./src/isMobile.js",
-  "browser": "./dist/isMobile.min.js",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "browser": "dist/isMobile.min.js",
+  "types": "types",
   "scripts": {
-    "test": "jest",
-    "clean": "rm -f ./dist/isMobile.min.js",
-    "build": "npm run clean && uglifyjs src/isMobile.js -o dist/isMobile.min.js -c -m"
+    "prebuild": "rm -rf cjs esm dist",
+    "build": "yarn build:library && yarn build:browser",
+    "build:library": "web-scripts build",
+    "build:browser": "parcel build --target browser --experimental-scope-hoisting --out-file isMobile.min.js src/index.browser.ts",
+    "test": "web-scripts test",
+    "lint": "web-scripts lint",
+    "commit": "web-scripts commit",
+    "release": "web-scripts release"
   },
-  "jest": {
-    "testEnvironment": "node"
+  "husky": {
+    "hooks": {
+      "pre-commit": "web-scripts precommit",
+      "commit-msg": "web-scripts commitmsg"
+    }
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "jest": "^24.8.0",
-    "prettier": "^1.17.1",
-    "uglify-js": "^3.5.13"
+    "@spotify/web-scripts": "^1.2.0",
+    "husky": "^3.0.3",
+    "parcel-bundler": "^1.12.3"
   }
 }

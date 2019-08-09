@@ -1,13 +1,8 @@
-const isMobile = require('../src/isMobile');
+import isMobile, { isMobileResult } from '../';
 
 describe('Windows', () => {
-  let mobile;
-  let userAgent;
-
-  beforeEach(() => {
-    mobile = null;
-    userAgent = null;
-  });
+  let mobile: isMobileResult;
+  let userAgent: string;
 
   describe('Windows Phone UserAgent', () => {
     beforeEach(() => {
@@ -105,7 +100,7 @@ describe('Windows', () => {
     });
 
     test('should not be a Windows Phone device', () => {
-      expect(mobile.other.windows).not.toBe(true);
+      expect(mobile.windows.phone).not.toBe(true);
     });
 
     test('should not be an Android device', () => {
@@ -137,7 +132,7 @@ describe('Windows', () => {
     });
 
     test('should not be a Windows Phone device', () => {
-      expect(mobile.other.windows).not.toBe(true);
+      expect(mobile.windows.phone).not.toBe(true);
     });
 
     test('should not be an Android device', () => {
