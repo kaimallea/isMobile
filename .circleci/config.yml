@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node/node:12.8.0-alpine
+      - image: node:12.8.0-alpine
 
     working_directory: ~/repo
 
