@@ -53,6 +53,7 @@ export type isMobileResult = {
 };
 
 export default function isMobile(userAgent?: string): isMobileResult {
+  /* eslint-disable no-param-reassign */
   userAgent =
     userAgent || (typeof navigator !== 'undefined' ? navigator.userAgent : '');
 
