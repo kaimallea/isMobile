@@ -129,7 +129,7 @@ A real-word example: I include the minified version of the script, inline, and a
 
 Alternatively, you can include this library via [jsDelivr CDN](https://www.jsdelivr.com/package/npm/ismobilejs) in a `script` tag:
 
-`<script src="https://cdn.jsdelivr.net/npm/ismobilejs@0.5.2/dist/isMobile.min.js"></script>`
+`<script src="https://cdn.jsdelivr.net/npm/ismobilejs@1/dist/isMobile.min.js"></script>`
 
 **Visit the isMobile [jsDelivr page](https://www.jsdelivr.com/package/npm/ismobilejs) to get the most up-to-date URL pointing to the lastest version.**
 
