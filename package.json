@@ -1,5 +1,8 @@
 {
   "name": "ismobilejs",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.5.2",
   "description": "A simple JS library that detects mobile devices.",
   "keywords": [
