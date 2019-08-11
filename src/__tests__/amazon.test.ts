@@ -507,4 +507,40 @@ describe('Amazon', () => {
       expect(mobile.android.device).toBe(true);
     });
   });
+
+  describe('Amazon Fire Generic Phone User Agent', () => {
+    beforeEach(() => {
+      userAgent =
+        'Mozilla/5.0 (Linux; Android android-version; product-model Build/product-build) AppleWebKit/webkit-version (KHTML, like Gecko) Silk/browser-version like Chrome/chrome-version Mobile Safari/webkit-version';
+      mobile = isMobile(userAgent);
+    });
+
+    test('should be an Amazon Phone', () => {
+      expect(mobile.amazon.phone).toBe(true);
+    });
+
+    test('should not be an Amazon Tablet', () => {
+      expect(mobile.amazon.tablet).not.toBe(true);
+    });
+
+    test('should be an Amazon device', () => {
+      expect(mobile.amazon.device).toBe(true);
+    });
+
+    test('should be an Android Phone', () => {
+      expect(mobile.android.phone).toBe(true);
+    });
+
+    test('should not be an Android Tablet', () => {
+      expect(mobile.android.tablet).not.toBe(true);
+    });
+
+    test('should be matched as Any Phone', () => {
+      expect(mobile.phone).toBe(true);
+    });
+
+    test('should be an Android device', () => {
+      expect(mobile.android.device).toBe(true);
+    });
+  });
 });
