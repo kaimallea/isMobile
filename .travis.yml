@@ -17,7 +17,8 @@ jobs:
   include:
     - stage: release
       node_js: lts/*
-      script: skip # do not run tests again
+      script:
+        - yarn build
       deploy:
         provider: script
         skip_cleanup: true
