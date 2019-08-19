@@ -23,7 +23,7 @@
   },
   "main": "cjs/index.js",
   "module": "esm/index.js",
-  "browser": "dist/isMobile.min.js",
+  "jsdelivr": "dist/isMobile.min.js",
   "types": "types",
   "scripts": {
     "prebuild": "rm -rf cjs esm dist",
