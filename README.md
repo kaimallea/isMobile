@@ -28,7 +28,18 @@ You import and call the `isMobile` function, passing it a user agent string; it 
 
 ## Devices detected by isMobile
 
-In a browser, the following properties of the global `isMobile` object will either be `true` or `false`. In Node, `isMobile` will be whatever you named the variable.
+In a browser, the following properties of the global `isMobile` object will either be `true` or `false`. But first of all you need to run the method `isMobile()` to apply properties on the object.
+Ex:
+```javascript
+import isMobile from 'isMobile';
+
+isMobile();
+
+console.log(isMobile.apple.phone) // false
+console.log(isMobile.android.phone) // true
+```
+
+In Node, `isMobile` will be whatever you named the variable.
 
 ### Apple devices
 
