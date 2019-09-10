@@ -1,4 +1,4 @@
-import isMobile, { isMobileResult } from './';
+import isMobile from './';
 
 /**
  * This file is used to generate the browser version of this library.
@@ -11,10 +11,4 @@ import isMobile, { isMobileResult } from './';
  * immediately, assigning its result to the `isMobile` global variable.
  */
 
-declare global {
-  interface Window {
-    isMobile: isMobileResult;
-  }
-}
-
-window.isMobile = isMobile();
+exports = isMobile();
