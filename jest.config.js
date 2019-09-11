@@ -1,1 +1,9 @@
-module.exports = require('@spotify/web-scripts/config/jest.config.js');
+module.exports = {
+  roots: ['<rootDir>/src/__tests__'],
+  transform: {
+    '^.+\\.ts$': 'ts-jest',
+  },
+  testRegex: '^.+\\.ts$',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  preset: 'jest-puppeteer',
+};
