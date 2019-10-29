@@ -13,8 +13,8 @@ const otherOpera = /Opera Mini/i;
 const otherChrome = /\b(CriOS|Chrome)(?:.+)Mobile/i;
 const otherFirefox = /Mobile(?:.+)Firefox\b/i; // Match 'Mobile' AND 'Firefox'
 
-function match(regex: RegExp, userAgent: string): boolean {
-  return regex.test(userAgent);
+function createMatch(userAgent: string): (regex: RegExp) => boolean {
+  return (regex: RegExp): boolean => regex.test(userAgent);
 }
 
 export type isMobileResult = {
@@ -72,59 +72,56 @@ export default function isMobile(userAgent?: string): isMobileResult {
     userAgent = tmp[0];
   }
 
+  const match = createMatch(userAgent);
+
   const result: isMobileResult = {
     apple: {
-      phone: match(appleIphone, userAgent) && !match(windowsPhone, userAgent),
-      ipod: match(appleIpod, userAgent),
-      tablet:
-        !match(appleIphone, userAgent) &&
-        match(appleTablet, userAgent) &&
-        !match(windowsPhone, userAgent),
+      phone: match(appleIphone) && !match(windowsPhone),
+      ipod: match(appleIpod),
+      tablet: !match(appleIphone) && match(appleTablet) && !match(windowsPhone),
       device:
-        (match(appleIphone, userAgent) ||
-          match(appleIpod, userAgent) ||
-          match(appleTablet, userAgent)) &&
-        !match(windowsPhone, userAgent),
+        (match(appleIphone) || match(appleIpod) || match(appleTablet)) &&
+        !match(windowsPhone),
     },
     amazon: {
-      phone: match(amazonPhone, userAgent),
-      tablet: !match(amazonPhone, userAgent) && match(amazonTablet, userAgent),
-      device: match(amazonPhone, userAgent) || match(amazonTablet, userAgent),
+      phone: match(amazonPhone),
+      tablet: !match(amazonPhone) && match(amazonTablet),
+      device: match(amazonPhone) || match(amazonTablet),
     },
     android: {
       phone:
-        (!match(windowsPhone, userAgent) && match(amazonPhone, userAgent)) ||
-        (!match(windowsPhone, userAgent) && match(androidPhone, userAgent)),
+        (!match(windowsPhone) && match(amazonPhone)) ||
+        (!match(windowsPhone) && match(androidPhone)),
       tablet:
-        !match(windowsPhone, userAgent) &&
-        !match(amazonPhone, userAgent) &&
-        !match(androidPhone, userAgent) &&
-        (match(amazonTablet, userAgent) || match(androidTablet, userAgent)),
+        !match(windowsPhone) &&
+        !match(amazonPhone) &&
+        !match(androidPhone) &&
+        (match(amazonTablet) || match(androidTablet)),
       device:
-        (!match(windowsPhone, userAgent) &&
-          (match(amazonPhone, userAgent) ||
-            match(amazonTablet, userAgent) ||
-            match(androidPhone, userAgent) ||
-            match(androidTablet, userAgent))) ||
-        match(/\bokhttp\b/i, userAgent),
+        (!match(windowsPhone) &&
+          (match(amazonPhone) ||
+            match(amazonTablet) ||
+            match(androidPhone) ||
+            match(androidTablet))) ||
+        match(/\bokhttp\b/i),
     },
     windows: {
-      phone: match(windowsPhone, userAgent),
-      tablet: match(windowsTablet, userAgent),
-      device: match(windowsPhone, userAgent) || match(windowsTablet, userAgent),
+      phone: match(windowsPhone),
+      tablet: match(windowsTablet),
+      device: match(windowsPhone) || match(windowsTablet),
     },
     other: {
-      blackberry: match(otherBlackBerry, userAgent),
-      blackberry10: match(otherBlackBerry10, userAgent),
-      opera: match(otherOpera, userAgent),
-      firefox: match(otherFirefox, userAgent),
-      chrome: match(otherChrome, userAgent),
+      blackberry: match(otherBlackBerry),
+      blackberry10: match(otherBlackBerry10),
+      opera: match(otherOpera),
+      firefox: match(otherFirefox),
+      chrome: match(otherChrome),
       device:
-        match(otherBlackBerry, userAgent) ||
-        match(otherBlackBerry10, userAgent) ||
-        match(otherOpera, userAgent) ||
-        match(otherFirefox, userAgent) ||
-        match(otherChrome, userAgent),
+        match(otherBlackBerry) ||
+        match(otherBlackBerry10) ||
+        match(otherOpera) ||
+        match(otherFirefox) ||
+        match(otherChrome),
     },
     any: false,
     phone: false,
