@@ -77,7 +77,9 @@ In a browser, the following properties of the global `isMobile` object will eith
 #### Install
 
 ```bash
-yarn install ismobilejs
+yarn add ismobilejs
+// or
+npm install ismobilejs
 ```
 
 #### Use
