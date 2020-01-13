@@ -35,6 +35,7 @@ In a browser, the following properties of the global `isMobile` object will eith
 - `isMobile.apple.phone`
 - `isMobile.apple.ipod`
 - `isMobile.apple.tablet`
+- `isMobile.apple.universal`
 - `isMobile.apple.device` (any mobile Apple device)
 
 ### Android devices
