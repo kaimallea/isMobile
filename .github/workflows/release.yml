@@ -17,8 +17,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: yarn install, build, test, release
         env:
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn install
           yarn build
