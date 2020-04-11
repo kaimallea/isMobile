@@ -83,7 +83,10 @@ export default function isMobile(userAgent?: string): isMobileResult {
       tablet: !match(appleIphone) && match(appleTablet) && !match(windowsPhone),
       universal: match(appleUniversal),
       device:
-        (match(appleIphone) || match(appleIpod) || match(appleTablet)) &&
+        (match(appleIphone) ||
+          match(appleIpod) ||
+          match(appleTablet) ||
+          match(appleUniversal)) &&
         !match(windowsPhone),
     },
     amazon: {
@@ -132,7 +135,6 @@ export default function isMobile(userAgent?: string): isMobileResult {
   };
 
   result.any =
-    result.apple.universal ||
     result.apple.device ||
     result.android.device ||
     result.windows.device ||
