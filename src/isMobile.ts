@@ -14,7 +14,24 @@ const otherOpera = /Opera Mini/i;
 const otherChrome = /\b(CriOS|Chrome)(?:.+)Mobile/i;
 const otherFirefox = /Mobile(?:.+)Firefox\b/i; // Match 'Mobile' AND 'Firefox'
 
-function createMatch(userAgent: string): (regex: RegExp) => boolean {
+export type UserAgent = string;
+export type Navigator = {
+  userAgent: string;
+  platform: string;
+  maxTouchPoints?: number;
+};
+
+const isAppleTabletOnIos13 = (navigator?: Navigator): boolean => {
+  return (
+    typeof navigator !== 'undefined' &&
+    navigator.platform === 'MacIntel' &&
+    typeof navigator.maxTouchPoints === 'number' &&
+    navigator.maxTouchPoints > 1 &&
+    typeof MSStream === 'undefined'
+  );
+};
+
+function createMatch(userAgent: UserAgent): (regex: RegExp) => boolean {
   return (regex: RegExp): boolean => regex.test(userAgent);
 }
 
@@ -54,10 +71,32 @@ export type isMobileResult = {
   any: boolean;
 };
 
-export default function isMobile(userAgent?: string): isMobileResult {
-  /* eslint-disable no-param-reassign */
-  userAgent =
-    userAgent || (typeof navigator !== 'undefined' ? navigator.userAgent : '');
+export type IsMobileParameter = UserAgent | Navigator;
+
+export default function isMobile(param: IsMobileParameter): isMobileResult {
+  let nav: Navigator = {
+    userAgent: '',
+    platform: '',
+    maxTouchPoints: 0,
+  };
+
+  if (!param && typeof navigator !== 'undefined') {
+    nav = {
+      userAgent: navigator.userAgent,
+      platform: navigator.platform,
+      maxTouchPoints: navigator.maxTouchPoints || 0,
+    };
+  } else if (typeof param === 'string') {
+    nav.userAgent = param;
+  } else if (param.userAgent) {
+    nav = {
+      userAgent: param.userAgent,
+      platform: param.platform,
+      maxTouchPoints: param.maxTouchPoints || 0,
+    };
+  }
+
+  let userAgent = nav.userAgent;
 
   // Facebook mobile app's integrated browser adds a bunch of strings that
   // match everything. Strip it out if it exists.
@@ -80,13 +119,17 @@ export default function isMobile(userAgent?: string): isMobileResult {
     apple: {
       phone: match(appleIphone) && !match(windowsPhone),
       ipod: match(appleIpod),
-      tablet: !match(appleIphone) && match(appleTablet) && !match(windowsPhone),
+      tablet:
+        !match(appleIphone) &&
+        (match(appleTablet) || isAppleTabletOnIos13(nav)) &&
+        !match(windowsPhone),
       universal: match(appleUniversal),
       device:
         (match(appleIphone) ||
           match(appleIpod) ||
           match(appleTablet) ||
-          match(appleUniversal)) &&
+          match(appleUniversal) ||
+          isAppleTabletOnIos13(nav)) &&
         !match(windowsPhone),
     },
     amazon: {
