@@ -33,3 +33,4 @@ export declare type isMobileResult = {
   any: boolean;
 };
 export default function isMobile(userAgent?: string): isMobileResult;
+// # sourceMappingURL=isMobile.d.ts.map

@@ -78,7 +78,11 @@ In a browser, the following properties of the global `isMobile` object will eith
 
 ```bash
 yarn add ismobilejs
-// or
+```
+
+or
+
+```bash
 npm install ismobilejs
 ```
 
