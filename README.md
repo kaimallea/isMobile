@@ -80,6 +80,12 @@ In a browser, the following properties of the global `isMobile` object will eith
 yarn add ismobilejs
 ```
 
+or
+
+```bash
+npm install ismobilejs
+```
+
 #### Use
 
 ```ts
