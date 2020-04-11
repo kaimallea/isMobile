@@ -31,9 +31,11 @@
     "build:library": "web-scripts build",
     "build:browser": "parcel build --target browser --experimental-scope-hoisting --global isMobile --out-file isMobile.min.js src/index.browser.ts",
     "test": "jest",
+    "format": "web-scripts format",
     "lint": "web-scripts lint",
     "commit": "web-scripts commit",
-    "release": "web-scripts release"
+    "release": "web-scripts release",
+    "prepare": "web-scripts audit"
   },
   "husky": {
     "hooks": {
