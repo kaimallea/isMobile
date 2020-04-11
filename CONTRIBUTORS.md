@@ -7,3 +7,4 @@
 * Todd Smith-Salter ([https://github.com/ToddSmithSalter](https://github.com/ToddSmithSalter))
 * Ma Cheng ([https://github.com/mc-zone](https://github.com/mc-zone))
 * Ruslan Ismagilov ([https://github.com/isRuslan](https://github.com/isRuslan))
+* Samuli Hiltunen ([https://github.com/samuli-hiltunen-somedia](https://github.com/samuli-hiltunen-somedia))

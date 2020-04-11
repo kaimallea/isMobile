@@ -28,6 +28,7 @@ describe('E2E Tests', () => {
           "ipod": false,
           "phone": false,
           "tablet": false,
+          "universal": false,
         },
         "other": Object {
           "blackberry": false,

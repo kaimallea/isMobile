@@ -1,6 +1,7 @@
 const appleIphone = /iPhone/i;
 const appleIpod = /iPod/i;
 const appleTablet = /iPad/i;
+const appleUniversal = /\biOS-universal(?:.+)Mac\b/i;
 const androidPhone = /\bAndroid(?:.+)Mobile\b/i; // Match 'Android' AND 'Mobile'
 const androidTablet = /Android/i;
 const amazonPhone = /(?:SD4930UR|\bSilk(?:.+)Mobile\b)/i; // Match 'Silk' AND 'Mobile'
@@ -22,6 +23,7 @@ export type isMobileResult = {
     phone: boolean;
     ipod: boolean;
     tablet: boolean;
+    universal: boolean;
     device: boolean;
   };
   amazon: {
@@ -79,6 +81,7 @@ export default function isMobile(userAgent?: string): isMobileResult {
       phone: match(appleIphone) && !match(windowsPhone),
       ipod: match(appleIpod),
       tablet: !match(appleIphone) && match(appleTablet) && !match(windowsPhone),
+      universal: match(appleUniversal),
       device:
         (match(appleIphone) || match(appleIpod) || match(appleTablet)) &&
         !match(windowsPhone),
@@ -129,6 +132,7 @@ export default function isMobile(userAgent?: string): isMobileResult {
   };
 
   result.any =
+    result.apple.universal ||
     result.apple.device ||
     result.android.device ||
     result.windows.device ||

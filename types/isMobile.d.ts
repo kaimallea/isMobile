@@ -3,6 +3,7 @@ export declare type isMobileResult = {
     phone: boolean;
     ipod: boolean;
     tablet: boolean;
+    universal: boolean;
     device: boolean;
   };
   amazon: {
