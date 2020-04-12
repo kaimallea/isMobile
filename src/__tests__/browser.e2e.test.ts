@@ -51,25 +51,28 @@ describe('E2E Tests', () => {
     await browser.close();
   });
 
-  test('isMobile correctly checks iOS 13', async () => {
-    const iPadIos13 = {
-      ...puppeteer.devices['iPad Pro'],
-      userAgent:
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)',
-    };
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.evaluateOnNewDocument(() => {
-      Object.defineProperty(navigator, 'maxTouchPoints', {
-        get: () => 4,
+  (process.env.GITHUB_ACTIONS ? test.skip : test)(
+    'isMobile correctly checks iOS 13',
+    async () => {
+      const iPadIos13 = {
+        ...puppeteer.devices['iPad Pro'],
+        userAgent:
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)',
+      };
+      const browser = await puppeteer.launch();
+      const page = await browser.newPage();
+      await page.evaluateOnNewDocument(() => {
+        Object.defineProperty(navigator, 'maxTouchPoints', {
+          get: () => 4,
+        });
       });
-    });
-    await page.emulate(iPadIos13);
-    await page.addScriptTag({ path: './dist/isMobile.min.js' });
+      await page.emulate(iPadIos13);
+      await page.addScriptTag({ path: './dist/isMobile.min.js' });
 
-    const isMobile: isMobileResult = await page.evaluate(() => isMobile);
+      const isMobile: isMobileResult = await page.evaluate(() => isMobile);
 
-    expect(isMobile).toMatchInlineSnapshot(`
+      // eslint-disable-next-line jest/no-standalone-expect
+      expect(isMobile).toMatchInlineSnapshot(`
       Object {
         "amazon": Object {
           "device": false,
@@ -107,8 +110,9 @@ describe('E2E Tests', () => {
       }
     `);
 
-    await browser.close();
-  });
+      await browser.close();
+    },
+  );
 
   test('isMobile correctly fails iOS 13 check when MSStream is present', async () => {
     const iPadIos13 = {
