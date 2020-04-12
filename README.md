@@ -95,6 +95,24 @@ const userAgent = req.headers['user-agent'];
 console.log(isMobile(userAgent).any);
 ```
 
+Or pass in a `window.navigator`-shaped object that includes at least a `userAgent` property. To properly detect iPad on iOS 13, the object should also include the `platform` and `maxTouchPoints` properties.
+
+```js
+// this is just an example. window.navigator is readonly in the browser
+window.navigator = {
+  ...
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)',
+  platform: 'MacIntel',
+  maxTouchPoints: 2,
+  ..
+}
+```
+
+```ts
+import isMobile from 'ismobilejs';
+console.log(isMobile(window.navigator).apple.tablet);
+```
+
 ### Browser
 
 A real-word example: I include the minified version of the script, inline, and at the top of the `<head>`. Cellular connections tend to suck, so it would be wasteful overhead to open another connection, just to download ~1.3kb of JS:

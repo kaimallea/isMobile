@@ -60,6 +60,38 @@ describe('Apple', () => {
     });
   });
 
+  describe('iPad on iOS 13', () => {
+    beforeEach(() => {
+      const nav = {
+        userAgent:
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)',
+        platform: 'MacIntel',
+        maxTouchPoints: 4,
+      };
+      mobile = isMobile(nav);
+    });
+
+    test('should not be an iPhone', () => {
+      expect(mobile.apple.phone).not.toBe(true);
+    });
+
+    test('should be an iPad', () => {
+      expect(mobile.apple.tablet).toBe(true);
+    });
+
+    test('should not be an iPod', () => {
+      expect(mobile.apple.ipod).not.toBe(true);
+    });
+
+    test('should be matched as Any Tablet', () => {
+      expect(mobile.tablet).toBe(true);
+    });
+
+    test('should be an Apple device', () => {
+      expect(mobile.apple.device).toBe(true);
+    });
+  });
+
   describe('iPod UserAgent', () => {
     beforeEach(() => {
       userAgent =

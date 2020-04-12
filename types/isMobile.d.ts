@@ -1,3 +1,9 @@
+export declare type UserAgent = string;
+export declare type Navigator = {
+  userAgent: string;
+  platform: string;
+  maxTouchPoints?: number;
+};
 export declare type isMobileResult = {
   apple: {
     phone: boolean;
@@ -33,5 +39,6 @@ export declare type isMobileResult = {
   tablet: boolean;
   any: boolean;
 };
-export default function isMobile(userAgent?: string): isMobileResult;
+export declare type IsMobileParameter = UserAgent | Navigator;
+export default function isMobile(param: IsMobileParameter): isMobileResult;
 // # sourceMappingURL=isMobile.d.ts.map
