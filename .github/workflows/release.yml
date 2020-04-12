@@ -16,7 +16,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: yarn install
       - run: yarn build
-      - run: yarn release
+      - run: npx --no-install semantic-release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
