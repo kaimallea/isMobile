@@ -6,21 +6,20 @@ on:
       - master
 
 jobs:
-  publish-npm:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10, 12]
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - name: yarn install, build, test, release
+          node-version: ${{ matrix.node-version }}
+          registry-url: "https://registry.npmjs.org"
+      - run: yarn install
+      - run: yarn build
+      - run: yarn release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          yarn install
-          yarn build
-          yarn test
-          yarn release
