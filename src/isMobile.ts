@@ -73,7 +73,7 @@ export type isMobileResult = {
 
 export type IsMobileParameter = UserAgent | Navigator;
 
-export default function isMobile(param: IsMobileParameter): isMobileResult {
+export default function isMobile(param?: IsMobileParameter): isMobileResult {
   let nav: Navigator = {
     userAgent: '',
     platform: '',
@@ -88,7 +88,7 @@ export default function isMobile(param: IsMobileParameter): isMobileResult {
     };
   } else if (typeof param === 'string') {
     nav.userAgent = param;
-  } else if (param.userAgent) {
+  } else if (param && param.userAgent) {
     nav = {
       userAgent: param.userAgent,
       platform: param.platform,
