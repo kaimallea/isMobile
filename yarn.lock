@@ -1460,84 +1460,84 @@
   dependencies:
     type-detect "4.0.8"
 
-"@spotify/eslint-config-base@^6.2.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-base/-/eslint-config-base-6.2.0.tgz#ad35a301da862ccc6a47208aece04f3af97b13df"
-  integrity sha512-j3G/YPYBz+PZGkG9Sx1mnUAY/SHK5+DX6FPzjgN0tPcMpOyt6jJrkcEC0Q6QZk+L4SLiDKJ7jshM7fx9oX61UA==
+"@spotify/eslint-config-base@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-base/-/eslint-config-base-7.0.0.tgz#36804ae09ec938f1aa5f9464ea993f3f151cfaa8"
+  integrity sha512-XRTrTRyRRYBxPYINKNHw4B8QWlA3p4I+id/Po2sMdejtXH3LZgDgIjdschUZSdQ6J6dVYDdaVykdizRM9I+G6Q==
 
-"@spotify/eslint-config-react@^6.2.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-react/-/eslint-config-react-6.2.0.tgz#55e950fe4373d2ea7dd289a533e04a40c6748281"
-  integrity sha512-R+xxqaGaU+qZNsk3eOBy6Sz7jbg5KRR/VfABD0FuaSmqGoL2FKpFf6i/fuqhwCpwfJssSEOd34MlZXVGxFzdYw==
+"@spotify/eslint-config-react@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-react/-/eslint-config-react-7.0.0.tgz#449b5d66379df89cbdbd0004b5e42f4b16c8d1ef"
+  integrity sha512-PsQRdhbS1SyFfmLWPXjGMluk/fAdx5eQnDLzvJhwGLTYV6nR4p75xnrh+WHvBvvWWJTPw0oeWlD/fRY8eyk/eQ==
 
-"@spotify/eslint-config-typescript@^6.2.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-typescript/-/eslint-config-typescript-6.2.0.tgz#78b95df07dc2c47c0dc07a42f6bf858ac9a43cd6"
-  integrity sha512-8MC/CHJKjoLPbPpmFxTwp4shEFcsWNG04w6egZGl19u9ReocLJpnFDy8/Q+YRTkO9PemSxd+3kg8M/RPlhC3JQ==
+"@spotify/eslint-config-typescript@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-typescript/-/eslint-config-typescript-7.0.0.tgz#fc5227e3344f74b41ac3a530df24a95ac13254e4"
+  integrity sha512-28I/SAf68NKbWZ5IY0WYMa0D18PxWdC9DP9gRbOTlZufmsS8jEgqf3zBUWmP6XOf1nihpKWcqvbFUG5H7/JYXA==
 
-"@spotify/eslint-config@^6.2.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@spotify/eslint-config/-/eslint-config-6.2.0.tgz#02f1fa8b6b5ad3925976bab1c88e4998a13b20da"
-  integrity sha512-+OaosjUvv2gP+pnVU0qRr59N8KdzSCDcgJyyvuLWXocx+F/9pfKM9AtIWnO/8kePUMlZeBEod5Ims7TPkPVt/w==
+"@spotify/eslint-config@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@spotify/eslint-config/-/eslint-config-7.0.0.tgz#5c6b7a44f8039f4ac151c0203828fa15646c5e7b"
+  integrity sha512-PzsgEB1O1Az4t0PaJFjxH1o5gyobLcgAyikHC0wgwbfQSHlhXpPCaBKTUcfJIN1ow8Jx2VpPBWrYnmYG0oFlsQ==
   dependencies:
-    "@spotify/eslint-config-base" "^6.2.0"
-    "@spotify/eslint-config-react" "^6.2.0"
-    "@spotify/eslint-config-typescript" "^6.2.0"
-    "@spotify/web-scripts-utils" "^6.1.1"
+    "@spotify/eslint-config-base" "^7.0.0"
+    "@spotify/eslint-config-react" "^7.0.0"
+    "@spotify/eslint-config-typescript" "^7.0.0"
+    "@spotify/web-scripts-utils" "^7.0.0"
     "@typescript-eslint/eslint-plugin" "^2.14.0"
     "@typescript-eslint/parser" "^2.14.0"
     eslint-config-prettier "^6.0.0"
     eslint-plugin-jest "^23.6.0"
     eslint-plugin-jsx-a11y "^6.2.1"
     eslint-plugin-react "^7.12.4"
+    eslint-plugin-react-hooks "^3.0.0"
 
-"@spotify/prettier-config@^6.2.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@spotify/prettier-config/-/prettier-config-6.2.0.tgz#db779bc21654092d8a7561b4abbde8770e633393"
-  integrity sha512-nDnEh9LnrdUcbghZ5MxQMJDlBcXy3aSDhvEUcNGrOtANo6TOS/oA7n9Eryjsp7+xXXquLq99iHianm8D5F1mWw==
+"@spotify/prettier-config@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@spotify/prettier-config/-/prettier-config-7.0.0.tgz#47750979d1282197295108b6958360660a955c16"
+  integrity sha512-lIMcx/2oDqTtW84iHKkRJe+8U6HK6GPwWH5sJp9UEHcDpdXomOQYvwcGXy2I2zwPQQ14gYYE6nEJuSnnYqsYRw==
 
-"@spotify/tsconfig@^6.2.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@spotify/tsconfig/-/tsconfig-6.2.0.tgz#38b50f9e845e40e2d6d68eb73ec8059c87b0194d"
-  integrity sha512-Cof1hWNXVKp1M6+cQyIwEoA+HONI60/tQg1ni1Jc1SPkMhGSpyZ4rhezNYKS+gXQVSL0tB6POE0HtSS+Y/N8gw==
+"@spotify/tsconfig@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@spotify/tsconfig/-/tsconfig-7.0.0.tgz#41c402f4eb6d3147bc18427a35205151cbb32cd5"
+  integrity sha512-MeRFUPMXWBSm6yaUWiESaQsF9B+9Rn1F/w5hbHHzcunc45teXBcgsOrJu1uDOEkhP/9lP0fefuodpP+TYWM1LQ==
 
-"@spotify/web-scripts-utils@^6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@spotify/web-scripts-utils/-/web-scripts-utils-6.1.1.tgz#c39f16209a58e0cec169d162f10805743152517f"
-  integrity sha512-zSsYu+EnbWQ6OGzIChE885e3nwfQa+VjiqTfnHsknOlCu6MTyfy1qXKvhnxMlAqvzl33gZphoeoiEqmlEf1AdQ==
+"@spotify/web-scripts-utils@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@spotify/web-scripts-utils/-/web-scripts-utils-7.0.0.tgz#8c6b8039fc645a36ac48629eb9ba06600f4d828a"
+  integrity sha512-McMy0j60lxOHjgDjegthZqEWN/PabphiM30A/mI/Y7xh9+JFnYWBTSm/wgn6EW2BsPpV631xSYYkk6B1Ph14Fw==
   dependencies:
     glob "^7.1.4"
     read-pkg-up "^7.0.1"
 
-"@spotify/web-scripts@^6.2.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@spotify/web-scripts/-/web-scripts-6.2.0.tgz#36916f38cdd6a6727d7e25b128452a2c32b013c3"
-  integrity sha512-c2FOxuBG1kZ4CoHgh1AqgRa8JmytD+kIeY88ZQpDGWRGIcap9SsZMqTIdOtoFuM8pE64TRSHGBFE5RM8PlqXKg==
+"@spotify/web-scripts@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@spotify/web-scripts/-/web-scripts-7.0.0.tgz#40411986418cd01e7010eb1e4eb3da3869a53a18"
+  integrity sha512-xJnr7S+xmZu1AKvOJ5FqlteVeX41MZr1ylyOH5CoVMdvz8bg7rK8Eah4rwSV0FFzEYSACslAwCyWJpcUOmqXuA==
   dependencies:
     "@commitlint/cli" "^8.3.3"
     "@commitlint/config-conventional" "^8.3.3"
-    "@spotify/eslint-config" "^6.2.0"
-    "@spotify/prettier-config" "^6.2.0"
-    "@spotify/tsconfig" "^6.2.0"
-    "@spotify/web-scripts-utils" "^6.1.1"
+    "@spotify/eslint-config" "^7.0.0"
+    "@spotify/prettier-config" "^7.0.0"
+    "@spotify/tsconfig" "^7.0.0"
+    "@spotify/web-scripts-utils" "^7.0.0"
     "@types/cross-spawn" "^6.0.0"
     "@types/debug" "^4.1.2"
     "@types/jest" "^25.1.0"
     "@types/react" "^16.8.19"
     "@types/react-dom" "^16.8.4"
-    commander "^4.0.1"
+    commander "^5.1.0"
     commitizen "^4.0.3"
     cross-spawn-promise "^0.10.1"
     cz-conventional-changelog "^3.0.2"
     debug "^4.1.1"
     eslint "^6.8.0"
     jest "^25.1.0"
-    jest-config "^25.1.0"
     jest-junit "^10.0.0"
     lint-staged "^10.0.4"
-    prettier "^1.18.2"
+    prettier "^2.0.5"
     semantic-release "^17.0.1"
-    ts-jest "~25.2.1"
+    ts-jest "^25.4.0"
     typescript "^3.7.4"
 
 "@tootallnate/once@1":
@@ -3010,6 +3010,11 @@ commander@^4.0.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
   integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
 
+commander@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
+  integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
+
 commitizen@^4.0.3:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/commitizen/-/commitizen-4.0.4.tgz#60e9666e293269f459f1038ca452b39acecb8999"
@@ -4137,6 +4142,11 @@ eslint-plugin-jsx-a11y@^6.2.1:
     emoji-regex "^7.0.2"
     has "^1.0.3"
     jsx-ast-utils "^2.2.1"
+
+eslint-plugin-react-hooks@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-3.0.0.tgz#9e80c71846eb68dd29c3b21d832728aa66e5bd35"
+  integrity sha512-EjxTHxjLKIBWFgDJdhKKzLh5q+vjTFrqNZX36uIxWS4OfyXe5DawqPj3U5qeJ1ngLwatjzQnmR0Lz0J0YH3kxw==
 
 eslint-plugin-react@^7.12.4:
   version "7.19.0"
@@ -6147,7 +6157,7 @@ jest-cli@^25.3.0:
     realpath-native "^2.0.0"
     yargs "^15.3.1"
 
-jest-config@^25.1.0, jest-config@^25.3.0:
+jest-config@^25.3.0:
   version "25.3.0"
   resolved "https://registry.yarnpkg.com/jest-config/-/jest-config-25.3.0.tgz#112b5e2f2e57dec4501dd2fe979044c06fb1317e"
   integrity sha512-CmF1JnNWFmoCSPC4tnU52wnVBpuxHjilA40qH/03IHxIevkjUInSMwaDeE6ACfxMPTLidBGBCO3EbxvzPbo8wA==
@@ -7584,17 +7594,17 @@ mixin-object@^2.0.1:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
 
-mkdirp@0.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.4, mkdirp@~0.5.0, mkdirp@~0.5.1:
+mkdirp@1.x:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
+  integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
+
+mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.4, mkdirp@~0.5.0, mkdirp@~0.5.1:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.5.tgz#d91cefd62d1436ca0f41620e251288d420099def"
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
   dependencies:
     minimist "^1.2.5"
-
-mkdirp@1.x:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
-  integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
 modify-values@^1.0.0:
   version "1.0.1"
@@ -9126,10 +9136,10 @@ prepend-http@^1.0.1:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
-prettier@^1.18.2:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
-  integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
+prettier@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.5.tgz#d6d56282455243f2f92cc1716692c08aa31522d4"
+  integrity sha512-7PtVymN48hGcO4fGjybyBSIWDsLU4H4XlvOHfq91pz9kkGlonzwTfYkaIEwiRg/dAJF9YlbsduBAgtYLi+8cFg==
 
 pretty-format@^24.9.0:
   version "24.9.0"
@@ -10050,7 +10060,7 @@ semver-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/semver-regex/-/semver-regex-2.0.0.tgz#a93c2c5844539a770233379107b38c7b4ac9d338"
   integrity sha512-mUdIBBvdn0PLOeP3TEkMH7HHeUP3GjsXCwKarjv/kGmUFOYg1VqEemKhoQpWMu6X2I8kHeuVdGibLGkVK+/5Qw==
 
-"semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", "semver@^2.3.0 || 3.x || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@^5.4.1, semver@^5.5, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0, semver@^5.7.1:
+"semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", "semver@^2.3.0 || 3.x || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0, semver@^5.7.1:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
@@ -11091,10 +11101,10 @@ trim-off-newlines@^1.0.0:
   resolved "https://registry.yarnpkg.com/trim-off-newlines/-/trim-off-newlines-1.0.1.tgz#9f9ba9d9efa8764c387698bcbfeb2c848f11adb3"
   integrity sha1-n5up2e+odkw4dpi8v+sshI8RrbM=
 
-ts-jest@^25.3.1:
-  version "25.3.1"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-25.3.1.tgz#58e2ed3506e4e4487c0b9b532846a5cade9656ba"
-  integrity sha512-O53FtKguoMUByalAJW+NWEv7c4tus5ckmhfa7/V0jBb2z8v5rDSLFC1Ate7wLknYPC1euuhY6eJjQq4FtOZrkg==
+ts-jest@^25.3.1, ts-jest@^25.4.0:
+  version "25.4.0"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-25.4.0.tgz#5ad504299f8541d463a52e93e5e9d76876be0ba4"
+  integrity sha512-+0ZrksdaquxGUBwSdTIcdX7VXdwLIlSRsyjivVA9gcO+Cvr6ByqDhu/mi5+HCcb6cMkiQp5xZ8qRO7/eCqLeyw==
   dependencies:
     bs-logger "0.x"
     buffer-from "1.x"
@@ -11107,22 +11117,6 @@ ts-jest@^25.3.1:
     resolve "1.x"
     semver "6.x"
     yargs-parser "18.x"
-
-ts-jest@~25.2.1:
-  version "25.2.1"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-25.2.1.tgz#49bf05da26a8b7fbfbc36b4ae2fcdc2fef35c85d"
-  integrity sha512-TnntkEEjuXq/Gxpw7xToarmHbAafgCaAzOpnajnFC6jI7oo1trMzAHA04eWpc3MhV6+yvhE8uUBAmN+teRJh0A==
-  dependencies:
-    bs-logger "0.x"
-    buffer-from "1.x"
-    fast-json-stable-stringify "2.x"
-    json5 "2.x"
-    lodash.memoize "4.x"
-    make-error "1.x"
-    mkdirp "0.x"
-    resolve "1.x"
-    semver "^5.5"
-    yargs-parser "^16.1.0"
 
 tslib@^1.8.1, tslib@^1.9.0:
   version "1.11.1"
@@ -11818,14 +11812,6 @@ yargs-parser@^15.0.1:
   version "15.0.1"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-15.0.1.tgz#54786af40b820dcb2fb8025b11b4d659d76323b3"
   integrity sha512-0OAMV2mAZQrs3FkNpDQcBk1x5HXb8X4twADss4S0Iuk+2dGnLOE/fRHrsYm542GduMveyA77OF4wrNJuanRCWw==
-  dependencies:
-    camelcase "^5.0.0"
-    decamelize "^1.2.0"
-
-yargs-parser@^16.1.0:
-  version "16.1.0"
-  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-16.1.0.tgz#73747d53ae187e7b8dbe333f95714c76ea00ecf1"
-  integrity sha512-H/V41UNZQPkUMIT5h5hiwg4QKIY1RPvoBV4XcjUbRM8Bk2oKqqyZ0DIEbTFZB0XjbtSPG8SAa/0DxCQmiRgzKg==
   dependencies:
     camelcase "^5.0.0"
     decamelize "^1.2.0"

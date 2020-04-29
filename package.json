@@ -44,7 +44,7 @@
     }
   },
   "devDependencies": {
-    "@spotify/web-scripts": "^6.2.0",
+    "@spotify/web-scripts": "^7.0.0",
     "@types/puppeteer": "^2.0.1",
     "husky": "^4.2.5",
     "jest-puppeteer": "^4.4.0",
