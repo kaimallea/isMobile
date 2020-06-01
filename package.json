@@ -50,6 +50,6 @@
     "jest-puppeteer": "^4.4.0",
     "parcel-bundler": "^1.12.4",
     "puppeteer": "^2.1.1",
-    "ts-jest": "^25.3.1"
+    "ts-jest": "^26.1.0"
   }
 }
