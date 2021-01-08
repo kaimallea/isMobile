@@ -40,5 +40,5 @@ export declare type isMobileResult = {
   any: boolean;
 };
 export declare type IsMobileParameter = UserAgent | Navigator;
-export default function isMobile(param: IsMobileParameter): isMobileResult;
+export default function isMobile(param?: IsMobileParameter): isMobileResult;
 // # sourceMappingURL=isMobile.d.ts.map
