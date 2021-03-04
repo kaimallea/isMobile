@@ -1577,30 +1577,30 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@spotify/eslint-config-base@^9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-base/-/eslint-config-base-9.0.0.tgz#e122b2e6d1a11750170badc5be6774ded95953d2"
-  integrity sha512-LNGY6bBM0IlosvMIx9Ic5gqatpa5LPvrJhN4RnrUnP9oaXNLgPTKDE89p3eC5Tnh78ADdX4HD+rbHDSyP2tBgg==
+"@spotify/eslint-config-base@^9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-base/-/eslint-config-base-9.0.2.tgz#a4830f610f40de935de795d3def486c3e5064ee4"
+  integrity sha512-HS+eLpVMbUUBXZ9ZlPcd6yCje/OVNhdcGDeU+DoK+C9AFfzbRtuZ1EJ8ewzj58ENrhlfJPuxCS68bypA/esyjw==
 
-"@spotify/eslint-config-react@^9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-react/-/eslint-config-react-9.0.0.tgz#9c032e257090a5b3f5b08b28c1311485bf0fbae3"
-  integrity sha512-3w+cmbUljBLxZGLk4dn1oJD8v4uxW7bKackkcpZhac6VkQmg01EDN04Bx9qmbNe5S/2uHwrOJGcWlge5R8Ml1Q==
+"@spotify/eslint-config-react@^9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@spotify/eslint-config-react/-/eslint-config-react-9.0.2.tgz#4b79f1a9ad444e29a9c30a7aa64ae6b9711fdc05"
+  integrity sha512-7zlW2ZScZHBcYlzd7CuNWNnJd4x0Qi4jqRI0qXme2NXDe4m9ekFmTWJVkDW0N4jiL3qT9FA+zl/2VV/o5VLkGw==
 
 "@spotify/eslint-config-typescript@^9.0.0":
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/@spotify/eslint-config-typescript/-/eslint-config-typescript-9.0.0.tgz#be68cfaf212599f0bfeb6536c7c58ec05d2b6fba"
   integrity sha512-ZsXTwMA68ZCz943U4N8XwprdWcc7ErOO/IW8PewLK5lycCZtLnmRkOvAbae7O5qNJPD8b/l0iUMTLaZuwjXWwg==
 
-"@spotify/eslint-config@^9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@spotify/eslint-config/-/eslint-config-9.0.1.tgz#4d00239c24c415acd406bfd596d561a3d6ec99b6"
-  integrity sha512-m7mJsUQypqP1a36z+h9oU+DtAL7zi0Mtzvl8tPm9pt4pc0xH8MtQKty7a2Uje8xpjYs2qNYM48kd2Osm/M9B7w==
+"@spotify/eslint-config@^9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@spotify/eslint-config/-/eslint-config-9.0.2.tgz#c74da10643446112e49c43bb0b82c8447ded1b07"
+  integrity sha512-SuJ5i9eySKXU538LZ6VwUhapNyTKYYHjczagvBraaPOAbHVwyJp+3RRv/7NMS/LhGGqHIRcJV6e1MuNGEnx0SA==
   dependencies:
-    "@spotify/eslint-config-base" "^9.0.0"
-    "@spotify/eslint-config-react" "^9.0.0"
+    "@spotify/eslint-config-base" "^9.0.2"
+    "@spotify/eslint-config-react" "^9.0.2"
     "@spotify/eslint-config-typescript" "^9.0.0"
-    "@spotify/eslint-plugin" "^9.0.1"
+    "@spotify/eslint-plugin" "^9.0.2"
     "@spotify/web-scripts-utils" "^9.0.0"
     "@typescript-eslint/eslint-plugin" "^4.1.0"
     "@typescript-eslint/parser" "^4.1.0"
@@ -1610,10 +1610,10 @@
     eslint-plugin-react "^7.12.4"
     eslint-plugin-react-hooks "^4.0.0"
 
-"@spotify/eslint-plugin@^9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@spotify/eslint-plugin/-/eslint-plugin-9.0.1.tgz#a48918054e06981f7093cd8147348ac78c6b365e"
-  integrity sha512-5Y11I4tRexWi4FxVmGT9ZI82SM+UEGJGt25zdd9rWiOfjy/3xPsykc047lxBwMo+0ZqOmAeUvlijFVcdcl59eQ==
+"@spotify/eslint-plugin@^9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@spotify/eslint-plugin/-/eslint-plugin-9.0.2.tgz#f916933248be3c74e3734062f87db99db8230348"
+  integrity sha512-FyR5BydFdsNzY/aFRwgasBSaPysQOrWnx7DlwW+/gWxEP+JY7BnBhFHXd7+VAuwhjPidew1mdyhLnjcTg48VhQ==
 
 "@spotify/prettier-config@^9.0.0":
   version "9.0.0"
@@ -1634,13 +1634,13 @@
     read-pkg-up "^7.0.1"
 
 "@spotify/web-scripts@^9.0.0":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@spotify/web-scripts/-/web-scripts-9.0.1.tgz#d11290527293f330c9a9012e681cf08ddd42dc40"
-  integrity sha512-fR/7cvPvZwbazaG9wdxxkzdVu7jWYSn9+Ylr5sY//sVfuIhaWC9GAzJ25CleCKt7LvdP9dsB/uCffYtK8B6R6Q==
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@spotify/web-scripts/-/web-scripts-9.0.2.tgz#67737b86a84bc784dca80219de3a8be0f96693bb"
+  integrity sha512-scEAwf7JjM08MZAam5fIVcLbDDtxuMnrNrqOAgcMH7okTjsSB60kBVJUgaQGz9udOeiFmBRF+Zv6BnQWybtftQ==
   dependencies:
     "@commitlint/cli" "^9.0.1"
     "@commitlint/config-conventional" "^9.1.2"
-    "@spotify/eslint-config" "^9.0.1"
+    "@spotify/eslint-config" "^9.0.2"
     "@spotify/prettier-config" "^9.0.0"
     "@spotify/tsconfig" "^9.0.0"
     "@spotify/web-scripts-utils" "^9.0.0"
