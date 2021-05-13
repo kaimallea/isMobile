@@ -1,0 +1,45 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "10:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: caniuse-lite
+    versions:
+    - 1.0.30001180
+    - 1.0.30001181
+    - 1.0.30001183
+    - 1.0.30001185
+    - 1.0.30001187
+    - 1.0.30001189
+    - 1.0.30001192
+    - 1.0.30001194
+    - 1.0.30001197
+    - 1.0.30001198
+    - 1.0.30001205
+    - 1.0.30001214
+    - 1.0.30001216
+  - dependency-name: jest-puppeteer
+    versions:
+    - 5.0.2
+  - dependency-name: "@spotify/web-scripts"
+    versions:
+    - 10.0.0
+  - dependency-name: husky
+    versions:
+    - 4.3.8
+    - 5.0.9
+    - 5.1.0
+    - 5.1.2
+  - dependency-name: puppeteer
+    versions:
+    - 6.0.0
+    - 7.0.1
+    - 7.0.3
+    - 7.0.4
+  - dependency-name: ts-jest
+    versions:
+    - 26.5.0
