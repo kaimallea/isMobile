@@ -50,7 +50,7 @@
     "jest-puppeteer": "^4.4.0",
     "parcel-bundler": "^1.12.4",
     "puppeteer": "^8.0.0",
-    "ts-jest": "^26.4.4"
+    "ts-jest": "^27.0.0"
   },
   "dependencies": {
     "caniuse-lite": "^1.0.30001173"
