@@ -47,7 +47,7 @@
     "@spotify/web-scripts": "^9.0.0",
     "@types/puppeteer": "^5.4.2",
     "husky": "^6.0.0",
-    "jest-puppeteer": "^4.4.0",
+    "jest-puppeteer": "^5.0.4",
     "parcel-bundler": "^1.12.4",
     "puppeteer": "^8.0.0",
     "ts-jest": "^26.4.4"
