@@ -84,7 +84,7 @@ export type IsMobileParameter = UserAgent | Navigator | UserAgentClientHints;
 export default function isMobile(param?: IsMobileParameter): isMobileResult {
   let isClientHintsMobile = false;
 
-  // This helper function takes a UserAgentClientHints object as input and returns the value 
+  // This helper function takes a UserAgentClientHints object as input and returns the value
   // of the `uaMobile` property, which indicates whether the device is a mobile device.
   function isMobileFromClientHints(hints: UserAgentClientHints): boolean {
     return hints.uaMobile;
@@ -116,7 +116,9 @@ export default function isMobile(param?: IsMobileParameter): isMobileResult {
       platform: param.uaPlatform,
       maxTouchPoints: param.uaMobile ? 1 : 0,
     };
-    isClientHintsMobile = isMobileFromClientHints(param as UserAgentClientHints);
+    isClientHintsMobile = isMobileFromClientHints(
+      param as UserAgentClientHints,
+    );
   }
 
   let userAgent = nav.userAgent;
@@ -209,7 +211,10 @@ export default function isMobile(param?: IsMobileParameter): isMobileResult {
     result.other.device;
   // excludes 'other' devices and ipods, targeting touchscreen phones
   result.phone =
-    result.apple.phone || result.android.phone || result.windows.phone || result.other.clientHints;
+    result.apple.phone ||
+    result.android.phone ||
+    result.windows.phone ||
+    result.other.clientHints;
   result.tablet =
     result.apple.tablet || result.android.tablet || result.windows.tablet;
 

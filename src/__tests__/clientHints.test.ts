@@ -32,4 +32,3 @@ describe('isMobile with User-Agent Client Hints', () => {
     expect(result.any).toBe(false);
   });
 });
-
