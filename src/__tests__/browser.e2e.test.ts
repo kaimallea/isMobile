@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import puppeteer, { KnownDevices } from 'puppeteer';
 import { isMobileResult } from '..';
 
 describe('E2E Tests', () => {
@@ -34,6 +34,7 @@ describe('E2E Tests', () => {
           "blackberry": false,
           "blackberry10": false,
           "chrome": false,
+          "clientHints": false,
           "device": false,
           "firefox": false,
           "opera": false,
@@ -55,7 +56,7 @@ describe('E2E Tests', () => {
     'isMobile correctly checks iOS 13',
     async () => {
       const iPadIos13 = {
-        ...puppeteer.devices['iPad Pro'],
+        ...KnownDevices['iPad Pro'],
         userAgent:
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)',
       };
@@ -73,42 +74,43 @@ describe('E2E Tests', () => {
 
       // eslint-disable-next-line jest/no-standalone-expect
       expect(isMobile).toMatchInlineSnapshot(`
-      Object {
-        "amazon": Object {
-          "device": false,
+        Object {
+          "amazon": Object {
+            "device": false,
+            "phone": false,
+            "tablet": false,
+          },
+          "android": Object {
+            "device": false,
+            "phone": false,
+            "tablet": false,
+          },
+          "any": false,
+          "apple": Object {
+            "device": false,
+            "ipod": false,
+            "phone": false,
+            "tablet": false,
+            "universal": false,
+          },
+          "other": Object {
+            "blackberry": false,
+            "blackberry10": false,
+            "chrome": false,
+            "clientHints": false,
+            "device": false,
+            "firefox": false,
+            "opera": false,
+          },
           "phone": false,
           "tablet": false,
-        },
-        "android": Object {
-          "device": false,
-          "phone": false,
-          "tablet": false,
-        },
-        "any": true,
-        "apple": Object {
-          "device": true,
-          "ipod": false,
-          "phone": false,
-          "tablet": true,
-          "universal": false,
-        },
-        "other": Object {
-          "blackberry": false,
-          "blackberry10": false,
-          "chrome": false,
-          "device": false,
-          "firefox": false,
-          "opera": false,
-        },
-        "phone": false,
-        "tablet": true,
-        "windows": Object {
-          "device": false,
-          "phone": false,
-          "tablet": false,
-        },
-      }
-    `);
+          "windows": Object {
+            "device": false,
+            "phone": false,
+            "tablet": false,
+          },
+        }
+      `);
 
       await browser.close();
     },
@@ -116,7 +118,7 @@ describe('E2E Tests', () => {
 
   test('isMobile correctly fails iOS 13 check when MSStream is present', async () => {
     const iPadIos13 = {
-      ...puppeteer.devices['iPad Pro'],
+      ...KnownDevices['iPad Pro'],
       userAgent:
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)',
     };
@@ -160,6 +162,7 @@ describe('E2E Tests', () => {
           "blackberry": false,
           "blackberry10": false,
           "chrome": false,
+          "clientHints": false,
           "device": false,
           "firefox": false,
           "opera": false,

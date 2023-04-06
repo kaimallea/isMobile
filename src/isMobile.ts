@@ -34,6 +34,7 @@ const isAppleTabletOnIos13 = (navigator?: Navigator): boolean => {
     navigator.platform === 'MacIntel' &&
     typeof navigator.maxTouchPoints === 'number' &&
     navigator.maxTouchPoints > 1 &&
+    // @ts-ignore
     typeof MSStream === 'undefined'
   );
 };

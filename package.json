@@ -34,8 +34,7 @@
     "format": "web-scripts format",
     "lint": "web-scripts lint",
     "commit": "web-scripts commit",
-    "release": "web-scripts release",
-    "prepare": "web-scripts audit"
+    "release": "web-scripts release"
   },
   "husky": {
     "hooks": {
@@ -44,15 +43,13 @@
     }
   },
   "devDependencies": {
-    "@spotify/web-scripts": "^9.0.0",
-    "@types/puppeteer": "^5.4.2",
-    "husky": "^6.0.0",
-    "jest-puppeteer": "^4.4.0",
+    "@spotify/web-scripts": "^14.1.6",
+    "@types/puppeteer": "^7.0.4",
+    "husky": "^8.0.3",
+    "jest-puppeteer": "^8.0.6",
     "parcel-bundler": "^1.12.4",
-    "puppeteer": "^8.0.0",
-    "ts-jest": "^26.4.4"
+    "puppeteer": "^19.8.3",
+    "ts-jest": "^29.1.0"
   },
-  "dependencies": {
-    "caniuse-lite": "^1.0.30001173"
-  }
+  "dependencies": {}
 }
