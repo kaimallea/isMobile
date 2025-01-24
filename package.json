@@ -23,6 +23,7 @@
   },
   "main": "cjs/index.js",
   "module": "esm/index.js",
+  "sideEffects": false,
   "jsdelivr": "dist/isMobile.min.js",
   "types": "types",
   "scripts": {
