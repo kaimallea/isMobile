@@ -9,7 +9,7 @@ for (const dir of ['.build', 'cjs', 'esm', 'dist', 'types']) {
 }
 execFileSync(
   process.execPath,
-  ['node_modules/@typescript/native/bin/tsc', '-p', 'tsconfig.build.json'],
+  ['node_modules/typescript/bin/tsc', '-p', 'tsconfig.build.json'],
   { stdio: 'inherit' },
 );
 

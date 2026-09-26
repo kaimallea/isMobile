@@ -205,19 +205,25 @@ tests, and tooling out of npm; the library has no runtime dependencies.
 Run `npm run check` before submitting changes. Commit `package-lock.json` whenever
 dependencies change, and use `npm ci` for repeatable installs.
 
-TypeScript 7 (`@typescript/native`, an npm alias) runs `tsc` for type checking,
-builds, and declarations. ESLint and ts-jest still need the JavaScript compiler
-API, so `typescript` aliases Microsoft's `@typescript/typescript6` compatibility
-package. This is the documented
-[side-by-side setup](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6-0).
-Keep these roles separate until the tools support the native compiler API.
+TypeScript 7 runs `tsc` for type checking, builds, and declarations. Vitest runs
+the unit and Chrome tests; Oxlint checks code and test mistakes; Prettier handles
+formatting. Type checking runs separately because Vitest transforms TypeScript
+without checking its types. No legacy TypeScript compiler or compatibility alias
+is needed.
 
 TypeScript 7 removed ES5 emit and legacy Node module resolution. The project uses
 bundler resolution and emits ES2015 into a temporary directory, then Babel
 downlevels the JavaScript before Rollup packages it. Babel's IE 11 target selects
 ES5 syntax transforms; it is not a claim of real-device/browser validation.
-Package tests enforce ES5 syntax and compile consumers with both TypeScript 6
-and 7. Babel stays on major 7 to satisfy the Rollup/Jest integrations' peer ranges.
+Package tests enforce ES5 syntax and compile consumers with TypeScript 7.
+Babel stays on major 7 to satisfy the Rollup integration's peer range.
+
+Oxlint uses its built-in TypeScript and Vitest rules, with additional checks
+carried over from the previous lint configuration. Skipped/focused tests and
+malformed assertions fail linting; Vitest also rejects focused tests. The rule
+sets are not identical: Jest-specific API checks are retired with Jest, and
+TypeScript/parser checks cover invalid syntax. No ESLint plugins or additional
+type-aware lint engine are required.
 
 Use conventional commit messages, for example `fix: correct a device match`,
 `feat: add a detection option`, or `chore: update tooling`. Normal `git commit`

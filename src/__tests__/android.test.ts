@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, test } from 'vitest';
 import isMobile, { isMobileResult } from '../';
 
 describe('Android', () => {

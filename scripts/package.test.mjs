@@ -105,58 +105,53 @@ test('the browser bundle supports script, CommonJS, and AMD consumers', () => {
   assert.equal(amd.android.phone, true);
 });
 
-for (const [version, compiler] of [
-  ['6', 'typescript/bin/tsc6'],
-  ['7', '@typescript/native/bin/tsc'],
-]) {
-  test(`published declarations work in TypeScript ${version} without repository configuration`, () => {
-    writeFileSync(
-      join(directory, 'consumer.ts'),
-      `
-    import isMobile, { isMobileResult, IsMobileParameter } from './package';
-    const input: IsMobileParameter = 'iPhone';
-    const navigatorInput: IsMobileParameter = {
-      userAgent: 'Macintosh', platform: 'MacIntel', maxTouchPoints: 2,
-    };
-    const navigatorWithoutTouch: IsMobileParameter = {
-      userAgent: 'iPhone', platform: 'iPhone',
-    };
-    const results: isMobileResult[] = [
-      isMobile(input),
-      isMobile(navigatorInput),
-      isMobile(navigatorWithoutTouch),
-      isMobile(),
-    ];
-    const result = results[0];
-    const phone: boolean = result.phone;
-    const tablet: boolean = result.apple.tablet;
-    void phone;
-    void tablet;
-  `,
-    );
-    writeFileSync(
+test('published declarations work without repository configuration', () => {
+  writeFileSync(
+    join(directory, 'consumer.ts'),
+    `
+  import isMobile, { isMobileResult, IsMobileParameter } from './package';
+  const input: IsMobileParameter = 'iPhone';
+  const navigatorInput: IsMobileParameter = {
+    userAgent: 'Macintosh', platform: 'MacIntel', maxTouchPoints: 2,
+  };
+  const navigatorWithoutTouch: IsMobileParameter = {
+    userAgent: 'iPhone', platform: 'iPhone',
+  };
+  const results: isMobileResult[] = [
+    isMobile(input),
+    isMobile(navigatorInput),
+    isMobile(navigatorWithoutTouch),
+    isMobile(),
+  ];
+  const result = results[0];
+  const phone: boolean = result.phone;
+  const tablet: boolean = result.apple.tablet;
+  void phone;
+  void tablet;
+`,
+  );
+  writeFileSync(
+    join(directory, 'tsconfig.json'),
+    JSON.stringify({
+      compilerOptions: {
+        strict: true,
+        noEmit: true,
+        types: [],
+        lib: ['ES5'],
+        target: 'ES2015',
+        module: 'NodeNext',
+        moduleResolution: 'NodeNext',
+      },
+      files: ['consumer.ts'],
+    }),
+  );
+  execFileSync(
+    process.execPath,
+    [
+      resolve('node_modules/typescript/bin/tsc'),
+      '-p',
       join(directory, 'tsconfig.json'),
-      JSON.stringify({
-        compilerOptions: {
-          strict: true,
-          noEmit: true,
-          types: [],
-          lib: ['ES5'],
-          target: 'ES2015',
-          module: 'NodeNext',
-          moduleResolution: 'NodeNext',
-        },
-        files: ['consumer.ts'],
-      }),
-    );
-    execFileSync(
-      process.execPath,
-      [
-        resolve('node_modules', compiler),
-        '-p',
-        join(directory, 'tsconfig.json'),
-      ],
-      { stdio: 'inherit' },
-    );
-  });
-}
+    ],
+    { stdio: 'inherit' },
+  );
+});

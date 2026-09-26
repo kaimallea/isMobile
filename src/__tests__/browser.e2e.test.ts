@@ -1,3 +1,12 @@
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  test,
+} from 'vitest';
 import puppeteer, { Browser, KnownDevices, Page } from 'puppeteer';
 import { isMobileResult } from '..';
 

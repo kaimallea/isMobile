@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest';
 import isMobile from '../';
 
 test('calling without an argument or browser navigator returns no device matches', () => {
