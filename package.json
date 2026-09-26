@@ -26,33 +26,40 @@
   "jsdelivr": "dist/isMobile.min.js",
   "types": "types",
   "scripts": {
-    "prebuild": "rm -rf cjs esm dist",
-    "build": "yarn build:library && yarn build:browser",
-    "build:library": "web-scripts build",
-    "build:browser": "parcel build --target browser --experimental-scope-hoisting --global isMobile --out-file isMobile.min.js src/index.browser.ts",
-    "test": "jest",
-    "format": "web-scripts format",
-    "lint": "web-scripts lint",
-    "commit": "web-scripts commit",
-    "release": "web-scripts release",
-    "prepare": "web-scripts audit"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "web-scripts precommit --jest-config ./jest.config.js",
-      "commit-msg": "web-scripts commitmsg"
-    }
+    "build": "node scripts/build.mjs",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
+    "test:unit": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --selectProjects unit",
+    "test:browser": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --selectProjects browser",
+    "test:package": "node --test scripts/package.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run lint && npm run format:check && npm run typecheck && npm run build && npm test && npm run test:package",
+    "prepack": "npm run build",
+    "release": "semantic-release"
   },
   "devDependencies": {
-    "@spotify/web-scripts": "^9.0.0",
-    "@types/puppeteer": "^5.4.2",
-    "husky": "^6.0.0",
-    "jest-puppeteer": "^4.4.0",
-    "parcel-bundler": "^1.12.4",
-    "puppeteer": "^8.0.0",
-    "ts-jest": "^26.4.4"
+    "@eslint/js": "^10.0.1",
+    "@rollup/plugin-terser": "^1.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.0.0",
+    "eslint": "^10.11.0",
+    "eslint-plugin-jest": "^29.16.6",
+    "globals": "^17.0.0",
+    "jest": "^30.5.2",
+    "prettier": "^3.9.9",
+    "puppeteer": "^25.12.0",
+    "rollup": "^4.63.5",
+    "semantic-release": "^25.0.9",
+    "ts-jest": "^29.4.14",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.70.1"
   },
-  "dependencies": {
-    "caniuse-lite": "^1.0.30001173"
-  }
+  "files": [
+    "cjs",
+    "esm",
+    "dist",
+    "types"
+  ]
 }

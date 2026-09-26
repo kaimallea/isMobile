@@ -1,9 +1,24 @@
-module.exports = {
-  roots: ['<rootDir>/src/__tests__'],
+const shared = {
   transform: {
-    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.ts$': ['ts-jest', { useESM: true, tsconfig: { module: 'ESNext' } }],
   },
-  testRegex: '^.+\\.ts$',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  preset: 'jest-puppeteer',
+  testEnvironment: 'node',
+  extensionsToTreatAsEsm: ['.ts'],
+  snapshotFormat: { printBasicPrototype: true },
+};
+
+module.exports = {
+  projects: [
+    {
+      ...shared,
+      displayName: 'unit',
+      testMatch: ['<rootDir>/src/__tests__/*.test.ts'],
+      testPathIgnorePatterns: ['\\.e2e\\.test\\.ts$'],
+    },
+    {
+      ...shared,
+      displayName: 'browser',
+      testMatch: ['<rootDir>/src/__tests__/*.e2e.test.ts'],
+    },
+  ],
 };

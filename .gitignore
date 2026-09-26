@@ -1,28 +1,14 @@
 # Generated output
-cjs
-esm
-dist
-
-# TypeScript incremental compilation cache
+.build/
+cjs/
+esm/
+dist/
+types/
 *.tsbuildinfo
-
-# Parcel cache
-.cache
-
-# Node modules
-node_modules
-
-# NPM lock file (we use Yarn's)
-package-lock.json
-
-# Logs
+node_modules/
+*.tgz
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Coverage
 coverage/
-
-# Mac OS
 .DS_Store
-

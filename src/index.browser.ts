@@ -1,4 +1,4 @@
-import isMobile from './';
+import isMobile from './index';
 
 /**
  * This file is used to generate the browser version of this library.
@@ -11,4 +11,4 @@ import isMobile from './';
  * immediately, assigning its result to the `isMobile` global variable.
  */
 
-exports = isMobile();
+export default isMobile();

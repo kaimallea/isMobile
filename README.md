@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/kaimallea/isMobile.png)](https://travis-ci.org/kaimallea/isMobile)
-[![Node dependencies status](https://david-dm.org/kaimallea/isMobile.png)](https://david-dm.org/kaimallea/isMobile)
+[![CI](https://github.com/kaimallea/isMobile/actions/workflows/pull_request.yml/badge.svg)](https://github.com/kaimallea/isMobile/actions/workflows/pull_request.yml)
 [![](https://data.jsdelivr.com/v1/package/npm/ismobilejs/badge)](https://www.jsdelivr.com/package/npm/ismobilejs)
 
 # isMobile
@@ -160,28 +159,87 @@ Alternatively, you can include this library via [jsDelivr CDN](https://www.jsdel
 
 ## Building manually
 
-After checking out the repo, install dependencies:
+Use Node.js 24 LTS (`nvm use`) and npm. CI also checks Node.js 22. These are
+requirements for contributing, not new runtime requirements for the library.
 
 ```bash
-yarn install
+npm ci
+npm run check
 ```
 
-Then build the library:
+`npm ci` installs the locked development dependencies and Puppeteer's matching
+Chrome browser. To install tooling without downloading a browser, set
+`PUPPETEER_SKIP_DOWNLOAD=true`; browser tests still require a matching browser
+before they can run (`npx puppeteer browsers install chrome`).
 
-```bash
-yarn build
-```
+| Command                | Purpose                                                  |
+| ---------------------- | -------------------------------------------------------- |
+| `npm run build`        | Generate CommonJS, ESM, browser bundle, and declarations |
+| `npm run typecheck`    | Type-check source and tests                              |
+| `npm run lint`         | Check source and tooling with ESLint                     |
+| `npm run format:check` | Check formatting                                         |
+| `npm run format`       | Apply formatting                                         |
+| `npm run test:unit`    | Run device classification tests                          |
+| `npm run test:browser` | Test the built bundle in headless Chrome                 |
+| `npm run test:package` | Pack and test the built npm artifact                     |
+| `npm run check`        | Run all local checks in order                            |
 
-Three versions of the library will be generated:
+Run `npm run build` before the browser or package tests when using them
+individually. `npm pack` also builds automatically via `prepack`.
 
-1. `./cjs/index.js` - the CommonJS version of the library
-2. `./esm/index.js` - the ESModule version of the library
-3. `./dist/isMobile.min.js` - the browser version of the library
+The build generates these existing public entry points:
 
-Additionally, types will be output to `types`.
+1. `cjs/index.js` — CommonJS, with the function at `require('ismobilejs').default`.
+2. `esm/index.js` — ES module with a default function export.
+3. `dist/isMobile.min.js` — standalone UMD bundle that evaluates immediately and
+   exposes an `isMobile` result object (also supports AMD and CommonJS loading).
+4. `types/index.d.ts` — TypeScript declarations.
+
+TypeScript and Rollup emit ES5-compatible library/browser code. Generated output
+is ignored by git. An explicit package allowlist keeps development configuration,
+tests, and tooling out of npm; the library has no runtime dependencies.
 
 ## Contributing
 
-This library uses Spotify's [web-scripts](https://github.com/spotify/web-scripts) project to build, lint, test, format and release the this library.
+Run `npm run check` before submitting changes. Commit `package-lock.json` whenever
+dependencies change, and use `npm ci` for repeatable installs. TypeScript stays on
+5.9 while the lint/parser tooling's supported version range and ES5 output are
+verified; upgrade it deliberately with the package tests.
 
-You must use `yarn commit` rather than `git commit` to commit files. This enforced commit messages to following a specific format and enables automation of release notes and version bump.
+Use conventional commit messages, for example `fix: correct a device match`,
+`feat: add a detection option`, or `chore: update tooling`. Normal `git commit`
+works; no global commit helper or git hooks are required.
+
+Browser tests explicitly set the platform and touch-point inputs and navigate
+after registering document initialization scripts. Device emulation does not
+set every navigator property, and initialization scripts need a new document.
+Keep those inputs explicit so tests behave consistently on macOS and Linux.
+These tests verify the bundle and supplied signals; they do not replace
+real-device validation of detection heuristics.
+
+### Releases
+
+Pushes to `main` run the same Node.js 22/24 checks as pull requests, including
+browser/package tests and an npm dependency audit. Only after both jobs pass does
+semantic-release calculate a version, publish to npm, tag the commit, and create
+a GitHub release. `fix:` releases a patch, `feat:` a minor, and breaking changes
+a major; `chore:` and `docs:` alone do not release. Keep the development version
+in package.json; semantic-release sets the published version from git history.
+
+Before the first release, configure an npm **trusted publisher** for `ismobilejs`:
+GitHub owner `kaimallea`, repository `isMobile`, workflow `release.yml`, and no
+environment name. This uses GitHub OIDC rather than a long-lived npm token.
+The workflow uses the built-in `GITHUB_TOKEN` for tags and GitHub releases; it
+does not require the old `GH_TOKEN` or `NPM_TOKEN` secrets. See the
+[npm trusted publishing guide](https://docs.npmjs.com/trusted-publishers/) and
+[semantic-release GitHub Actions guidance](https://semantic-release.gitbook.io/semantic-release/recipes/ci-configurations/github-actions).
+
+Require both Node checks in the repository's branch protection/ruleset. These
+repository and npm account settings are separate from the checked-in workflows.
+The release workflow can also be run manually on `main` after correcting a
+publishing configuration failure. A published npm version is immutable: fix a
+bad release with a new version rather than attempting to overwrite it.
+
+CI uses the Ubuntu runner's installed Google Chrome so its AppArmor policy
+permits the Chrome sandbox. Local tests use Puppeteer's downloaded browser by
+default; `PUPPETEER_EXECUTABLE_PATH` can select an installed Chrome explicitly.

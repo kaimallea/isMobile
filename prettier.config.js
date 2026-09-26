@@ -1,1 +1,1 @@
-module.exports = require('@spotify/web-scripts/config/prettier.config.js');
+module.exports = { singleQuote: true, trailingComma: 'all' };
