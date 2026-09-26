@@ -44,6 +44,7 @@
     "@rollup/plugin-terser": "^1.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^22.0.0",
+    "acorn": "^8.18.0",
     "eslint": "^10.11.0",
     "eslint-plugin-jest": "^29.16.6",
     "globals": "^17.0.0",

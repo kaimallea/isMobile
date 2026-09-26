@@ -16,11 +16,11 @@ describe('Windows', () => {
     });
 
     test('should not be an Android device', () => {
-      expect(mobile.android.device).not.toBe(true);
+      expect(mobile.android.device).toBe(false);
     });
 
     test('should not be an Apple device', () => {
-      expect(mobile.apple.device).not.toBe(true);
+      expect(mobile.apple.device).toBe(false);
     });
 
     test('should be matched as Any Phone', () => {
@@ -44,11 +44,11 @@ describe('Windows', () => {
     });
 
     test('should not be an Android device', () => {
-      expect(mobile.android.device).not.toBe(true);
+      expect(mobile.android.device).toBe(false);
     });
 
     test('should not be an Apple device', () => {
-      expect(mobile.apple.device).not.toBe(true);
+      expect(mobile.apple.device).toBe(false);
     });
 
     test('should be matched as Any Phone', () => {
@@ -72,11 +72,11 @@ describe('Windows', () => {
     });
 
     test('should not be an Android device', () => {
-      expect(mobile.android.device).not.toBe(true);
+      expect(mobile.android.device).toBe(false);
     });
 
     test('should not be an Apple device', () => {
-      expect(mobile.apple.device).not.toBe(true);
+      expect(mobile.apple.device).toBe(false);
     });
 
     test('should be matched as Any Phone', () => {
@@ -100,15 +100,15 @@ describe('Windows', () => {
     });
 
     test('should not be a Windows Phone device', () => {
-      expect(mobile.windows.phone).not.toBe(true);
+      expect(mobile.windows.phone).toBe(false);
     });
 
     test('should not be an Android device', () => {
-      expect(mobile.android.device).not.toBe(true);
+      expect(mobile.android.device).toBe(false);
     });
 
     test('should not be an Apple device', () => {
-      expect(mobile.apple.device).not.toBe(true);
+      expect(mobile.apple.device).toBe(false);
     });
 
     test('should be matched as Any Tablet', () => {
@@ -128,27 +128,27 @@ describe('Windows', () => {
     });
 
     test('should not be a Windows Tablet device', () => {
-      expect(mobile.windows.tablet).not.toBe(true);
+      expect(mobile.windows.tablet).toBe(false);
     });
 
     test('should not be a Windows Phone device', () => {
-      expect(mobile.windows.phone).not.toBe(true);
+      expect(mobile.windows.phone).toBe(false);
     });
 
     test('should not be an Android device', () => {
-      expect(mobile.android.device).not.toBe(true);
+      expect(mobile.android.device).toBe(false);
     });
 
     test('should not be an Apple device', () => {
-      expect(mobile.apple.device).not.toBe(true);
+      expect(mobile.apple.device).toBe(false);
     });
 
     test('should not be matched as Any Tablet', () => {
-      expect(mobile.tablet).not.toBe(true);
+      expect(mobile.tablet).toBe(false);
     });
 
     test('should not be a mobile device', () => {
-      expect(mobile.any).not.toBe(true);
+      expect(mobile.any).toBe(false);
     });
   });
 });

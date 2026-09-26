@@ -16,11 +16,11 @@ describe('Apple', () => {
     });
 
     test('should not be an iPad', () => {
-      expect(mobile.apple.tablet).not.toBe(true);
+      expect(mobile.apple.tablet).toBe(false);
     });
 
     test('should not be an iPod', () => {
-      expect(mobile.apple.ipod).not.toBe(true);
+      expect(mobile.apple.ipod).toBe(false);
     });
 
     test('should be matched as Any Phone', () => {
@@ -40,7 +40,7 @@ describe('Apple', () => {
     });
 
     test('should not be an iPhone', () => {
-      expect(mobile.apple.phone).not.toBe(true);
+      expect(mobile.apple.phone).toBe(false);
     });
 
     test('should be an iPad', () => {
@@ -48,7 +48,7 @@ describe('Apple', () => {
     });
 
     test('should not be an iPod', () => {
-      expect(mobile.apple.ipod).not.toBe(true);
+      expect(mobile.apple.ipod).toBe(false);
     });
 
     test('should be matched as Any Tablet', () => {
@@ -72,7 +72,7 @@ describe('Apple', () => {
     });
 
     test('should not be an iPhone', () => {
-      expect(mobile.apple.phone).not.toBe(true);
+      expect(mobile.apple.phone).toBe(false);
     });
 
     test('should be an iPad', () => {
@@ -80,7 +80,7 @@ describe('Apple', () => {
     });
 
     test('should not be an iPod', () => {
-      expect(mobile.apple.ipod).not.toBe(true);
+      expect(mobile.apple.ipod).toBe(false);
     });
 
     test('should be matched as Any Tablet', () => {
@@ -92,6 +92,49 @@ describe('Apple', () => {
     });
   });
 
+  test.each([
+    { platform: 'MacIntel', maxTouchPoints: undefined, tablet: false },
+    { platform: 'MacIntel', maxTouchPoints: 0, tablet: false },
+    { platform: 'MacIntel', maxTouchPoints: 1, tablet: false },
+    { platform: 'MacIntel', maxTouchPoints: 2, tablet: true },
+    { platform: 'Win32', maxTouchPoints: 4, tablet: false },
+    { platform: 'Linux x86_64', maxTouchPoints: 4, tablet: false },
+    { platform: '', maxTouchPoints: 4, tablet: false },
+  ])(
+    'desktop-style UA with $platform and $maxTouchPoints touch points: tablet=$tablet',
+    ({ platform, maxTouchPoints, tablet }) => {
+      const result = isMobile({
+        userAgent:
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)',
+        platform,
+        ...(maxTouchPoints === undefined ? {} : { maxTouchPoints }),
+      });
+
+      expect(result).toMatchObject({
+        apple: { tablet, device: tablet, phone: false },
+        any: tablet,
+        tablet,
+        phone: false,
+      });
+    },
+  );
+
+  test('a universal Apple signature matches a device without claiming phone or tablet', () => {
+    // Synthetic signature fixture, not a claim about a particular physical device.
+    const result = isMobile('iOS-universal Mac');
+
+    expect(result.apple).toEqual({
+      phone: false,
+      ipod: false,
+      tablet: false,
+      universal: true,
+      device: true,
+    });
+    expect(result.any).toBe(true);
+    expect(result.phone).toBe(false);
+    expect(result.tablet).toBe(false);
+  });
+
   describe('iPod UserAgent', () => {
     beforeEach(() => {
       userAgent =
@@ -100,11 +143,11 @@ describe('Apple', () => {
     });
 
     test('should not be an iPhone', () => {
-      expect(mobile.apple.phone).not.toBe(true);
+      expect(mobile.apple.phone).toBe(false);
     });
 
     test('should not be an iPad', () => {
-      expect(mobile.apple.tablet).not.toBe(true);
+      expect(mobile.apple.tablet).toBe(false);
     });
 
     test('should be an iPod', () => {
@@ -128,11 +171,11 @@ describe('Apple', () => {
     });
 
     test('should not be an iPad', () => {
-      expect(mobile.apple.tablet).not.toBe(true);
+      expect(mobile.apple.tablet).toBe(false);
     });
 
     test('should not be an iPod', () => {
-      expect(mobile.apple.ipod).not.toBe(true);
+      expect(mobile.apple.ipod).toBe(false);
     });
 
     test('should be an Apple device', () => {
@@ -148,7 +191,7 @@ describe('Apple', () => {
     });
 
     test('should not be an iPhone', () => {
-      expect(mobile.apple.phone).not.toBe(true);
+      expect(mobile.apple.phone).toBe(false);
     });
 
     test('should be an iPad', () => {
@@ -156,7 +199,7 @@ describe('Apple', () => {
     });
 
     test('should not be an iPod', () => {
-      expect(mobile.apple.ipod).not.toBe(true);
+      expect(mobile.apple.ipod).toBe(false);
     });
 
     test('should be an Apple device', () => {
@@ -176,11 +219,11 @@ describe('Apple', () => {
     });
 
     test('should not be an iPad', () => {
-      expect(mobile.apple.tablet).not.toBe(true);
+      expect(mobile.apple.tablet).toBe(false);
     });
 
     test('should not be an iPod', () => {
-      expect(mobile.apple.ipod).not.toBe(true);
+      expect(mobile.apple.ipod).toBe(false);
     });
 
     test('should be an Apple device', () => {
@@ -196,7 +239,7 @@ describe('Apple', () => {
     });
 
     test('should not be an iPhone', () => {
-      expect(mobile.apple.phone).not.toBe(true);
+      expect(mobile.apple.phone).toBe(false);
     });
 
     test('should be an iPad', () => {
@@ -204,7 +247,7 @@ describe('Apple', () => {
     });
 
     test('should not be an iPod', () => {
-      expect(mobile.apple.ipod).not.toBe(true);
+      expect(mobile.apple.ipod).toBe(false);
     });
 
     test('should be an Apple device', () => {

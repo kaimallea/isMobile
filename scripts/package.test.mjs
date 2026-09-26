@@ -7,6 +7,7 @@ import { join, resolve } from 'node:path';
 import { after, test } from 'node:test';
 import { pathToFileURL } from 'node:url';
 import { runInNewContext } from 'node:vm';
+import { parse } from 'acorn';
 
 const directory = mkdtempSync(join(tmpdir(), 'ismobile-package-'));
 after(() => rmSync(directory, { recursive: true, force: true }));
@@ -49,6 +50,17 @@ test('the tarball contains only consumer files and no runtime dependencies', () 
     assert.ok(
       archive.files.some((file) => file.path === path),
       `Missing ${path}`,
+    );
+  }
+});
+
+test('CommonJS and browser files use ES5 syntax', () => {
+  for (const { path } of archive.files) {
+    if (!/^(?:cjs|dist)\/.*\.js$/.test(path)) continue;
+    assert.doesNotThrow(
+      () =>
+        parse(readFileSync(join(packageDir, path), 'utf8'), { ecmaVersion: 5 }),
+      `${path} must be parseable by an ES5 engine`,
     );
   }
 });
@@ -99,9 +111,23 @@ test('published declarations work without repository tooling or configuration', 
     `
     import isMobile, { isMobileResult, IsMobileParameter } from './package';
     const input: IsMobileParameter = 'iPhone';
-    const result: isMobileResult = isMobile(input);
+    const navigatorInput: IsMobileParameter = {
+      userAgent: 'Macintosh', platform: 'MacIntel', maxTouchPoints: 2,
+    };
+    const navigatorWithoutTouch: IsMobileParameter = {
+      userAgent: 'iPhone', platform: 'iPhone',
+    };
+    const results: isMobileResult[] = [
+      isMobile(input),
+      isMobile(navigatorInput),
+      isMobile(navigatorWithoutTouch),
+      isMobile(),
+    ];
+    const result = results[0];
     const phone: boolean = result.phone;
+    const tablet: boolean = result.apple.tablet;
     void phone;
+    void tablet;
   `,
   );
   writeFileSync(
@@ -125,6 +151,6 @@ test('published declarations work without repository tooling or configuration', 
       '-p',
       join(directory, 'tsconfig.json'),
     ],
-    { stdio: 'pipe' },
+    { stdio: 'inherit' },
   );
 });

@@ -217,6 +217,14 @@ Keep those inputs explicit so tests behave consistently on macOS and Linux.
 These tests verify the bundle and supplied signals; they do not replace
 real-device validation of detection heuristics.
 
+Detection tests require literal boolean results and cover the iPad heuristic's
+platform and touch-point boundaries, the legacy universal signature, and calls
+without a browser navigator. Package tests compile consumers using every supported
+argument form and parse the shipped CommonJS/browser JavaScript as ES5. The syntax
+check does not establish availability of runtime APIs or execution on old browsers.
+High line coverage alone missed regressions in these contracts during the test
+audit; the regression cases now exercise them explicitly.
+
 ### Releases
 
 Pushes to `main` run the same Node.js 22/24 checks as pull requests, including
