@@ -40,10 +40,14 @@
     "release": "semantic-release"
   },
   "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
     "@eslint/js": "^10.0.1",
+    "@rollup/plugin-babel": "^7.1.0",
     "@rollup/plugin-terser": "^1.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^22.0.0",
+    "@typescript/native": "npm:typescript@^7.0.2",
     "acorn": "^8.18.0",
     "eslint": "^10.11.0",
     "eslint-plugin-jest": "^29.16.6",
@@ -54,7 +58,7 @@
     "rollup": "^4.63.5",
     "semantic-release": "^25.0.9",
     "ts-jest": "^29.4.14",
-    "typescript": "~5.9.3",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
     "typescript-eslint": "^8.70.1"
   },
   "files": [

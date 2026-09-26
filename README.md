@@ -195,16 +195,29 @@ The build generates these existing public entry points:
    exposes an `isMobile` result object (also supports AMD and CommonJS loading).
 4. `types/index.d.ts` — TypeScript declarations.
 
-TypeScript and Rollup emit ES5-compatible library/browser code. Generated output
+TypeScript 7 emits JavaScript and declarations; Babel and Rollup produce
+ES5-compatible library/browser code. Generated output
 is ignored by git. An explicit package allowlist keeps development configuration,
 tests, and tooling out of npm; the library has no runtime dependencies.
 
 ## Contributing
 
 Run `npm run check` before submitting changes. Commit `package-lock.json` whenever
-dependencies change, and use `npm ci` for repeatable installs. TypeScript stays on
-5.9 while the lint/parser tooling's supported version range and ES5 output are
-verified; upgrade it deliberately with the package tests.
+dependencies change, and use `npm ci` for repeatable installs.
+
+TypeScript 7 (`@typescript/native`, an npm alias) runs `tsc` for type checking,
+builds, and declarations. ESLint and ts-jest still need the JavaScript compiler
+API, so `typescript` aliases Microsoft's `@typescript/typescript6` compatibility
+package. This is the documented
+[side-by-side setup](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6-0).
+Keep these roles separate until the tools support the native compiler API.
+
+TypeScript 7 removed ES5 emit and legacy Node module resolution. The project uses
+bundler resolution and emits ES2015 into a temporary directory, then Babel
+downlevels the JavaScript before Rollup packages it. Babel's IE 11 target selects
+ES5 syntax transforms; it is not a claim of real-device/browser validation.
+Package tests enforce ES5 syntax and compile consumers with both TypeScript 6
+and 7. Babel stays on major 7 to satisfy the Rollup/Jest integrations' peer ranges.
 
 Use conventional commit messages, for example `fix: correct a device match`,
 `feat: add a detection option`, or `chore: update tooling`. Normal `git commit`

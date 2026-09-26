@@ -105,10 +105,14 @@ test('the browser bundle supports script, CommonJS, and AMD consumers', () => {
   assert.equal(amd.android.phone, true);
 });
 
-test('published declarations work without repository tooling or configuration', () => {
-  writeFileSync(
-    join(directory, 'consumer.ts'),
-    `
+for (const [version, compiler] of [
+  ['6', 'typescript/bin/tsc6'],
+  ['7', '@typescript/native/bin/tsc'],
+]) {
+  test(`published declarations work in TypeScript ${version} without repository configuration`, () => {
+    writeFileSync(
+      join(directory, 'consumer.ts'),
+      `
     import isMobile, { isMobileResult, IsMobileParameter } from './package';
     const input: IsMobileParameter = 'iPhone';
     const navigatorInput: IsMobileParameter = {
@@ -129,28 +133,30 @@ test('published declarations work without repository tooling or configuration', 
     void phone;
     void tablet;
   `,
-  );
-  writeFileSync(
-    join(directory, 'tsconfig.json'),
-    JSON.stringify({
-      compilerOptions: {
-        strict: true,
-        noEmit: true,
-        types: [],
-        lib: ['ES5'],
-        module: 'CommonJS',
-        moduleResolution: 'Node',
-      },
-      files: ['consumer.ts'],
-    }),
-  );
-  execFileSync(
-    process.execPath,
-    [
-      resolve('node_modules/typescript/bin/tsc'),
-      '-p',
+    );
+    writeFileSync(
       join(directory, 'tsconfig.json'),
-    ],
-    { stdio: 'inherit' },
-  );
-});
+      JSON.stringify({
+        compilerOptions: {
+          strict: true,
+          noEmit: true,
+          types: [],
+          lib: ['ES5'],
+          target: 'ES2015',
+          module: 'NodeNext',
+          moduleResolution: 'NodeNext',
+        },
+        files: ['consumer.ts'],
+      }),
+    );
+    execFileSync(
+      process.execPath,
+      [
+        resolve('node_modules', compiler),
+        '-p',
+        join(directory, 'tsconfig.json'),
+      ],
+      { stdio: 'inherit' },
+    );
+  });
+}

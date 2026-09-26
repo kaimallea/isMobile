@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES2015",
     "module": "ESNext",
     "lib": ["ES5", "DOM"],
     "types": [],
