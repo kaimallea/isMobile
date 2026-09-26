@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, test } from 'vitest';
 import isMobile, { isMobileResult } from '../';
 
 describe('Android', () => {
@@ -16,7 +17,7 @@ describe('Android', () => {
     });
 
     test('should not be an Android Tablet', () => {
-      expect(mobile.android.tablet).not.toBe(true);
+      expect(mobile.android.tablet).toBe(false);
     });
 
     test('should be matched as Any Phone', () => {
@@ -36,7 +37,7 @@ describe('Android', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -66,7 +67,7 @@ describe('Android', () => {
       expect(mobile.android.tablet).toBe(false);
     });
 
-    test('should be matched as Any Tablet', () => {
+    test('should not be matched as Any Tablet', () => {
       expect(mobile.tablet).toBe(false);
     });
 

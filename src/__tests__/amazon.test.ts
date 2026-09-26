@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, test } from 'vitest';
 import isMobile, { isMobileResult } from '../';
 
 describe('Amazon', () => {
@@ -12,7 +13,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -24,7 +25,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -48,7 +49,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -60,7 +61,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -84,7 +85,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -96,7 +97,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -120,7 +121,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -132,7 +133,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -156,7 +157,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -168,7 +169,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -192,7 +193,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -204,7 +205,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -228,7 +229,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -240,7 +241,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -264,7 +265,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -276,7 +277,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -300,7 +301,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -312,7 +313,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -336,7 +337,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -348,7 +349,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -372,7 +373,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -384,7 +385,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -408,7 +409,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -420,7 +421,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -444,7 +445,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Phone', () => {
-      expect(mobile.amazon.phone).not.toBe(true);
+      expect(mobile.amazon.phone).toBe(false);
     });
 
     test('should be an Amazon Tablet', () => {
@@ -456,7 +457,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Phone', () => {
-      expect(mobile.android.phone).not.toBe(true);
+      expect(mobile.android.phone).toBe(false);
     });
 
     test('should be an Android Tablet', () => {
@@ -484,7 +485,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Tablet', () => {
-      expect(mobile.amazon.tablet).not.toBe(true);
+      expect(mobile.amazon.tablet).toBe(false);
     });
 
     test('should be an Amazon device', () => {
@@ -496,7 +497,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Tablet', () => {
-      expect(mobile.android.tablet).not.toBe(true);
+      expect(mobile.android.tablet).toBe(false);
     });
 
     test('should be matched as Any Phone', () => {
@@ -520,7 +521,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Amazon Tablet', () => {
-      expect(mobile.amazon.tablet).not.toBe(true);
+      expect(mobile.amazon.tablet).toBe(false);
     });
 
     test('should be an Amazon device', () => {
@@ -532,7 +533,7 @@ describe('Amazon', () => {
     });
 
     test('should not be an Android Tablet', () => {
-      expect(mobile.android.tablet).not.toBe(true);
+      expect(mobile.android.tablet).toBe(false);
     });
 
     test('should be matched as Any Phone', () => {

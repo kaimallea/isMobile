@@ -1,14 +1,46 @@
-import puppeteer from 'puppeteer';
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  test,
+} from 'vitest';
+import puppeteer, { Browser, KnownDevices, Page } from 'puppeteer';
 import { isMobileResult } from '..';
 
+declare global {
+  interface Window {
+    isMobile: isMobileResult;
+  }
+}
+
 describe('E2E Tests', () => {
+  let browser: Browser;
+  let page: Page;
+
+  beforeAll(async () => {
+    // Let Puppeteer report startup failure before Jest abandons this hook.
+    browser = await puppeteer.launch({ timeout: 30_000 });
+  }, 45_000);
+
+  beforeEach(async () => {
+    page = await browser.newPage();
+  });
+
+  afterEach(async () => {
+    await page?.close();
+  });
+
+  afterAll(async () => {
+    await browser?.close();
+  });
   test('isMobile global variable is present', async () => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
     await page.setUserAgent('okhttp/3.0.0');
     await page.addScriptTag({ path: './dist/isMobile.min.js' });
 
-    const isMobile: isMobileResult = await page.evaluate(() => isMobile);
+    const isMobile: isMobileResult = await page.evaluate(() => window.isMobile);
 
     expect(isMobile).toMatchInlineSnapshot(`
       Object {
@@ -47,32 +79,28 @@ describe('E2E Tests', () => {
         },
       }
     `);
-
-    await browser.close();
   });
 
-  (process.env.GITHUB_ACTIONS ? test.skip : test)(
-    'isMobile correctly checks iOS 13',
-    async () => {
-      const iPadIos13 = {
-        ...puppeteer.devices['iPad Pro'],
-        userAgent:
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)',
-      };
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-      await page.evaluateOnNewDocument(() => {
-        Object.defineProperty(navigator, 'maxTouchPoints', {
-          get: () => 4,
-        });
+  test('isMobile correctly checks iOS 13', async () => {
+    const iPadIos13 = {
+      ...KnownDevices['iPad Pro'],
+      userAgent:
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)',
+    };
+    await page.evaluateOnNewDocument(() => {
+      Object.defineProperty(navigator, 'platform', { get: () => 'MacIntel' });
+      Object.defineProperty(navigator, 'maxTouchPoints', {
+        get: () => 4,
       });
-      await page.emulate(iPadIos13);
-      await page.addScriptTag({ path: './dist/isMobile.min.js' });
+    });
+    await page.emulate(iPadIos13);
+    // Init scripts run on navigation; emulate() alone is not a document load.
+    await page.goto('about:blank');
+    await page.addScriptTag({ path: './dist/isMobile.min.js' });
 
-      const isMobile: isMobileResult = await page.evaluate(() => isMobile);
+    const isMobile: isMobileResult = await page.evaluate(() => window.isMobile);
 
-      // eslint-disable-next-line jest/no-standalone-expect
-      expect(isMobile).toMatchInlineSnapshot(`
+    expect(isMobile).toMatchInlineSnapshot(`
       Object {
         "amazon": Object {
           "device": false,
@@ -109,32 +137,30 @@ describe('E2E Tests', () => {
         },
       }
     `);
-
-      await browser.close();
-    },
-  );
+  });
 
   test('isMobile correctly fails iOS 13 check when MSStream is present', async () => {
     const iPadIos13 = {
-      ...puppeteer.devices['iPad Pro'],
+      ...KnownDevices['iPad Pro'],
       userAgent:
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)',
     };
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
     await page.evaluateOnNewDocument(() => {
+      Object.defineProperty(navigator, 'platform', { get: () => 'MacIntel' });
       Object.defineProperty(navigator, 'maxTouchPoints', {
         get: () => 4,
       });
 
       Object.defineProperty(window, 'MSStream', {
-        get: () => (fn: Function) => fn(),
+        get: () => () => undefined,
       });
     });
     await page.emulate(iPadIos13);
+    // Init scripts run on navigation; emulate() alone is not a document load.
+    await page.goto('about:blank');
     await page.addScriptTag({ path: './dist/isMobile.min.js' });
 
-    const isMobile: isMobileResult = await page.evaluate(() => isMobile);
+    const isMobile: isMobileResult = await page.evaluate(() => window.isMobile);
 
     expect(isMobile).toMatchInlineSnapshot(`
       Object {
@@ -173,7 +199,5 @@ describe('E2E Tests', () => {
         },
       }
     `);
-
-    await browser.close();
   });
 });

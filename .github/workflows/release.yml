@@ -1,23 +1,41 @@
-name: Node CD
+name: Release
 
 on:
   push:
-    branches:
-      - master
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  build:
+  checks:
+    uses: ./.github/workflows/pull_request.yml
+
+  release:
+    if: github.ref == 'refs/heads/main'
+    needs: checks
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      id-token: write
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          node-version: "14.x"
-          registry-url: "https://registry.npmjs.org"
-      - run: yarn install
-      - run: yarn build
-      - run: yarn release
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+      - run: npm ci
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+      - run: npm run build
+      - run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

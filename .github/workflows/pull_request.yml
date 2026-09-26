@@ -1,23 +1,33 @@
-name: Node CI
+name: CI
 
 on:
-  push:
-    branches:
-      - refs/pull/*
   pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
 
 jobs:
-  build:
+  check:
+    name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [10, 12, 14]
+        node: [22, 24]
+    env:
+      # Use the runner's Chrome, whose Ubuntu AppArmor profile permits sandboxing.
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+      PUPPETEER_EXECUTABLE_PATH: /opt/google/chrome/chrome
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: yarn install
-      - run: yarn lint
-      - run: yarn build
-      - run: yarn test
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm audit --audit-level=moderate

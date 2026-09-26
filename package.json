@@ -23,36 +23,45 @@
   },
   "main": "cjs/index.js",
   "module": "esm/index.js",
+  "sideEffects": [
+    "./dist/isMobile.min.js"
+  ],
   "jsdelivr": "dist/isMobile.min.js",
   "types": "types",
   "scripts": {
-    "prebuild": "rm -rf cjs esm dist",
-    "build": "yarn build:library && yarn build:browser",
-    "build:library": "web-scripts build",
-    "build:browser": "parcel build --target browser --experimental-scope-hoisting --global isMobile --out-file isMobile.min.js src/index.browser.ts",
-    "test": "jest",
-    "format": "web-scripts format",
-    "lint": "web-scripts lint",
-    "commit": "web-scripts commit",
-    "release": "web-scripts release",
-    "prepare": "web-scripts audit"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "web-scripts precommit --jest-config ./jest.config.js",
-      "commit-msg": "web-scripts commitmsg"
-    }
+    "build": "node scripts/build.mjs",
+    "test": "vitest run",
+    "test:unit": "vitest run --project unit",
+    "test:browser": "vitest run --project browser",
+    "test:package": "node --test scripts/package.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint --deny-warnings .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run lint && npm run format:check && npm run typecheck && npm run build && npm test && npm run test:package",
+    "prepack": "npm run build",
+    "release": "semantic-release"
   },
   "devDependencies": {
-    "@spotify/web-scripts": "^9.0.0",
-    "@types/puppeteer": "^5.4.2",
-    "husky": "^6.0.0",
-    "jest-puppeteer": "^4.4.0",
-    "parcel-bundler": "^1.12.4",
-    "puppeteer": "^8.0.0",
-    "ts-jest": "^26.4.4"
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "@rollup/plugin-babel": "^7.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
+    "@types/node": "^22.0.0",
+    "acorn": "^8.18.0",
+    "oxlint": "^1.85.0",
+    "prettier": "^3.9.9",
+    "puppeteer": "^25.12.0",
+    "rollup": "^4.63.5",
+    "semantic-release": "^25.0.9",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.2"
   },
-  "dependencies": {
-    "caniuse-lite": "^1.0.30001173"
-  }
+  "files": [
+    "cjs",
+    "esm",
+    "dist",
+    "types"
+  ]
 }

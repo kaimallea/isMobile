@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, test } from 'vitest';
 import isMobile, { isMobileResult } from '../';
 
 describe('Desktop', () => {
@@ -12,7 +13,7 @@ describe('Desktop', () => {
     });
 
     test('should not be a mobile device', () => {
-      expect(mobile.any).not.toBe(true);
+      expect(mobile.any).toBe(false);
     });
   });
 
@@ -24,7 +25,7 @@ describe('Desktop', () => {
     });
 
     test('should not be a mobile device', () => {
-      expect(mobile.any).not.toBe(true);
+      expect(mobile.any).toBe(false);
     });
   });
 });

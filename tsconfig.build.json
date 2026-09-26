@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "ESNext",
+    "lib": ["ES5", "DOM"],
+    "types": [],
+    "rootDir": "src",
+    "outDir": ".build",
+    "declaration": true,
+    "declarationDir": "types"
+  },
+  "exclude": ["src/__tests__"]
+}

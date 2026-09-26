@@ -1,0 +1,49 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "vitest"],
+  "categories": {
+    "correctness": "error"
+  },
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "ignorePatterns": [
+    ".build/**",
+    "cjs/**",
+    "esm/**",
+    "dist/**",
+    "types/**",
+    "coverage/**"
+  ],
+  "rules": {
+    "eslint/no-case-declarations": "error",
+    "eslint/no-empty": "error",
+    "eslint/no-fallthrough": "error",
+    "eslint/no-prototype-builtins": "error",
+    "eslint/no-redeclare": "error",
+    "eslint/no-regex-spaces": "error",
+    "eslint/no-undef": "error",
+    "eslint/no-unexpected-multiline": "error",
+    "eslint/no-useless-assignment": "error",
+    "eslint/preserve-caught-error": "error",
+    "typescript/ban-ts-comment": "error",
+    "eslint/no-array-constructor": "error",
+    "typescript/no-empty-object-type": "error",
+    "typescript/no-explicit-any": "error",
+    "typescript/no-namespace": "error",
+    "typescript/no-require-imports": "error",
+    "typescript/no-unnecessary-type-constraint": "error",
+    "typescript/no-unsafe-function-type": "error",
+    "eslint/no-var": "error",
+    "eslint/prefer-const": "error",
+    "eslint/prefer-rest-params": "error",
+    "eslint/prefer-spread": "error",
+    "vitest/no-alias-methods": "error",
+    "vitest/no-commented-out-tests": "error",
+    "vitest/no-identical-title": "error",
+    "vitest/no-interpolation-in-snapshots": "error",
+    "vitest/no-mocks-import": "error",
+    "vitest/no-test-prefixes": "error"
+  }
+}

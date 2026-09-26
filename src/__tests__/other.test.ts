@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, test } from 'vitest';
 import isMobile, { isMobileResult } from '../';
 
 describe('Other Mobile Devices', () => {
@@ -12,7 +13,7 @@ describe('Other Mobile Devices', () => {
     });
 
     test('should not be a Chrome device', () => {
-      expect(mobile.other.chrome).not.toBe(true);
+      expect(mobile.other.chrome).toBe(false);
     });
 
     test('should be a BlackBerry 10 device', () => {
@@ -20,15 +21,15 @@ describe('Other Mobile Devices', () => {
     });
 
     test('should not be a BlackBerry device', () => {
-      expect(mobile.other.blackberry).not.toBe(true);
+      expect(mobile.other.blackberry).toBe(false);
     });
 
     test('should not be an Android device', () => {
-      expect(mobile.android.device).not.toBe(true);
+      expect(mobile.android.device).toBe(false);
     });
 
     test('should not be an Apple device', () => {
-      expect(mobile.apple.device).not.toBe(true);
+      expect(mobile.apple.device).toBe(false);
     });
 
     test('should be a mobile device', () => {
@@ -44,7 +45,7 @@ describe('Other Mobile Devices', () => {
     });
 
     test('should not be a Chrome device', () => {
-      expect(mobile.other.chrome).not.toBe(true);
+      expect(mobile.other.chrome).toBe(false);
     });
 
     test('should be a BlackBerry device', () => {
@@ -52,15 +53,15 @@ describe('Other Mobile Devices', () => {
     });
 
     test('should not be a BlackBerry 10 device', () => {
-      expect(mobile.other.blackberry10).not.toBe(true);
+      expect(mobile.other.blackberry10).toBe(false);
     });
 
     test('should not be an Android device', () => {
-      expect(mobile.android.device).not.toBe(true);
+      expect(mobile.android.device).toBe(false);
     });
 
     test('should not be an Apple device', () => {
-      expect(mobile.apple.device).not.toBe(true);
+      expect(mobile.apple.device).toBe(false);
     });
 
     test('should be a mobile device', () => {
@@ -76,7 +77,7 @@ describe('Other Mobile Devices', () => {
     });
 
     test('should not be a Chrome device', () => {
-      expect(mobile.other.chrome).not.toBe(true);
+      expect(mobile.other.chrome).toBe(false);
     });
 
     test('should be an Opera Mini device', () => {
@@ -84,11 +85,11 @@ describe('Other Mobile Devices', () => {
     });
 
     test('should not be an Android device', () => {
-      expect(mobile.android.device).not.toBe(true);
+      expect(mobile.android.device).toBe(false);
     });
 
     test('should not be an Apple device', () => {
-      expect(mobile.apple.device).not.toBe(true);
+      expect(mobile.apple.device).toBe(false);
     });
 
     test('should be a mobile device', () => {
@@ -103,7 +104,7 @@ describe('Other Mobile Devices', () => {
     });
 
     test('should not be a Chrome device', () => {
-      expect(mobile.other.chrome).not.toBe(true);
+      expect(mobile.other.chrome).toBe(false);
     });
 
     test('should be a Firefox OS device', () => {
@@ -111,11 +112,11 @@ describe('Other Mobile Devices', () => {
     });
 
     test('should not be an Android device', () => {
-      expect(mobile.android.device).not.toBe(true);
+      expect(mobile.android.device).toBe(false);
     });
 
     test('should not be an Apple device', () => {
-      expect(mobile.apple.device).not.toBe(true);
+      expect(mobile.apple.device).toBe(false);
     });
 
     test('should be a mobile device', () => {
@@ -143,7 +144,7 @@ describe('Other Mobile Devices', () => {
     });
 
     test('should not be an Apple device', () => {
-      expect(mobile.apple.device).not.toBe(true);
+      expect(mobile.apple.device).toBe(false);
     });
 
     test('should be a mobile device', () => {

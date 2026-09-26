@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/kaimallea/isMobile.png)](https://travis-ci.org/kaimallea/isMobile)
-[![Node dependencies status](https://david-dm.org/kaimallea/isMobile.png)](https://david-dm.org/kaimallea/isMobile)
+[![CI](https://github.com/kaimallea/isMobile/actions/workflows/pull_request.yml/badge.svg)](https://github.com/kaimallea/isMobile/actions/workflows/pull_request.yml)
 [![](https://data.jsdelivr.com/v1/package/npm/ismobilejs/badge)](https://www.jsdelivr.com/package/npm/ismobilejs)
 
 # isMobile
@@ -160,16 +159,11 @@ Alternatively, you can include this library via [jsDelivr CDN](https://www.jsdel
 
 ## Building manually
 
-After checking out the repo, install dependencies:
+Use Node.js 24 (`nvm use`), then install dependencies and build:
 
 ```bash
-yarn install
-```
-
-Then build the library:
-
-```bash
-yarn build
+npm ci
+npm run build
 ```
 
 Three versions of the library will be generated:
@@ -182,6 +176,14 @@ Additionally, types will be output to `types`.
 
 ## Contributing
 
-This library uses Spotify's [web-scripts](https://github.com/spotify/web-scripts) project to build, lint, test, format and release the this library.
+Run `npm run check` before submitting changes. It builds the library and runs
+lint, formatting, type, unit, Chrome, and package checks. Commit `package-lock.json`
+when changing dependencies. Use `npm run format` to apply formatting.
 
-You must use `yarn commit` rather than `git commit` to commit files. This enforced commit messages to following a specific format and enables automation of release notes and version bump.
+Use conventional commit messages (`fix:`, `feat:`, or `chore:`) with `git commit`.
+Releases from `main` are automated with semantic-release; leave version updates
+to the release workflow.
+
+Before the first release, configure [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/)
+for `kaimallea/isMobile`, workflow `release.yml`, with no environment name.
+Require both Node.js CI checks in the repository's branch protection settings.

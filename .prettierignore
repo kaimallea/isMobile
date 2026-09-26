@@ -1,0 +1,7 @@
+.build/
+cjs/
+esm/
+dist/
+types/
+coverage/
+package-lock.json
