@@ -48,7 +48,7 @@
     "@rollup/plugin-babel": "^7.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
-    "@types/node": "^22.0.0",
+    "@types/node": "^26.6.2",
     "acorn": "^8.18.0",
     "oxlint": "^1.85.0",
     "prettier": "^3.9.9",
