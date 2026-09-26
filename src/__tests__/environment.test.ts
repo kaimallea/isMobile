@@ -12,7 +12,6 @@ test('calling without an argument or browser navigator returns no device matches
         phone: false,
         ipod: false,
         tablet: false,
-        universal: false,
         device: false,
       },
       amazon: { phone: false, tablet: false, device: false },

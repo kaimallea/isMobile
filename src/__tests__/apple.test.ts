@@ -120,18 +120,17 @@ describe('Apple', () => {
     },
   );
 
-  test('a universal Apple signature matches a device without claiming phone or tablet', () => {
-    // Synthetic signature fixture, not a claim about a particular physical device.
+  test('the removed universal Apple signature does not identify a mobile device', () => {
+    // Regression for #303: this synthetic signature has no verified device use case.
     const result = isMobile('iOS-universal Mac');
 
     expect(result.apple).toEqual({
       phone: false,
       ipod: false,
       tablet: false,
-      universal: true,
-      device: true,
+      device: false,
     });
-    expect(result.any).toBe(true);
+    expect(result.any).toBe(false);
     expect(result.phone).toBe(false);
     expect(result.tablet).toBe(false);
   });
