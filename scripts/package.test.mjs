@@ -1,6 +1,13 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import {
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  renameSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
@@ -8,6 +15,8 @@ import { after, test } from 'node:test';
 import { pathToFileURL } from 'node:url';
 import { runInNewContext } from 'node:vm';
 import { parse } from 'acorn';
+import { rollup } from 'rollup';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 const directory = mkdtempSync(join(tmpdir(), 'ismobile-package-'));
 after(() => rmSync(directory, { recursive: true, force: true }));
@@ -25,7 +34,9 @@ execFileSync('tar', [
   '-C',
   directory,
 ]);
-const packageDir = join(directory, 'package');
+mkdirSync(join(directory, 'node_modules'));
+const packageDir = join(directory, 'node_modules/ismobilejs');
+renameSync(join(directory, 'package'), packageDir);
 const require = createRequire(import.meta.url);
 const manifest = JSON.parse(
   readFileSync(join(packageDir, 'package.json'), 'utf8'),
@@ -105,11 +116,55 @@ test('the browser bundle supports script, CommonJS, and AMD consumers', () => {
   assert.equal(amd.android.phone, true);
 });
 
+test('tree shaking removes unused imports and preserves browser initialization', async () => {
+  for (const [source, expected] of [
+    ["import isMobile from 'ismobilejs';", undefined],
+    [
+      "import isMobile from 'ismobilejs'; globalThis.phone = isMobile('iPhone').apple.phone;",
+      true,
+    ],
+    [
+      "import 'ismobilejs/dist/isMobile.min.js'; globalThis.phone = globalThis.isMobile.apple.phone;",
+      true,
+    ],
+  ]) {
+    const entry = join(directory, 'entry.js');
+    writeFileSync(entry, source);
+    const bundle = await rollup({
+      input: entry,
+      plugins: [nodeResolve()],
+      onwarn(warning) {
+        if (!['THIS_IS_UNDEFINED', 'EMPTY_BUNDLE'].includes(warning.code)) {
+          throw new Error(warning.message);
+        }
+      },
+    });
+    try {
+      const { output } = await bundle.generate({ format: 'iife' });
+      if (expected === undefined) {
+        assert.ok(
+          Object.values(output[0].modules).every(
+            (module) => module.renderedLength === 0,
+          ),
+        );
+      } else {
+        const context = {
+          navigator: { userAgent: 'iPhone', platform: 'iPhone' },
+        };
+        runInNewContext(output[0].code, context);
+        assert.equal(context.phone, expected);
+      }
+    } finally {
+      await bundle.close();
+    }
+  }
+});
+
 test('published declarations work without repository configuration', () => {
   writeFileSync(
     join(directory, 'consumer.ts'),
     `
-  import isMobile, { isMobileResult, IsMobileParameter } from './package';
+  import isMobile, { isMobileResult, IsMobileParameter } from 'ismobilejs';
   const input: IsMobileParameter = 'iPhone';
   const navigatorInput: IsMobileParameter = {
     userAgent: 'Macintosh', platform: 'MacIntel', maxTouchPoints: 2,

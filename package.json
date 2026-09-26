@@ -23,6 +23,9 @@
   },
   "main": "cjs/index.js",
   "module": "esm/index.js",
+  "sideEffects": [
+    "./dist/isMobile.min.js"
+  ],
   "jsdelivr": "dist/isMobile.min.js",
   "types": "types",
   "scripts": {
@@ -43,6 +46,7 @@
     "@babel/core": "^7.29.7",
     "@babel/preset-env": "^7.29.7",
     "@rollup/plugin-babel": "^7.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
     "@types/node": "^22.0.0",
     "acorn": "^8.18.0",
