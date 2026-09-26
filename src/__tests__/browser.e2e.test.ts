@@ -12,19 +12,20 @@ describe('E2E Tests', () => {
   let page: Page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch();
-  });
+    // Let Puppeteer report startup failure before Jest abandons this hook.
+    browser = await puppeteer.launch({ timeout: 30_000 });
+  }, 45_000);
 
   beforeEach(async () => {
     page = await browser.newPage();
   });
 
   afterEach(async () => {
-    await page.close();
+    await page?.close();
   });
 
   afterAll(async () => {
-    await browser.close();
+    await browser?.close();
   });
   test('isMobile global variable is present', async () => {
     await page.setUserAgent('okhttp/3.0.0');
