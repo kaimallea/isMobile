@@ -93,68 +93,60 @@ const userAgent = req.headers['user-agent'];
 console.log(isMobile(userAgent).any);
 ```
 
-Or pass in a `window.navigator`-shaped object that includes at least a `userAgent` property. To properly detect iPad on iOS 13, the object should also include the `platform` and `maxTouchPoints` properties.
-
-```js
-// this is just an example. window.navigator is readonly in the browser
-window.navigator = {
-  ...
-  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko)',
-  platform: 'MacIntel',
-  maxTouchPoints: 2,
-  ..
-}
-```
-
-```ts
-import isMobile from 'ismobilejs';
-console.log(isMobile(window.navigator).apple.tablet);
-```
+A desktop-style iPad user-agent string cannot be distinguished from a Mac using
+this string alone. Server-side detection from the `User-Agent` header therefore
+cannot reliably identify these iPads. See [iPadOS detection](#ipados-13-and-later)
+for the additional browser information used by isMobile.
 
 ### Browser
 
-A real-word example: I include the minified version of the script, inline, and at the top of the `<head>`. Cellular connections tend to suck, so it would be wasteful overhead to open another connection, just to download ~1.3kb of JS:
+When importing through a bundler, call the exported function. With no argument,
+it reads the browser's navigator; you can also pass `window.navigator` explicitly:
 
-<!-- prettier-ignore -->
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <script>
-      // Minified version of isMobile included in the HTML since it's small
-      (function () {var a={};var f=/iPhone/i,h=/iPod/i,i=/iPad/i,g=/\bAndroid(?:.+)Mobile\b/i,j=/Android/i,c=/(?:SD4930UR|\bSilk(?:.+)Mobile\b)/i,d=/Silk/i,b=/Windows Phone/i,k=/\bWindows(?:.+)ARM\b/i,m=/BlackBerry/i,n=/BB10/i,o=/Opera Mini/i,p=/\b(CriOS|Chrome)(?:.+)Mobile/i,q=/Mobile(?:.+)Firefox\b/i;function s(l){return function($){return $.test(l)}}function e(l){var $=(l=l||("undefined"!=typeof navigator?navigator.userAgent:"")).split("[FBAN");void 0!==$[1]&&(l=$[0]),void 0!==($=l.split("Twitter"))[1]&&(l=$[0]);var a=s(l),e={apple:{phone:a(f)&&!a(b),ipod:a(h),tablet:!a(f)&&a(i)&&!a(b),device:(a(f)||a(h)||a(i))&&!a(b)},amazon:{phone:a(c),tablet:!a(c)&&a(d),device:a(c)||a(d)},android:{phone:!a(b)&&a(c)||!a(b)&&a(g),tablet:!a(b)&&!a(c)&&!a(g)&&(a(d)||a(j)),device:!a(b)&&(a(c)||a(d)||a(g)||a(j))||a(/\bokhttp\b/i)},windows:{phone:a(b),tablet:a(k),device:a(b)||a(k)},other:{blackberry:a(m),blackberry10:a(n),opera:a(o),firefox:a(q),chrome:a(p),device:a(m)||a(n)||a(o)||a(q)||a(p)},any:!1,phone:!1,tablet:!1};return e.any=e.apple.device||e.android.device||e.windows.device||e.other.device,e.phone=e.apple.phone||e.android.phone||e.windows.phone,e.tablet=e.apple.tablet||e.android.tablet||e.windows.tablet,e}a=e();if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=a}else if(typeof define==="function"&&define.amd){define(function(){return a})}else{this["isMobile"]=a}})();
+```js
+import isMobile from 'ismobilejs';
 
-      // My own arbitrary use of isMobile, as an example
-      (function() {
-        var MOBILE_SITE = '/mobile/index.html', // site to redirect to
-          NO_REDIRECT = 'noredirect'; // cookie to prevent redirect
-
-        // I only want to redirect iPhones, Android phones
-        if (isMobile.apple.phone || isMobile.android.phone) {
-          // Only redirect if the user didn't previously choose
-          // to explicitly view the full site. This is validated
-          // by checking if a "noredirect" cookie exists
-          if (document.cookie.indexOf(NO_REDIRECT) === -1) {
-            document.location = MOBILE_SITE;
-          }
-        }
-      })();
-    </script>
-  </head>
-  <body>
-    <!-- imagine lots of html and content -->
-  </body>
-</html>
+console.log(isMobile().apple.tablet);
+console.log(isMobile(window.navigator).apple.tablet);
 ```
+
+#### iPadOS 13 and later
+
+An iPad in desktop browsing mode can report a Macintosh user agent. For these
+inputs, isMobile uses a heuristic based on `navigator.platform === 'MacIntel'`
+and `navigator.maxTouchPoints > 1` to identify an iPad.
+
+Use `isMobile()` or `isMobile(window.navigator)` in the browser. Passing only
+`window.navigator.userAgent` discards the platform and touch information needed
+for this heuristic. A navigator-shaped object can also be supplied, with a
+`userAgent`, `platform`, and, for this heuristic, `maxTouchPoints`.
+
+Device emulation may change the user agent without supplying the same platform
+and touch values as a real iPad. Check all three values when investigating a
+mismatch; an emulated result is not verification on a physical device. Device
+detection is a heuristic, so prefer responsive design or feature detection when
+those address your use case.
 
 ### jsDelivr CDN [![](https://data.jsdelivr.com/v1/package/npm/ismobilejs/badge)](https://www.jsdelivr.com/package/npm/ismobilejs)
 
-Alternatively, you can include this library via [jsDelivr CDN](https://www.jsdelivr.com/package/npm/ismobilejs) in a `script` tag:
+For a plain browser page, load the published browser bundle before reading its
+results. It reads the browser's navigator automatically and creates a global
+`isMobile` result object:
 
-`<script src="https://cdn.jsdelivr.net/npm/ismobilejs@1/dist/isMobile.min.js"></script>`
+```html
+<script src="https://cdn.jsdelivr.net/npm/ismobilejs@1.1.1/dist/isMobile.min.js"></script>
+<script>
+  console.log(isMobile.apple.tablet);
+</script>
+```
 
-**Visit the isMobile [jsDelivr page](https://www.jsdelivr.com/package/npm/ismobilejs) to get the most up-to-date URL pointing to the lastest version.**
+This example pins version 1.1.1, which includes the iPadOS detection heuristic.
+Visit the [jsDelivr package page](https://www.jsdelivr.com/package/npm/ismobilejs)
+to select a different published version.
+
+If you need to inline the library, embed the `dist/isMobile.min.js` file from
+your chosen release or build. A separately maintained copy of the minified
+implementation can omit later detection fixes.
 
 ## Migration: removal of `apple.universal`
 
